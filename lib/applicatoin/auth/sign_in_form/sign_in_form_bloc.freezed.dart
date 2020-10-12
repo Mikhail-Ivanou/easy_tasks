@@ -41,6 +41,11 @@ class _$SignInFormEventTearOff {
   SignInWithGoogle signInWithGoogle() {
     return const SignInWithGoogle();
   }
+
+// ignore: unused_element
+  SwitchPasswordVisibility switchPasswordVisibility() {
+    return const SwitchPasswordVisibility();
+  }
 }
 
 /// @nodoc
@@ -56,6 +61,7 @@ mixin _$SignInFormEvent {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -64,6 +70,7 @@ mixin _$SignInFormEvent {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -73,6 +80,7 @@ mixin _$SignInFormEvent {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -81,6 +89,7 @@ mixin _$SignInFormEvent {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   });
 }
@@ -167,12 +176,14 @@ class _$EmailChanged implements EmailChanged {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return emailChanged(email);
   }
 
@@ -184,6 +195,7 @@ class _$EmailChanged implements EmailChanged {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -201,12 +213,14 @@ class _$EmailChanged implements EmailChanged {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return emailChanged(this);
   }
 
@@ -218,6 +232,7 @@ class _$EmailChanged implements EmailChanged {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -301,12 +316,14 @@ class _$PasswordChanged implements PasswordChanged {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return passwordChanged(password);
   }
 
@@ -318,6 +335,7 @@ class _$PasswordChanged implements PasswordChanged {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -335,12 +353,14 @@ class _$PasswordChanged implements PasswordChanged {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return passwordChanged(this);
   }
 
@@ -352,6 +372,7 @@ class _$PasswordChanged implements PasswordChanged {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -414,12 +435,14 @@ class _$RegisterWithCredentials implements RegisterWithCredentials {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return registerWithCredentials();
   }
 
@@ -431,6 +454,7 @@ class _$RegisterWithCredentials implements RegisterWithCredentials {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -448,12 +472,14 @@ class _$RegisterWithCredentials implements RegisterWithCredentials {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return registerWithCredentials(this);
   }
 
@@ -465,6 +491,7 @@ class _$RegisterWithCredentials implements RegisterWithCredentials {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -523,12 +550,14 @@ class _$SignInWithCredentials implements SignInWithCredentials {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return signInWithCredentials();
   }
 
@@ -540,6 +569,7 @@ class _$SignInWithCredentials implements SignInWithCredentials {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -557,12 +587,14 @@ class _$SignInWithCredentials implements SignInWithCredentials {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return signInWithCredentials(this);
   }
 
@@ -574,6 +606,7 @@ class _$SignInWithCredentials implements SignInWithCredentials {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -632,12 +665,14 @@ class _$SignInWithGoogle implements SignInWithGoogle {
     @required Result registerWithCredentials(),
     @required Result signInWithCredentials(),
     @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return signInWithGoogle();
   }
 
@@ -649,6 +684,7 @@ class _$SignInWithGoogle implements SignInWithGoogle {
     Result registerWithCredentials(),
     Result signInWithCredentials(),
     Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -666,12 +702,14 @@ class _$SignInWithGoogle implements SignInWithGoogle {
     @required Result registerWithCredentials(RegisterWithCredentials value),
     @required Result signInWithCredentials(SignInWithCredentials value),
     @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithCredentials != null);
     assert(signInWithCredentials != null);
     assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
     return signInWithGoogle(this);
   }
 
@@ -683,6 +721,7 @@ class _$SignInWithGoogle implements SignInWithGoogle {
     Result registerWithCredentials(RegisterWithCredentials value),
     Result signInWithCredentials(SignInWithCredentials value),
     Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -695,4 +734,426 @@ class _$SignInWithGoogle implements SignInWithGoogle {
 
 abstract class SignInWithGoogle implements SignInFormEvent {
   const factory SignInWithGoogle() = _$SignInWithGoogle;
+}
+
+/// @nodoc
+abstract class $SwitchPasswordVisibilityCopyWith<$Res> {
+  factory $SwitchPasswordVisibilityCopyWith(SwitchPasswordVisibility value,
+          $Res Function(SwitchPasswordVisibility) then) =
+      _$SwitchPasswordVisibilityCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SwitchPasswordVisibilityCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res>
+    implements $SwitchPasswordVisibilityCopyWith<$Res> {
+  _$SwitchPasswordVisibilityCopyWithImpl(SwitchPasswordVisibility _value,
+      $Res Function(SwitchPasswordVisibility) _then)
+      : super(_value, (v) => _then(v as SwitchPasswordVisibility));
+
+  @override
+  SwitchPasswordVisibility get _value =>
+      super._value as SwitchPasswordVisibility;
+}
+
+/// @nodoc
+class _$SwitchPasswordVisibility implements SwitchPasswordVisibility {
+  const _$SwitchPasswordVisibility();
+
+  @override
+  String toString() {
+    return 'SignInFormEvent.switchPasswordVisibility()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SwitchPasswordVisibility);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailChanged(String email),
+    @required Result passwordChanged(String password),
+    @required Result registerWithCredentials(),
+    @required Result signInWithCredentials(),
+    @required Result signInWithGoogle(),
+    @required Result switchPasswordVisibility(),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithCredentials != null);
+    assert(signInWithCredentials != null);
+    assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
+    return switchPasswordVisibility();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailChanged(String email),
+    Result passwordChanged(String password),
+    Result registerWithCredentials(),
+    Result signInWithCredentials(),
+    Result signInWithGoogle(),
+    Result switchPasswordVisibility(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (switchPasswordVisibility != null) {
+      return switchPasswordVisibility();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailChanged(EmailChanged value),
+    @required Result passwordChanged(PasswordChanged value),
+    @required Result registerWithCredentials(RegisterWithCredentials value),
+    @required Result signInWithCredentials(SignInWithCredentials value),
+    @required Result signInWithGoogle(SignInWithGoogle value),
+    @required Result switchPasswordVisibility(SwitchPasswordVisibility value),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithCredentials != null);
+    assert(signInWithCredentials != null);
+    assert(signInWithGoogle != null);
+    assert(switchPasswordVisibility != null);
+    return switchPasswordVisibility(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailChanged(EmailChanged value),
+    Result passwordChanged(PasswordChanged value),
+    Result registerWithCredentials(RegisterWithCredentials value),
+    Result signInWithCredentials(SignInWithCredentials value),
+    Result signInWithGoogle(SignInWithGoogle value),
+    Result switchPasswordVisibility(SwitchPasswordVisibility value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (switchPasswordVisibility != null) {
+      return switchPasswordVisibility(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SwitchPasswordVisibility implements SignInFormEvent {
+  const factory SwitchPasswordVisibility() = _$SwitchPasswordVisibility;
+}
+
+/// @nodoc
+class _$SignInFormStateTearOff {
+  const _$SignInFormStateTearOff();
+
+// ignore: unused_element
+  _SignInFormState call(
+      {@required String emailAddress,
+      @required bool validEmail,
+      @required String password,
+      @required bool validPassword,
+      @required bool isSubmitting,
+      @required AuthResponse authResult,
+      @required bool showErrorMessages,
+      @required bool isPasswordVisible}) {
+    return _SignInFormState(
+      emailAddress: emailAddress,
+      validEmail: validEmail,
+      password: password,
+      validPassword: validPassword,
+      isSubmitting: isSubmitting,
+      authResult: authResult,
+      showErrorMessages: showErrorMessages,
+      isPasswordVisible: isPasswordVisible,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $SignInFormState = _$SignInFormStateTearOff();
+
+/// @nodoc
+mixin _$SignInFormState {
+  String get emailAddress;
+  bool get validEmail;
+  String get password;
+  bool get validPassword;
+  bool get isSubmitting;
+  AuthResponse get authResult;
+  bool get showErrorMessages;
+  bool get isPasswordVisible;
+
+  $SignInFormStateCopyWith<SignInFormState> get copyWith;
+}
+
+/// @nodoc
+abstract class $SignInFormStateCopyWith<$Res> {
+  factory $SignInFormStateCopyWith(
+          SignInFormState value, $Res Function(SignInFormState) then) =
+      _$SignInFormStateCopyWithImpl<$Res>;
+  $Res call(
+      {String emailAddress,
+      bool validEmail,
+      String password,
+      bool validPassword,
+      bool isSubmitting,
+      AuthResponse authResult,
+      bool showErrorMessages,
+      bool isPasswordVisible});
+
+  $AuthResponseCopyWith<$Res> get authResult;
+}
+
+/// @nodoc
+class _$SignInFormStateCopyWithImpl<$Res>
+    implements $SignInFormStateCopyWith<$Res> {
+  _$SignInFormStateCopyWithImpl(this._value, this._then);
+
+  final SignInFormState _value;
+  // ignore: unused_field
+  final $Res Function(SignInFormState) _then;
+
+  @override
+  $Res call({
+    Object emailAddress = freezed,
+    Object validEmail = freezed,
+    Object password = freezed,
+    Object validPassword = freezed,
+    Object isSubmitting = freezed,
+    Object authResult = freezed,
+    Object showErrorMessages = freezed,
+    Object isPasswordVisible = freezed,
+  }) {
+    return _then(_value.copyWith(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as String,
+      validEmail:
+          validEmail == freezed ? _value.validEmail : validEmail as bool,
+      password: password == freezed ? _value.password : password as String,
+      validPassword: validPassword == freezed
+          ? _value.validPassword
+          : validPassword as bool,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      authResult: authResult == freezed
+          ? _value.authResult
+          : authResult as AuthResponse,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
+      isPasswordVisible: isPasswordVisible == freezed
+          ? _value.isPasswordVisible
+          : isPasswordVisible as bool,
+    ));
+  }
+
+  @override
+  $AuthResponseCopyWith<$Res> get authResult {
+    if (_value.authResult == null) {
+      return null;
+    }
+    return $AuthResponseCopyWith<$Res>(_value.authResult, (value) {
+      return _then(_value.copyWith(authResult: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$SignInFormStateCopyWith<$Res>
+    implements $SignInFormStateCopyWith<$Res> {
+  factory _$SignInFormStateCopyWith(
+          _SignInFormState value, $Res Function(_SignInFormState) then) =
+      __$SignInFormStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String emailAddress,
+      bool validEmail,
+      String password,
+      bool validPassword,
+      bool isSubmitting,
+      AuthResponse authResult,
+      bool showErrorMessages,
+      bool isPasswordVisible});
+
+  @override
+  $AuthResponseCopyWith<$Res> get authResult;
+}
+
+/// @nodoc
+class __$SignInFormStateCopyWithImpl<$Res>
+    extends _$SignInFormStateCopyWithImpl<$Res>
+    implements _$SignInFormStateCopyWith<$Res> {
+  __$SignInFormStateCopyWithImpl(
+      _SignInFormState _value, $Res Function(_SignInFormState) _then)
+      : super(_value, (v) => _then(v as _SignInFormState));
+
+  @override
+  _SignInFormState get _value => super._value as _SignInFormState;
+
+  @override
+  $Res call({
+    Object emailAddress = freezed,
+    Object validEmail = freezed,
+    Object password = freezed,
+    Object validPassword = freezed,
+    Object isSubmitting = freezed,
+    Object authResult = freezed,
+    Object showErrorMessages = freezed,
+    Object isPasswordVisible = freezed,
+  }) {
+    return _then(_SignInFormState(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as String,
+      validEmail:
+          validEmail == freezed ? _value.validEmail : validEmail as bool,
+      password: password == freezed ? _value.password : password as String,
+      validPassword: validPassword == freezed
+          ? _value.validPassword
+          : validPassword as bool,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      authResult: authResult == freezed
+          ? _value.authResult
+          : authResult as AuthResponse,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
+      isPasswordVisible: isPasswordVisible == freezed
+          ? _value.isPasswordVisible
+          : isPasswordVisible as bool,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SignInFormState implements _SignInFormState {
+  const _$_SignInFormState(
+      {@required this.emailAddress,
+      @required this.validEmail,
+      @required this.password,
+      @required this.validPassword,
+      @required this.isSubmitting,
+      @required this.authResult,
+      @required this.showErrorMessages,
+      @required this.isPasswordVisible})
+      : assert(emailAddress != null),
+        assert(validEmail != null),
+        assert(password != null),
+        assert(validPassword != null),
+        assert(isSubmitting != null),
+        assert(authResult != null),
+        assert(showErrorMessages != null),
+        assert(isPasswordVisible != null);
+
+  @override
+  final String emailAddress;
+  @override
+  final bool validEmail;
+  @override
+  final String password;
+  @override
+  final bool validPassword;
+  @override
+  final bool isSubmitting;
+  @override
+  final AuthResponse authResult;
+  @override
+  final bool showErrorMessages;
+  @override
+  final bool isPasswordVisible;
+
+  @override
+  String toString() {
+    return 'SignInFormState(emailAddress: $emailAddress, validEmail: $validEmail, password: $password, validPassword: $validPassword, isSubmitting: $isSubmitting, authResult: $authResult, showErrorMessages: $showErrorMessages, isPasswordVisible: $isPasswordVisible)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SignInFormState &&
+            (identical(other.emailAddress, emailAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.emailAddress, emailAddress)) &&
+            (identical(other.validEmail, validEmail) ||
+                const DeepCollectionEquality()
+                    .equals(other.validEmail, validEmail)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)) &&
+            (identical(other.validPassword, validPassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.validPassword, validPassword)) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.authResult, authResult) ||
+                const DeepCollectionEquality()
+                    .equals(other.authResult, authResult)) &&
+            (identical(other.showErrorMessages, showErrorMessages) ||
+                const DeepCollectionEquality()
+                    .equals(other.showErrorMessages, showErrorMessages)) &&
+            (identical(other.isPasswordVisible, isPasswordVisible) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPasswordVisible, isPasswordVisible)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(emailAddress) ^
+      const DeepCollectionEquality().hash(validEmail) ^
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(validPassword) ^
+      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(authResult) ^
+      const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(isPasswordVisible);
+
+  @override
+  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
+      __$SignInFormStateCopyWithImpl<_SignInFormState>(this, _$identity);
+}
+
+abstract class _SignInFormState implements SignInFormState {
+  const factory _SignInFormState(
+      {@required String emailAddress,
+      @required bool validEmail,
+      @required String password,
+      @required bool validPassword,
+      @required bool isSubmitting,
+      @required AuthResponse authResult,
+      @required bool showErrorMessages,
+      @required bool isPasswordVisible}) = _$_SignInFormState;
+
+  @override
+  String get emailAddress;
+  @override
+  bool get validEmail;
+  @override
+  String get password;
+  @override
+  bool get validPassword;
+  @override
+  bool get isSubmitting;
+  @override
+  AuthResponse get authResult;
+  @override
+  bool get showErrorMessages;
+  @override
+  bool get isPasswordVisible;
+  @override
+  _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
 }

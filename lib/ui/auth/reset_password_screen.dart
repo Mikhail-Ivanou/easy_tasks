@@ -6,17 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  final TextEditingController _emailController = TextEditingController();
   final String initialEmail;
-  ResetPasswordScreen({Key key, @required this.initialEmail})
-      : super(key: key) {
-    _emailController.text = initialEmail;
-  }
+  const ResetPasswordScreen({Key key, @required this.initialEmail})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => getIt<ResetPasswordBloc>(),
+      create: (BuildContext context) => getIt<ResetPasswordBloc>()
+        ..add(ResetPasswordEvent.emailChanged(email: initialEmail)),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Reset password'),
@@ -26,8 +24,12 @@ class ResetPasswordScreen extends StatelessWidget {
           child: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
             listener: (context, state) {
               state.result.when(
-                success: () {
-                  _showConfirmPasswordDialog(context);
+                success: () async {
+                  await _showConfirmPasswordDialog(context);
+                  //TODO need pass result back
+                  // final currentEmailValue =
+                  //     context.bloc<ResetPasswordBloc>().state.emailAddress;
+                  // Navigator.of(context).pop(currentEmailValue);
                 },
                 empty: () {},
                 failure: (error) {
@@ -67,15 +69,13 @@ class ResetPasswordScreen extends StatelessWidget {
                     onFieldSubmitted: (value) {
                       context
                           .bloc<ResetPasswordBloc>()
-                          .add(ResetPasswordEvent.resetPassword());
+                          .add(const ResetPasswordEvent.resetPassword());
                     },
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.email),
                       labelText: 'Email',
                     ),
                     keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    // controller: _emailController,
                     onChanged: (value) => context
                         .bloc<ResetPasswordBloc>()
                         .add(ResetPasswordEvent.emailChanged(email: value)),
@@ -104,7 +104,7 @@ class ResetPasswordScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _showConfirmPasswordDialog(BuildContext context) async {
+  Future<bool> _showConfirmPasswordDialog(BuildContext context) async {
     final children = <Widget>[
       const Text('Password was successfully reset. Check email for details'),
     ];
@@ -114,10 +114,7 @@ class ResetPasswordScreen extends StatelessWidget {
         child: const Text('Close'),
       ),
     ];
-    final bool result = await showConfirmDialog(
+    return showConfirmDialog(
         context, const Text('Reset password'), children, actions);
-    if (result) {
-      Navigator.of(context).pop();
-    }
   }
 }

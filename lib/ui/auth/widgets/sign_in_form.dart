@@ -32,6 +32,7 @@ class SignInForm extends StatelessWidget {
                 ),
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
                 onChanged: (value) => context
                     .bloc<SignInFormBloc>()
                     .add(SignInFormEvent.emailChanged(email: value)),
@@ -44,12 +45,25 @@ class SignInForm extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock),
                   labelText: 'Password',
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      // Based on passwordVisible state choose the icon
+                      state.isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () {
+                      context.bloc<SignInFormBloc>().add(
+                          const SignInFormEvent.switchPasswordVisibility());
+                    },
+                  ),
                 ),
                 autocorrect: false,
-                obscureText: true,
+                obscureText: !state.isPasswordVisible,
                 onChanged: (value) => context
                     .bloc<SignInFormBloc>()
                     .add(SignInFormEvent.passwordChanged(password: value)),
@@ -57,6 +71,11 @@ class SignInForm extends StatelessWidget {
                     context.bloc<SignInFormBloc>().state.validPassword
                         ? null
                         : 'Short Password',
+                onFieldSubmitted: (value) {
+                  context
+                      .bloc<SignInFormBloc>()
+                      .add(const SignInFormEvent.signInWithCredentials());
+                },
               ),
               const SizedBox(
                 height: 8,
@@ -104,12 +123,19 @@ class SignInForm extends StatelessWidget {
                 height: 16,
               ),
               FlatButton(
-                onPressed: () {
+                onPressed: () async {
                   final currentEmail =
                       context.bloc<SignInFormBloc>().state.emailAddress;
-                  ExtendedNavigator.of(context).push(Routes.resetPasswordScreen,
+                  final email = await ExtendedNavigator.of(context).push(
+                      Routes.resetPasswordScreen,
                       arguments: ResetPasswordScreenArguments(
                           initialEmail: currentEmail));
+                  //TODO fix navigation back
+                  // if (email != null) {
+                  //   context
+                  //       .bloc<SignInFormBloc>()
+                  //       .add(SignInFormEvent.emailChanged(email: email));
+                  // }
                 },
                 child: const Text(
                   'Reset password',

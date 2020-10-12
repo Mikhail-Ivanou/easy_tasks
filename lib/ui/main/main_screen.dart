@@ -18,7 +18,7 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(onSelected: (value) async {
-      context.bloc<AuthBloc>().add(AuthEvent.signOut());
+      context.bloc<AuthBloc>().add(const AuthEvent.signOut());
     }, itemBuilder: (BuildContext context) {
       return <PopupMenuItem<String>>[
         const PopupMenuItem<String>(

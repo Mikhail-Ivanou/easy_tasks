@@ -20,5 +20,5 @@ abstract class IAuthFacade {
 
   Future<void> signOut();
 
-  Future<ResetPasswordResponse> resetPassword();
+  Future<ResetPasswordResponse> resetPassword({@required String email});
 }

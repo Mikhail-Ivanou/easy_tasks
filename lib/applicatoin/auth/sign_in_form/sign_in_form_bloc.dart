@@ -53,6 +53,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           authResult: result,
         );
       },
+      switchPasswordVisibility: () async* {
+        yield state.copyWith(
+          isPasswordVisible: !state.isPasswordVisible,
+          authResult: const AuthResponse.empty(),
+        );
+      },
     );
   }
 

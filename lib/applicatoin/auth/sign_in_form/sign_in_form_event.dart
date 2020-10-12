@@ -10,4 +10,6 @@ abstract class SignInFormEvent with _$SignInFormEvent {
       RegisterWithCredentials;
   const factory SignInFormEvent.signInWithCredentials() = SignInWithCredentials;
   const factory SignInFormEvent.signInWithGoogle() = SignInWithGoogle;
+  const factory SignInFormEvent.switchPasswordVisibility() =
+      SwitchPasswordVisibility;
 }

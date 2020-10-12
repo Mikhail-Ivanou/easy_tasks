@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                getIt<AuthBloc>()..add(AuthEvent.authCheckRequest())),
+                getIt<AuthBloc>()..add(const AuthEvent.authCheckRequest())),
       ],
       child: MaterialApp(
         title: 'Notes',
