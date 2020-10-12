@@ -8,6 +8,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'firebase_user_mapper.dart';
 
+const ERROR_EMAIL_ALREADY_IN_USE = 'email-already-in-use';
+const ERROR_WRONG_PASSWORD = 'wrong-password';
+const ERROR_USER_NOT_FOUND = 'user-not-found';
+const ERROR_INVALID_EMAIL = 'invalid-email';
+
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
@@ -28,7 +33,7 @@ class FirebaseAuthFacade implements IAuthFacade {
           email: emailAddress, password: password);
       return AuthResponse.success(user: result.user.toDomain());
     } on FirebaseAuthException catch (error) {
-      if (error.code == 'email-already-in-use') {
+      if (error.code == ERROR_EMAIL_ALREADY_IN_USE) {
         return const AuthResponse.failure(
             failure: AuthFailure.emailAlreadyInUse());
       } else {
@@ -49,7 +54,8 @@ class FirebaseAuthFacade implements IAuthFacade {
           email: emailAddress, password: password);
       return AuthResponse.success(user: result.user.toDomain());
     } on FirebaseAuthException catch (error) {
-      if (error.code == 'wrong-password' || error.code == 'user-not-found') {
+      if (error.code == ERROR_WRONG_PASSWORD ||
+          error.code == ERROR_USER_NOT_FOUND) {
         return const AuthResponse.failure(
             failure: AuthFailure.invalidCredentials());
       } else {
@@ -94,10 +100,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
       return const ResetPasswordResponse.success();
     } on FirebaseAuthException catch (error) {
-      if (error.code == 'user-not-found') {
+      if (error.code == ERROR_USER_NOT_FOUND) {
         return const ResetPasswordResponse.failure(
             failure: ResetPasswordFailure.userNotFound());
-      } else if (error.code == 'invalid-email') {
+      } else if (error.code == ERROR_INVALID_EMAIL) {
         return const ResetPasswordResponse.failure(
             failure: ResetPasswordFailure.incorrectEmail());
       } else {
