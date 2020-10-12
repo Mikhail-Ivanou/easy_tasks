@@ -10,10 +10,10 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.when(
-          initial: (_) {},
-          authed: (_) =>
+          initial: () {},
+          authed: () =>
               ExtendedNavigator.of(context).replace(Routes.mainScreen),
-          unAuthed: (_) =>
+          unAuthed: () =>
               ExtendedNavigator.of(context).replace(Routes.authScreen),
         );
       },

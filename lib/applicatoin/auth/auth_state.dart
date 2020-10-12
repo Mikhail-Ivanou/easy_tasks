@@ -1,11 +1,10 @@
 part of 'auth_bloc.dart';
 
-@superEnum
-enum _AuthState {
-  @object
-  Initial,
-  @object
-  Authed,
-  @object
-  UnAuthed,
+@freezed
+abstract class AuthState with _$AuthState {
+  const factory AuthState.initial() = Initial;
+
+  const factory AuthState.authed() = Authed;
+
+  const factory AuthState.unAuthed() = UnAuthed;
 }

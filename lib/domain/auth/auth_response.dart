@@ -1,26 +1,20 @@
 import 'package:easy_tasks/domain/auth/user.dart';
-import 'package:super_enum/super_enum.dart';
 
-part 'auth_response.g.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@superEnum
-enum _AuthResponse {
-  @Data(fields: [DataField<SignedUser>('user')])
-  Success,
-  @Data(fields: [DataField<AuthError>('error')])
-  Error,
-  @object
-  Empty,
+part 'auth_response.freezed.dart';
+
+@freezed
+abstract class AuthResponse with _$AuthResponse {
+  const factory AuthResponse.success({@required SignedUser user}) = Success;
+  const factory AuthResponse.failure({@required AuthFailure failure}) = Failure;
+  const factory AuthResponse.empty() = Empty;
 }
 
-@superEnum
-enum _AuthError {
-  @object
-  CancelledByUser,
-  @object
-  EmailAlreadyInUse,
-  @object
-  InvalidCredentials,
-  @object
-  ServerError,
+@freezed
+abstract class AuthFailure with _$AuthFailure {
+  const factory AuthFailure.cancelledByUser() = CancelledByUser;
+  const factory AuthFailure.serverError() = ServerError;
+  const factory AuthFailure.emailAlreadyInUse() = EmailAlreadyInUse;
+  const factory AuthFailure.invalidCredentials() = InvalidCredentials;
 }

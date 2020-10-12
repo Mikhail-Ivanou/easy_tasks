@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:easy_tasks/domain/auth/auth_response.dart';
 import 'package:easy_tasks/domain/auth/i_auth_facade.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:super_enum/super_enum.dart';
+
+part 'sign_in_form_bloc.freezed.dart';
 
 part 'sign_in_form_event.dart';
 
 part 'sign_in_form_state.dart';
-
-part 'sign_in_form_bloc.g.dart';
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
@@ -24,28 +24,28 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     SignInFormEvent event,
   ) async* {
     yield* event.when(
-      emailChanged: (e) async* {
+      emailChanged: (email) async* {
         yield state.copyWith(
-          emailAddress: e.email,
-          authResult: AuthResponse.empty(),
+          emailAddress: email,
+          authResult: const AuthResponse.empty(),
         );
       },
-      passwordChanged: (e) async* {
+      passwordChanged: (password) async* {
         yield state.copyWith(
-          password: e.password,
-          authResult: AuthResponse.empty(),
+          password: password,
+          authResult: const AuthResponse.empty(),
         );
       },
-      registerWithCredentials: (e) async* {
+      registerWithCredentials: () async* {
         yield* _performAction(_authFacade.registerWithEmailAndPassword);
       },
-      signInWithCredentials: (e) async* {
+      signInWithCredentials: () async* {
         yield* _performAction(_authFacade.signInWithEmailAndPassword);
       },
-      signInWithGoogle: (e) async* {
+      signInWithGoogle: () async* {
         yield state.copyWith(
           isSubmitting: true,
-          authResult: AuthResponse.empty(),
+          authResult: const AuthResponse.empty(),
         );
         final result = await _authFacade.signInWithGoogle();
         yield state.copyWith(
@@ -62,7 +62,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     @required String password,
   })
           forwardedCall) async* {
-    AuthResponse result = AuthResponse.empty();
+    AuthResponse result = const AuthResponse.empty();
 
     final isEmailValid = state.validEmail;
     final isPasswordValid = state.validPassword;

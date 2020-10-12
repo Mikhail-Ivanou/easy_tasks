@@ -31,6 +31,7 @@ class SignInForm extends StatelessWidget {
                   labelText: 'Email',
                 ),
                 autocorrect: false,
+                keyboardType: TextInputType.emailAddress,
                 onChanged: (value) => context
                     .bloc<SignInFormBloc>()
                     .add(SignInFormEvent.emailChanged(email: value)),
@@ -67,7 +68,7 @@ class SignInForm extends StatelessWidget {
                       onPressed: () {
                         context
                             .bloc<SignInFormBloc>()
-                            .add(SignInFormEvent.signInWithCredentials());
+                            .add(const SignInFormEvent.signInWithCredentials());
                       },
                       child: const Text('SIGN IN'),
                     ),
@@ -75,9 +76,8 @@ class SignInForm extends StatelessWidget {
                   Expanded(
                     child: FlatButton(
                       onPressed: () {
-                        context
-                            .bloc<SignInFormBloc>()
-                            .add(SignInFormEvent.registerWithCredentials());
+                        context.bloc<SignInFormBloc>().add(
+                            const SignInFormEvent.registerWithCredentials());
                       },
                       child: const Text('REGISTER'),
                     ),
@@ -91,7 +91,7 @@ class SignInForm extends StatelessWidget {
                 onPressed: () {
                   context
                       .bloc<SignInFormBloc>()
-                      .add(SignInFormEvent.signInWithGoogle());
+                      .add(const SignInFormEvent.signInWithGoogle());
                 },
                 color: Colors.lightBlue,
                 child: const Text(
@@ -99,6 +99,24 @@ class SignInForm extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              FlatButton(
+                onPressed: () {
+                  final currentEmail =
+                      context.bloc<SignInFormBloc>().state.emailAddress;
+                  ExtendedNavigator.of(context).push(Routes.resetPasswordScreen,
+                      arguments: ResetPasswordScreenArguments(
+                          initialEmail: currentEmail));
+                },
+                child: const Text(
+                  'Reset password',
+                ),
+              ),
+              const SizedBox(
+                height: 16,
               ),
               if (state.isSubmitting) ...[
                 const SizedBox(height: 8),
@@ -113,14 +131,14 @@ class SignInForm extends StatelessWidget {
           success: (successValue) {
             ExtendedNavigator.of(context).replace(Routes.mainScreen);
           },
-          empty: null,
-          error: (error) {
+          empty: () {},
+          failure: (error) {
             FlushbarHelper.createError(
-              message: error.error.when(
-                  cancelledByUser: (_) => 'Cancelled',
-                  serverError: (_) => 'Server Error',
-                  emailAlreadyInUse: (_) => 'Email already in use',
-                  invalidCredentials: (_) =>
+              message: error.when(
+                  cancelledByUser: () => 'Cancelled',
+                  serverError: () => 'Server Error',
+                  emailAlreadyInUse: () => 'Email already in use',
+                  invalidCredentials: () =>
                       'Invalid email and password combination'),
             ).show(context);
           },

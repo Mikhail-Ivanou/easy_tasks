@@ -1,4 +1,5 @@
 import 'package:easy_tasks/domain/auth/auth_response.dart';
+import 'package:easy_tasks/domain/auth/reset_password_response.dart';
 import 'package:easy_tasks/domain/auth/user.dart';
 import 'package:flutter/foundation.dart';
 
@@ -18,4 +19,6 @@ abstract class IAuthFacade {
   Future<AuthResponse> signInWithGoogle();
 
   Future<void> signOut();
+
+  Future<ResetPasswordResponse> resetPassword();
 }

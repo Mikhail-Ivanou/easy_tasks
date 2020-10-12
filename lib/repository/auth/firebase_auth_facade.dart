@@ -1,5 +1,6 @@
 import 'package:easy_tasks/domain/auth/auth_response.dart';
 import 'package:easy_tasks/domain/auth/i_auth_facade.dart';
+import 'package:easy_tasks/domain/auth/reset_password_response.dart';
 import 'package:easy_tasks/domain/auth/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -28,12 +29,13 @@ class FirebaseAuthFacade implements IAuthFacade {
       return AuthResponse.success(user: result.user.toDomain());
     } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {
-        return AuthResponse.error(error: AuthError.emailAlreadyInUse());
+        return const AuthResponse.failure(
+            failure: AuthFailure.emailAlreadyInUse());
       } else {
-        return AuthResponse.error(error: AuthError.serverError());
+        return const AuthResponse.failure(failure: AuthFailure.serverError());
       }
     } catch (error) {
-      return AuthResponse.error(error: AuthError.serverError());
+      return const AuthResponse.failure(failure: AuthFailure.serverError());
     }
   }
 
@@ -48,12 +50,13 @@ class FirebaseAuthFacade implements IAuthFacade {
       return AuthResponse.success(user: result.user.toDomain());
     } on FirebaseAuthException catch (error) {
       if (error.code == 'wrong-password' || error.code == 'user-not-found') {
-        return AuthResponse.error(error: AuthError.invalidCredentials());
+        return const AuthResponse.failure(
+            failure: AuthFailure.invalidCredentials());
       } else {
-        return AuthResponse.error(error: AuthError.serverError());
+        return const AuthResponse.failure(failure: AuthFailure.serverError());
       }
     } catch (error) {
-      return AuthResponse.error(error: AuthError.serverError());
+      return const AuthResponse.failure(failure: AuthFailure.serverError());
     }
   }
 
@@ -61,7 +64,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   Future<AuthResponse> signInWithGoogle() async {
     final googleUser = await _googleSignIn.signIn();
     if (googleUser == null) {
-      return AuthResponse.error(error: AuthError.cancelledByUser());
+      return const AuthResponse.failure(failure: AuthFailure.cancelledByUser());
     }
     final googleAuthentificaton = await googleUser.authentication;
 
@@ -73,7 +76,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       final result = await _firebaseAuth.signInWithCredential(credential);
       return AuthResponse.success(user: result.user.toDomain());
     } catch (_) {
-      return AuthResponse.error(error: AuthError.serverError());
+      return const AuthResponse.failure(failure: AuthFailure.serverError());
     }
   }
 
@@ -83,5 +86,27 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<void> signOut() {
     return Future.wait([_googleSignIn.signOut(), _firebaseAuth.signOut()]);
+  }
+
+  @override
+  Future<ResetPasswordResponse> resetPassword({@required String email}) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      return const ResetPasswordResponse.success();
+    } on FirebaseAuthException catch (error) {
+      if (error.code == 'user-not-found') {
+        return const ResetPasswordResponse.failure(
+            failure: ResetPasswordFailure.userNotFound());
+      } else if (error.code == 'invalid-email') {
+        return const ResetPasswordResponse.failure(
+            failure: ResetPasswordFailure.incorrectEmail());
+      } else {
+        return const ResetPasswordResponse.failure(
+            failure: ResetPasswordFailure.serverError());
+      }
+    } catch (error) {
+      return const ResetPasswordResponse.failure(
+          failure: ResetPasswordFailure.serverError());
+    }
   }
 }
