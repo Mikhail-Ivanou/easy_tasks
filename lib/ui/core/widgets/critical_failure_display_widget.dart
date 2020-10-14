@@ -1,6 +1,7 @@
 import 'package:easy_tasks/domain/core/firebase_failure.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_tasks/ui/core/res/res.dart';
 
 class CriticalFailureDisplay extends StatelessWidget {
   final FirebaseFailure failure;
@@ -24,7 +25,7 @@ class CriticalFailureDisplay extends StatelessWidget {
             failure.maybeMap(
                 insufficientPermissions: (_) => 'Insufficient permissions',
                 orElse: () => 'Unexpected error.\nPlease contact support'),
-            style: const TextStyle(fontSize: 24),
+            style: context.h2(),
             textAlign: TextAlign.center,
           ),
           const SizedBox(

@@ -4,6 +4,7 @@ import 'package:easy_tasks/injection.dart';
 import 'package:easy_tasks/ui/main/by_category/widgets/category_grid_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_tasks/ui/core/res/res.dart';
 
 class CategoryGridPage extends StatelessWidget {
   @override
@@ -21,10 +22,11 @@ class CategoryGridPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'By Category',
+              style: context.h4(),
             ),
           ),
           Expanded(

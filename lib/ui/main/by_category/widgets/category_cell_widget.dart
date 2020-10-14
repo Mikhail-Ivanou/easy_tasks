@@ -1,5 +1,6 @@
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_tasks/ui/core/res/res.dart';
 
 class CategoryCell extends StatelessWidget {
   const CategoryCell({this.item});
@@ -20,19 +21,13 @@ class CategoryCell extends StatelessWidget {
         )),
         Text(
           item.title,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 22.0,
-          ),
+          style: context.h5(),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: Text(
             '${item.count} Tasks ',
-            style: TextStyle(
-              color: Colors.black38,
-              fontSize: 14.0,
-            ),
+            style: context.subtitle2(),
           ),
         ),
       ]),

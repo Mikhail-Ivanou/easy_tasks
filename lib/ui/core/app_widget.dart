@@ -21,16 +21,18 @@ class MyApp extends StatelessWidget {
           router: TasksRouter(),
         ),
         theme: ThemeData.light().copyWith(
-            primaryColor: Colors.green.shade800,
-            accentColor: Colors.blueAccent,
-            floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: Colors.blue.shade900,
+          primaryColor: Colors.green.shade800,
+          accentColor: Colors.blueAccent,
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue.shade900,
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
-            inputDecorationTheme: InputDecorationTheme(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            )),
+          ),
+          // textTheme: buildAppTextTheme(),
+        ),
       ),
     );
   }
