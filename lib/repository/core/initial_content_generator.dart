@@ -44,9 +44,9 @@ class InitialContentGenerator implements IInitialContentGenerator {
     final categories = userDoc.collection('category');
     final WriteBatch writeBatch = _firestore.batch();
     initialCategories.forEach((element) {
-      writeBatch.set(categories.doc(), element.toMap());
+      writeBatch.set(categories.doc(element.id), element.toMap());
     });
-
+//TODO fix generator with proper category id
     final tasks = userDoc.collection('tasks');
     initialTasks.forEach((element) {
       writeBatch.set(tasks.doc(), element.toMap());

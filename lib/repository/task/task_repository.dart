@@ -3,6 +3,7 @@ import 'package:easy_tasks/domain/core/firebase_failure.dart';
 import 'package:easy_tasks/domain/task/counts.dart';
 import 'package:easy_tasks/domain/task/i_task_repository.dart';
 import 'package:easy_tasks/domain/task/task.dart';
+import 'package:easy_tasks/repository/task/task_converter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:easy_tasks/repository/core/firestore_helpers.dart';
 
@@ -16,6 +17,19 @@ class TaskRepository implements ITaskRepository {
   Stream<List<Task>> watchTasks() {
     // TODO: implement watchTasks
     throw UnimplementedError();
+  }
+
+  @override
+  Stream<List<Task>> watchFavTasks() async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots = userDoc
+        .collection('tasks')
+        .orderBy('dateCreated')
+        .where('isFavorite', isEqualTo: true)
+        .snapshots();
+    yield* snapshots.map((snapshot) => snapshot.docs.map((doc) {
+          return fromFirestore(doc);
+        }).toList());
   }
 
   @override

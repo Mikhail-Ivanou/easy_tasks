@@ -23,6 +23,17 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   @override
+  Stream<Map<String, Category>> watchCategoriesAsMap() async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots =
+        userDoc.collection('category').orderBy('position').snapshots();
+    yield* snapshots.map((snapshot) => {
+          for (var category in snapshot.docs.map((doc) => fromFirestore(doc)))
+            category.id: category
+        });
+  }
+
+  @override
   Future<FirebaseFailure> update(Category category) {
     // TODO: implement update
     throw UnimplementedError();

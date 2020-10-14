@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_tasks/application/auth/auth_bloc.dart';
 import 'package:easy_tasks/ui/core/fab.dart';
 import 'package:easy_tasks/ui/main/by_category/categories_grid_page.dart';
+import 'package:easy_tasks/ui/main/fav/fav_tasks_page.dart';
 import 'package:easy_tasks/ui/routes/routes.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
     CategoryGridPage(),
     Container(),
     Container(),
-    Container(),
+    FavoriteTasks(),
 
     // TasksByCategory(),
     // CalendarTasks(),
