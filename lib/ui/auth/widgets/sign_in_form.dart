@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_tasks/applicatoin/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:easy_tasks/application/auth/auth_bloc.dart';
+import 'package:easy_tasks/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:easy_tasks/ui/routes/routes.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -155,6 +156,7 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         state.authResult.when(
           success: (successValue) {
+            context.bloc<AuthBloc>().add(const AuthEvent.checkContentCreated());
             ExtendedNavigator.of(context).replace(Routes.mainScreen);
           },
           empty: () {},

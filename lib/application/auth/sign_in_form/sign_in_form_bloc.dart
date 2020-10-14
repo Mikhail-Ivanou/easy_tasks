@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:easy_tasks/domain/auth/auth_response.dart';
 import 'package:easy_tasks/domain/auth/i_auth_facade.dart';
+import 'package:easy_tasks/domain/core/value_validators.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -27,12 +28,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       emailChanged: (email) async* {
         yield state.copyWith(
           emailAddress: email,
+          validEmail: validateEmailAddress(email),
           authResult: const AuthResponse.empty(),
         );
       },
       passwordChanged: (password) async* {
         yield state.copyWith(
           password: password,
+          validPassword: validatePassword(password),
           authResult: const AuthResponse.empty(),
         );
       },

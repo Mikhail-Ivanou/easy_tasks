@@ -3,11 +3,15 @@ import 'package:easy_tasks/domain/auth/i_auth_facade.dart';
 import 'package:easy_tasks/injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
-  // Future<DocumentReference> userDocument() async {
-  // final userOption = getIt<IAuthFacade>().getSignedInUser();
-  // final user = userOption.getOrElse(() => throw NonAuthentificatedError());
-  // return collection('users').doc(user.id.getOrCrash());
-  // }
+  Stream<DocumentSnapshot> user() {
+    final user = getIt<IAuthFacade>().getSignedInUser();
+    return collection('users').doc(user.userId).snapshots();
+  }
+
+  Future<DocumentReference> userDocument() async {
+    final user = getIt<IAuthFacade>().getSignedInUser();
+    return collection('users').doc(user.userId);
+  }
 }
 
 extension DocumentReferenceX on DocumentReference {

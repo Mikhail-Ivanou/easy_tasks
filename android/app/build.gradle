@@ -72,5 +72,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.4.0'
 }
 
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.gms.google-services'

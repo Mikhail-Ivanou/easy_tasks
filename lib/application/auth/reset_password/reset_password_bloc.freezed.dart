@@ -293,3 +293,252 @@ class _$ResetPassword with DiagnosticableTreeMixin implements ResetPassword {
 abstract class ResetPassword implements ResetPasswordEvent {
   const factory ResetPassword() = _$ResetPassword;
 }
+
+/// @nodoc
+class _$ResetPasswordStateTearOff {
+  const _$ResetPasswordStateTearOff();
+
+// ignore: unused_element
+  _ResetPasswordState call(
+      {@required String emailAddress,
+      @required bool validEmail,
+      @required bool isSubmitting,
+      @required ResetPasswordResponse result,
+      @required bool showErrorMessages}) {
+    return _ResetPasswordState(
+      emailAddress: emailAddress,
+      validEmail: validEmail,
+      isSubmitting: isSubmitting,
+      result: result,
+      showErrorMessages: showErrorMessages,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $ResetPasswordState = _$ResetPasswordStateTearOff();
+
+/// @nodoc
+mixin _$ResetPasswordState {
+  String get emailAddress;
+  bool get validEmail;
+  bool get isSubmitting;
+  ResetPasswordResponse get result;
+  bool get showErrorMessages;
+
+  $ResetPasswordStateCopyWith<ResetPasswordState> get copyWith;
+}
+
+/// @nodoc
+abstract class $ResetPasswordStateCopyWith<$Res> {
+  factory $ResetPasswordStateCopyWith(
+          ResetPasswordState value, $Res Function(ResetPasswordState) then) =
+      _$ResetPasswordStateCopyWithImpl<$Res>;
+  $Res call(
+      {String emailAddress,
+      bool validEmail,
+      bool isSubmitting,
+      ResetPasswordResponse result,
+      bool showErrorMessages});
+
+  $ResetPasswordResponseCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class _$ResetPasswordStateCopyWithImpl<$Res>
+    implements $ResetPasswordStateCopyWith<$Res> {
+  _$ResetPasswordStateCopyWithImpl(this._value, this._then);
+
+  final ResetPasswordState _value;
+  // ignore: unused_field
+  final $Res Function(ResetPasswordState) _then;
+
+  @override
+  $Res call({
+    Object emailAddress = freezed,
+    Object validEmail = freezed,
+    Object isSubmitting = freezed,
+    Object result = freezed,
+    Object showErrorMessages = freezed,
+  }) {
+    return _then(_value.copyWith(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as String,
+      validEmail:
+          validEmail == freezed ? _value.validEmail : validEmail as bool,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      result:
+          result == freezed ? _value.result : result as ResetPasswordResponse,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
+    ));
+  }
+
+  @override
+  $ResetPasswordResponseCopyWith<$Res> get result {
+    if (_value.result == null) {
+      return null;
+    }
+    return $ResetPasswordResponseCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$ResetPasswordStateCopyWith<$Res>
+    implements $ResetPasswordStateCopyWith<$Res> {
+  factory _$ResetPasswordStateCopyWith(
+          _ResetPasswordState value, $Res Function(_ResetPasswordState) then) =
+      __$ResetPasswordStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String emailAddress,
+      bool validEmail,
+      bool isSubmitting,
+      ResetPasswordResponse result,
+      bool showErrorMessages});
+
+  @override
+  $ResetPasswordResponseCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$ResetPasswordStateCopyWithImpl<$Res>
+    extends _$ResetPasswordStateCopyWithImpl<$Res>
+    implements _$ResetPasswordStateCopyWith<$Res> {
+  __$ResetPasswordStateCopyWithImpl(
+      _ResetPasswordState _value, $Res Function(_ResetPasswordState) _then)
+      : super(_value, (v) => _then(v as _ResetPasswordState));
+
+  @override
+  _ResetPasswordState get _value => super._value as _ResetPasswordState;
+
+  @override
+  $Res call({
+    Object emailAddress = freezed,
+    Object validEmail = freezed,
+    Object isSubmitting = freezed,
+    Object result = freezed,
+    Object showErrorMessages = freezed,
+  }) {
+    return _then(_ResetPasswordState(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress as String,
+      validEmail:
+          validEmail == freezed ? _value.validEmail : validEmail as bool,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      result:
+          result == freezed ? _value.result : result as ResetPasswordResponse,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ResetPasswordState
+    with DiagnosticableTreeMixin
+    implements _ResetPasswordState {
+  const _$_ResetPasswordState(
+      {@required this.emailAddress,
+      @required this.validEmail,
+      @required this.isSubmitting,
+      @required this.result,
+      @required this.showErrorMessages})
+      : assert(emailAddress != null),
+        assert(validEmail != null),
+        assert(isSubmitting != null),
+        assert(result != null),
+        assert(showErrorMessages != null);
+
+  @override
+  final String emailAddress;
+  @override
+  final bool validEmail;
+  @override
+  final bool isSubmitting;
+  @override
+  final ResetPasswordResponse result;
+  @override
+  final bool showErrorMessages;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResetPasswordState(emailAddress: $emailAddress, validEmail: $validEmail, isSubmitting: $isSubmitting, result: $result, showErrorMessages: $showErrorMessages)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResetPasswordState'))
+      ..add(DiagnosticsProperty('emailAddress', emailAddress))
+      ..add(DiagnosticsProperty('validEmail', validEmail))
+      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
+      ..add(DiagnosticsProperty('result', result))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ResetPasswordState &&
+            (identical(other.emailAddress, emailAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.emailAddress, emailAddress)) &&
+            (identical(other.validEmail, validEmail) ||
+                const DeepCollectionEquality()
+                    .equals(other.validEmail, validEmail)) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.result, result) ||
+                const DeepCollectionEquality().equals(other.result, result)) &&
+            (identical(other.showErrorMessages, showErrorMessages) ||
+                const DeepCollectionEquality()
+                    .equals(other.showErrorMessages, showErrorMessages)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(emailAddress) ^
+      const DeepCollectionEquality().hash(validEmail) ^
+      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(result) ^
+      const DeepCollectionEquality().hash(showErrorMessages);
+
+  @override
+  _$ResetPasswordStateCopyWith<_ResetPasswordState> get copyWith =>
+      __$ResetPasswordStateCopyWithImpl<_ResetPasswordState>(this, _$identity);
+}
+
+abstract class _ResetPasswordState implements ResetPasswordState {
+  const factory _ResetPasswordState(
+      {@required String emailAddress,
+      @required bool validEmail,
+      @required bool isSubmitting,
+      @required ResetPasswordResponse result,
+      @required bool showErrorMessages}) = _$_ResetPasswordState;
+
+  @override
+  String get emailAddress;
+  @override
+  bool get validEmail;
+  @override
+  bool get isSubmitting;
+  @override
+  ResetPasswordResponse get result;
+  @override
+  bool get showErrorMessages;
+  @override
+  _$ResetPasswordStateCopyWith<_ResetPasswordState> get copyWith;
+}

@@ -10,12 +10,20 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'applicatoin/auth/auth_bloc.dart';
+import 'application/auth/auth_bloc.dart';
+import 'application/category/category_cards_bloc.dart';
+import 'repository/category/category_repository.dart';
 import 'repository/auth/firebase_auth_facade.dart';
 import 'repository/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_facade.dart';
-import 'applicatoin/auth/reset_password/reset_password_bloc.dart';
-import 'applicatoin/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'domain/category/i_category_repository.dart';
+import 'domain/core/i_initial_content_generator.dart';
+import 'domain/task/i_task_repository.dart';
+import 'repository/core/initial_content_generator.dart';
+import 'application/auth/reset_password/reset_password_bloc.dart';
+import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'repository/task/task_repository.dart';
+import 'application/task/total/total_tasks_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -32,9 +40,19 @@ GetIt $initGetIt(
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(get<FirebaseAuth>(), get<GoogleSignIn>()));
+  gh.lazySingleton<ICategoryRepository>(
+      () => CategoryRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IInitialContentGenerator>(
+      () => InitialContentGenerator(get<FirebaseFirestore>()));
+  gh.lazySingleton<ITaskRepository>(
+      () => TaskRepository(get<FirebaseFirestore>()));
   gh.factory<ResetPasswordBloc>(() => ResetPasswordBloc(get<IAuthFacade>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthFacade>()));
-  gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
+  gh.factory<TotalTasksBloc>(() => TotalTasksBloc(get<ITaskRepository>()));
+  gh.factory<AuthBloc>(
+      () => AuthBloc(get<IAuthFacade>(), get<IInitialContentGenerator>()));
+  gh.factory<CategoryCardsBloc>(
+      () => CategoryCardsBloc(get<ICategoryRepository>()));
   return get;
 }
 

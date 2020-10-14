@@ -3,6 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirebaseUserDomainX on User {
   SignedUser toDomain() {
-    return SignedUser(userId: uid);
+    return SignedUser(
+      userId: uid,
+      displayName: displayName,
+      email: email,
+    );
   }
 }

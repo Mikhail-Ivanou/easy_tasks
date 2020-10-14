@@ -1,4 +1,4 @@
-import 'package:easy_tasks/applicatoin/auth/reset_password/reset_password_bloc.dart';
+import 'package:easy_tasks/application/auth/reset_password/reset_password_bloc.dart';
 import 'package:easy_tasks/injection.dart';
 import 'package:easy_tasks/ui/core/alert_helper.dart';
 import 'package:flushbar/flushbar_helper.dart';
