@@ -4,7 +4,6 @@ part 'firebase_failure.freezed.dart';
 
 @freezed
 abstract class FirebaseFailure with _$FirebaseFailure {
-  const factory FirebaseFailure.none() = _None;
   const factory FirebaseFailure.unexpected() = _Unexpected;
   const factory FirebaseFailure.insufficientPermissions() =
       _InsufficientPermission;

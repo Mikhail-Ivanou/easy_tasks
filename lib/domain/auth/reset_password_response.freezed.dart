@@ -14,20 +14,20 @@ class _$ResetPasswordResponseTearOff {
   const _$ResetPasswordResponseTearOff();
 
 // ignore: unused_element
-  Success success() {
-    return const Success();
+  _Success success() {
+    return const _Success();
   }
 
 // ignore: unused_element
-  Failure failure({@required ResetPasswordFailure failure}) {
-    return Failure(
+  _Failure failure({@required ResetPasswordFailure failure}) {
+    return _Failure(
       failure: failure,
     );
   }
 
 // ignore: unused_element
-  Empty empty() {
-    return const Empty();
+  _Empty empty() {
+    return const _Empty();
   }
 }
 
@@ -52,15 +52,15 @@ mixin _$ResetPasswordResponse {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(Success value),
-    @required Result failure(Failure value),
-    @required Result empty(Empty value),
+    @required Result success(_Success value),
+    @required Result failure(_Failure value),
+    @required Result empty(_Empty value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(Success value),
-    Result failure(Failure value),
-    Result empty(Empty value),
+    Result success(_Success value),
+    Result failure(_Failure value),
+    Result empty(_Empty value),
     @required Result orElse(),
   });
 }
@@ -83,25 +83,25 @@ class _$ResetPasswordResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
-      _$SuccessCopyWithImpl<$Res>;
+abstract class _$SuccessCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
+      __$SuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res>
     extends _$ResetPasswordResponseCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
-      : super(_value, (v) => _then(v as Success));
+    implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
+      : super(_value, (v) => _then(v as _Success));
 
   @override
-  Success get _value => super._value as Success;
+  _Success get _value => super._value as _Success;
 }
 
 /// @nodoc
-class _$Success implements Success {
-  const _$Success();
+class _$_Success implements _Success {
+  const _$_Success();
 
   @override
   String toString() {
@@ -110,7 +110,7 @@ class _$Success implements Success {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Success);
+    return identical(this, other) || (other is _Success);
   }
 
   @override
@@ -147,9 +147,9 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(Success value),
-    @required Result failure(Failure value),
-    @required Result empty(Empty value),
+    @required Result success(_Success value),
+    @required Result failure(_Failure value),
+    @required Result empty(_Empty value),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -160,9 +160,9 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(Success value),
-    Result failure(Failure value),
-    Result empty(Empty value),
+    Result success(_Success value),
+    Result failure(_Failure value),
+    Result empty(_Empty value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -173,34 +173,34 @@ class _$Success implements Success {
   }
 }
 
-abstract class Success implements ResetPasswordResponse {
-  const factory Success() = _$Success;
+abstract class _Success implements ResetPasswordResponse {
+  const factory _Success() = _$_Success;
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<$Res> {
-  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
-      _$FailureCopyWithImpl<$Res>;
+abstract class _$FailureCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) then) =
+      __$FailureCopyWithImpl<$Res>;
   $Res call({ResetPasswordFailure failure});
 
   $ResetPasswordFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<$Res>
+class __$FailureCopyWithImpl<$Res>
     extends _$ResetPasswordResponseCopyWithImpl<$Res>
-    implements $FailureCopyWith<$Res> {
-  _$FailureCopyWithImpl(Failure _value, $Res Function(Failure) _then)
-      : super(_value, (v) => _then(v as Failure));
+    implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(_Failure _value, $Res Function(_Failure) _then)
+      : super(_value, (v) => _then(v as _Failure));
 
   @override
-  Failure get _value => super._value as Failure;
+  _Failure get _value => super._value as _Failure;
 
   @override
   $Res call({
     Object failure = freezed,
   }) {
-    return _then(Failure(
+    return _then(_Failure(
       failure:
           failure == freezed ? _value.failure : failure as ResetPasswordFailure,
     ));
@@ -218,8 +218,8 @@ class _$FailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Failure implements Failure {
-  const _$Failure({@required this.failure}) : assert(failure != null);
+class _$_Failure implements _Failure {
+  const _$_Failure({@required this.failure}) : assert(failure != null);
 
   @override
   final ResetPasswordFailure failure;
@@ -232,7 +232,7 @@ class _$Failure implements Failure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Failure &&
+        (other is _Failure &&
             (identical(other.failure, failure) ||
                 const DeepCollectionEquality().equals(other.failure, failure)));
   }
@@ -242,8 +242,8 @@ class _$Failure implements Failure {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
   @override
-  $FailureCopyWith<Failure> get copyWith =>
-      _$FailureCopyWithImpl<Failure>(this, _$identity);
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -276,9 +276,9 @@ class _$Failure implements Failure {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(Success value),
-    @required Result failure(Failure value),
-    @required Result empty(Empty value),
+    @required Result success(_Success value),
+    @required Result failure(_Failure value),
+    @required Result empty(_Empty value),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -289,9 +289,9 @@ class _$Failure implements Failure {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(Success value),
-    Result failure(Failure value),
-    Result empty(Empty value),
+    Result success(_Success value),
+    Result failure(_Failure value),
+    Result empty(_Empty value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -302,33 +302,33 @@ class _$Failure implements Failure {
   }
 }
 
-abstract class Failure implements ResetPasswordResponse {
-  const factory Failure({@required ResetPasswordFailure failure}) = _$Failure;
+abstract class _Failure implements ResetPasswordResponse {
+  const factory _Failure({@required ResetPasswordFailure failure}) = _$_Failure;
 
   ResetPasswordFailure get failure;
-  $FailureCopyWith<Failure> get copyWith;
+  _$FailureCopyWith<_Failure> get copyWith;
 }
 
 /// @nodoc
-abstract class $EmptyCopyWith<$Res> {
-  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
-      _$EmptyCopyWithImpl<$Res>;
+abstract class _$EmptyCopyWith<$Res> {
+  factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
+      __$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmptyCopyWithImpl<$Res>
+class __$EmptyCopyWithImpl<$Res>
     extends _$ResetPasswordResponseCopyWithImpl<$Res>
-    implements $EmptyCopyWith<$Res> {
-  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
-      : super(_value, (v) => _then(v as Empty));
+    implements _$EmptyCopyWith<$Res> {
+  __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
+      : super(_value, (v) => _then(v as _Empty));
 
   @override
-  Empty get _value => super._value as Empty;
+  _Empty get _value => super._value as _Empty;
 }
 
 /// @nodoc
-class _$Empty implements Empty {
-  const _$Empty();
+class _$_Empty implements _Empty {
+  const _$_Empty();
 
   @override
   String toString() {
@@ -337,7 +337,7 @@ class _$Empty implements Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Empty);
+    return identical(this, other) || (other is _Empty);
   }
 
   @override
@@ -374,9 +374,9 @@ class _$Empty implements Empty {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result success(Success value),
-    @required Result failure(Failure value),
-    @required Result empty(Empty value),
+    @required Result success(_Success value),
+    @required Result failure(_Failure value),
+    @required Result empty(_Empty value),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -387,9 +387,9 @@ class _$Empty implements Empty {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result success(Success value),
-    Result failure(Failure value),
-    Result empty(Empty value),
+    Result success(_Success value),
+    Result failure(_Failure value),
+    Result empty(_Empty value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -400,8 +400,8 @@ class _$Empty implements Empty {
   }
 }
 
-abstract class Empty implements ResetPasswordResponse {
-  const factory Empty() = _$Empty;
+abstract class _Empty implements ResetPasswordResponse {
+  const factory _Empty() = _$_Empty;
 }
 
 /// @nodoc
@@ -409,18 +409,18 @@ class _$ResetPasswordFailureTearOff {
   const _$ResetPasswordFailureTearOff();
 
 // ignore: unused_element
-  UserNotFound userNotFound() {
-    return const UserNotFound();
+  _UserNotFound userNotFound() {
+    return const _UserNotFound();
   }
 
 // ignore: unused_element
-  ServerError serverError() {
-    return const ServerError();
+  _ServerError serverError() {
+    return const _ServerError();
   }
 
 // ignore: unused_element
-  IncorrectEmail incorrectEmail() {
-    return const IncorrectEmail();
+  _IncorrectEmail incorrectEmail() {
+    return const _IncorrectEmail();
   }
 }
 
@@ -445,15 +445,15 @@ mixin _$ResetPasswordFailure {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result userNotFound(UserNotFound value),
-    @required Result serverError(ServerError value),
-    @required Result incorrectEmail(IncorrectEmail value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result serverError(_ServerError value),
+    @required Result incorrectEmail(_IncorrectEmail value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result userNotFound(UserNotFound value),
-    Result serverError(ServerError value),
-    Result incorrectEmail(IncorrectEmail value),
+    Result userNotFound(_UserNotFound value),
+    Result serverError(_ServerError value),
+    Result incorrectEmail(_IncorrectEmail value),
     @required Result orElse(),
   });
 }
@@ -476,27 +476,27 @@ class _$ResetPasswordFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $UserNotFoundCopyWith<$Res> {
-  factory $UserNotFoundCopyWith(
-          UserNotFound value, $Res Function(UserNotFound) then) =
-      _$UserNotFoundCopyWithImpl<$Res>;
+abstract class _$UserNotFoundCopyWith<$Res> {
+  factory _$UserNotFoundCopyWith(
+          _UserNotFound value, $Res Function(_UserNotFound) then) =
+      __$UserNotFoundCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UserNotFoundCopyWithImpl<$Res>
+class __$UserNotFoundCopyWithImpl<$Res>
     extends _$ResetPasswordFailureCopyWithImpl<$Res>
-    implements $UserNotFoundCopyWith<$Res> {
-  _$UserNotFoundCopyWithImpl(
-      UserNotFound _value, $Res Function(UserNotFound) _then)
-      : super(_value, (v) => _then(v as UserNotFound));
+    implements _$UserNotFoundCopyWith<$Res> {
+  __$UserNotFoundCopyWithImpl(
+      _UserNotFound _value, $Res Function(_UserNotFound) _then)
+      : super(_value, (v) => _then(v as _UserNotFound));
 
   @override
-  UserNotFound get _value => super._value as UserNotFound;
+  _UserNotFound get _value => super._value as _UserNotFound;
 }
 
 /// @nodoc
-class _$UserNotFound implements UserNotFound {
-  const _$UserNotFound();
+class _$_UserNotFound implements _UserNotFound {
+  const _$_UserNotFound();
 
   @override
   String toString() {
@@ -505,7 +505,7 @@ class _$UserNotFound implements UserNotFound {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UserNotFound);
+    return identical(this, other) || (other is _UserNotFound);
   }
 
   @override
@@ -542,9 +542,9 @@ class _$UserNotFound implements UserNotFound {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result userNotFound(UserNotFound value),
-    @required Result serverError(ServerError value),
-    @required Result incorrectEmail(IncorrectEmail value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result serverError(_ServerError value),
+    @required Result incorrectEmail(_IncorrectEmail value),
   }) {
     assert(userNotFound != null);
     assert(serverError != null);
@@ -555,9 +555,9 @@ class _$UserNotFound implements UserNotFound {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result userNotFound(UserNotFound value),
-    Result serverError(ServerError value),
-    Result incorrectEmail(IncorrectEmail value),
+    Result userNotFound(_UserNotFound value),
+    Result serverError(_ServerError value),
+    Result incorrectEmail(_IncorrectEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -568,32 +568,32 @@ class _$UserNotFound implements UserNotFound {
   }
 }
 
-abstract class UserNotFound implements ResetPasswordFailure {
-  const factory UserNotFound() = _$UserNotFound;
+abstract class _UserNotFound implements ResetPasswordFailure {
+  const factory _UserNotFound() = _$_UserNotFound;
 }
 
 /// @nodoc
-abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+abstract class _$ServerErrorCopyWith<$Res> {
+  factory _$ServerErrorCopyWith(
+          _ServerError value, $Res Function(_ServerError) then) =
+      __$ServerErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res>
+class __$ServerErrorCopyWithImpl<$Res>
     extends _$ResetPasswordFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
-      : super(_value, (v) => _then(v as ServerError));
+    implements _$ServerErrorCopyWith<$Res> {
+  __$ServerErrorCopyWithImpl(
+      _ServerError _value, $Res Function(_ServerError) _then)
+      : super(_value, (v) => _then(v as _ServerError));
 
   @override
-  ServerError get _value => super._value as ServerError;
+  _ServerError get _value => super._value as _ServerError;
 }
 
 /// @nodoc
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$_ServerError implements _ServerError {
+  const _$_ServerError();
 
   @override
   String toString() {
@@ -602,7 +602,7 @@ class _$ServerError implements ServerError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServerError);
+    return identical(this, other) || (other is _ServerError);
   }
 
   @override
@@ -639,9 +639,9 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result userNotFound(UserNotFound value),
-    @required Result serverError(ServerError value),
-    @required Result incorrectEmail(IncorrectEmail value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result serverError(_ServerError value),
+    @required Result incorrectEmail(_IncorrectEmail value),
   }) {
     assert(userNotFound != null);
     assert(serverError != null);
@@ -652,9 +652,9 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result userNotFound(UserNotFound value),
-    Result serverError(ServerError value),
-    Result incorrectEmail(IncorrectEmail value),
+    Result userNotFound(_UserNotFound value),
+    Result serverError(_ServerError value),
+    Result incorrectEmail(_IncorrectEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -665,32 +665,32 @@ class _$ServerError implements ServerError {
   }
 }
 
-abstract class ServerError implements ResetPasswordFailure {
-  const factory ServerError() = _$ServerError;
+abstract class _ServerError implements ResetPasswordFailure {
+  const factory _ServerError() = _$_ServerError;
 }
 
 /// @nodoc
-abstract class $IncorrectEmailCopyWith<$Res> {
-  factory $IncorrectEmailCopyWith(
-          IncorrectEmail value, $Res Function(IncorrectEmail) then) =
-      _$IncorrectEmailCopyWithImpl<$Res>;
+abstract class _$IncorrectEmailCopyWith<$Res> {
+  factory _$IncorrectEmailCopyWith(
+          _IncorrectEmail value, $Res Function(_IncorrectEmail) then) =
+      __$IncorrectEmailCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$IncorrectEmailCopyWithImpl<$Res>
+class __$IncorrectEmailCopyWithImpl<$Res>
     extends _$ResetPasswordFailureCopyWithImpl<$Res>
-    implements $IncorrectEmailCopyWith<$Res> {
-  _$IncorrectEmailCopyWithImpl(
-      IncorrectEmail _value, $Res Function(IncorrectEmail) _then)
-      : super(_value, (v) => _then(v as IncorrectEmail));
+    implements _$IncorrectEmailCopyWith<$Res> {
+  __$IncorrectEmailCopyWithImpl(
+      _IncorrectEmail _value, $Res Function(_IncorrectEmail) _then)
+      : super(_value, (v) => _then(v as _IncorrectEmail));
 
   @override
-  IncorrectEmail get _value => super._value as IncorrectEmail;
+  _IncorrectEmail get _value => super._value as _IncorrectEmail;
 }
 
 /// @nodoc
-class _$IncorrectEmail implements IncorrectEmail {
-  const _$IncorrectEmail();
+class _$_IncorrectEmail implements _IncorrectEmail {
+  const _$_IncorrectEmail();
 
   @override
   String toString() {
@@ -699,7 +699,7 @@ class _$IncorrectEmail implements IncorrectEmail {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is IncorrectEmail);
+    return identical(this, other) || (other is _IncorrectEmail);
   }
 
   @override
@@ -736,9 +736,9 @@ class _$IncorrectEmail implements IncorrectEmail {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result userNotFound(UserNotFound value),
-    @required Result serverError(ServerError value),
-    @required Result incorrectEmail(IncorrectEmail value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result serverError(_ServerError value),
+    @required Result incorrectEmail(_IncorrectEmail value),
   }) {
     assert(userNotFound != null);
     assert(serverError != null);
@@ -749,9 +749,9 @@ class _$IncorrectEmail implements IncorrectEmail {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result userNotFound(UserNotFound value),
-    Result serverError(ServerError value),
-    Result incorrectEmail(IncorrectEmail value),
+    Result userNotFound(_UserNotFound value),
+    Result serverError(_ServerError value),
+    Result incorrectEmail(_IncorrectEmail value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -762,6 +762,6 @@ class _$IncorrectEmail implements IncorrectEmail {
   }
 }
 
-abstract class IncorrectEmail implements ResetPasswordFailure {
-  const factory IncorrectEmail() = _$IncorrectEmail;
+abstract class _IncorrectEmail implements ResetPasswordFailure {
+  const factory _IncorrectEmail() = _$_IncorrectEmail;
 }

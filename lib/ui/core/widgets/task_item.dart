@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_tasks/domain/category/category.dart' as vm;
 import 'package:easy_tasks/domain/task/task.dart';
+import 'package:easy_tasks/ui/routes/routes.gr.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -13,14 +14,15 @@ class TaskItem extends StatelessWidget {
   });
 
   final Task item;
-  final vm.Category category;
+  final vm.TaskCategory category;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // ExtendedNavigator.of(context).push(Routes.editTaskScreen,
-        //     arguments: EditTaskScreenArguments(initialTask: item));
+        ExtendedNavigator.of(context).push(Routes.taskDetailPage,
+            arguments:
+                TaskDetailPageArguments(initialTask: item, category: category));
       },
       child: Card(
         elevation: 8.0,

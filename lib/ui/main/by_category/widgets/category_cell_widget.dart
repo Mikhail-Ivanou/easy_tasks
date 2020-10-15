@@ -5,7 +5,7 @@ import 'package:easy_tasks/ui/core/res/res.dart';
 class CategoryCell extends StatelessWidget {
   const CategoryCell({this.item});
 
-  final Category item;
+  final TaskCategory item;
 
   @override
   Widget build(BuildContext context) {

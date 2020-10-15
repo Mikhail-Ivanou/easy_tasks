@@ -1,5 +1,5 @@
-import 'package:easy_tasks/domain/core/firebase_failure.dart';
+import 'package:easy_tasks/domain/core/firebase_response.dart';
 
 abstract class IInitialContentGenerator {
-  Future<FirebaseFailure> generateInitialContent();
+  Future<FirebaseResponse> generateInitialContent();
 }

@@ -23,6 +23,7 @@ import 'domain/task/i_task_repository.dart';
 import 'repository/core/initial_content_generator.dart';
 import 'application/auth/reset_password/reset_password_bloc.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'application/task/task_detail/task_detail_bloc.dart';
 import 'application/task/list/task_list_bloc.dart';
 import 'repository/task/task_repository.dart';
 import 'application/task/total/total_tasks_bloc.dart';
@@ -50,6 +51,7 @@ GetIt $initGetIt(
       () => TaskRepository(get<FirebaseFirestore>()));
   gh.factory<ResetPasswordBloc>(() => ResetPasswordBloc(get<IAuthFacade>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthFacade>()));
+  gh.factory<TaskDetailBloc>(() => TaskDetailBloc());
   gh.factory<TaskListBloc>(() => TaskListBloc(get<ITaskRepository>()));
   gh.factory<TotalTasksBloc>(() => TotalTasksBloc(get<ITaskRepository>()));
   gh.factory<AuthBloc>(

@@ -162,7 +162,7 @@ class _$CategoryAsMapStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadSuccess loadSuccess(Map<String, Category> categories) {
+  _LoadSuccess loadSuccess(Map<String, TaskCategory> categories) {
     return _LoadSuccess(
       categories,
     );
@@ -186,14 +186,14 @@ mixin _$CategoryAsMapState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required Result loadSuccess(Map<String, Category> categories),
+    @required Result loadSuccess(Map<String, TaskCategory> categories),
     @required Result loadFailure(FirebaseFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result loadSuccess(Map<String, Category> categories),
+    Result loadSuccess(Map<String, TaskCategory> categories),
     Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   });
@@ -270,7 +270,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required Result loadSuccess(Map<String, Category> categories),
+    @required Result loadSuccess(Map<String, TaskCategory> categories),
     @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
@@ -285,7 +285,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result loadSuccess(Map<String, Category> categories),
+    Result loadSuccess(Map<String, TaskCategory> categories),
     Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
@@ -372,7 +372,7 @@ class _$_IsLoading implements _IsLoading {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required Result loadSuccess(Map<String, Category> categories),
+    @required Result loadSuccess(Map<String, TaskCategory> categories),
     @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
@@ -387,7 +387,7 @@ class _$_IsLoading implements _IsLoading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result loadSuccess(Map<String, Category> categories),
+    Result loadSuccess(Map<String, TaskCategory> categories),
     Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
@@ -439,7 +439,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({Map<String, Category> categories});
+  $Res call({Map<String, TaskCategory> categories});
 }
 
 /// @nodoc
@@ -460,7 +460,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
     return _then(_LoadSuccess(
       categories == freezed
           ? _value.categories
-          : categories as Map<String, Category>,
+          : categories as Map<String, TaskCategory>,
     ));
   }
 }
@@ -470,7 +470,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.categories) : assert(categories != null);
 
   @override
-  final Map<String, Category> categories;
+  final Map<String, TaskCategory> categories;
 
   @override
   String toString() {
@@ -499,7 +499,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required Result loadSuccess(Map<String, Category> categories),
+    @required Result loadSuccess(Map<String, TaskCategory> categories),
     @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
@@ -514,7 +514,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result loadSuccess(Map<String, Category> categories),
+    Result loadSuccess(Map<String, TaskCategory> categories),
     Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
@@ -558,9 +558,10 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements CategoryAsMapState {
-  const factory _LoadSuccess(Map<String, Category> categories) = _$_LoadSuccess;
+  const factory _LoadSuccess(Map<String, TaskCategory> categories) =
+      _$_LoadSuccess;
 
-  Map<String, Category> get categories;
+  Map<String, TaskCategory> get categories;
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
@@ -638,7 +639,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required Result loadSuccess(Map<String, Category> categories),
+    @required Result loadSuccess(Map<String, TaskCategory> categories),
     @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
@@ -653,7 +654,7 @@ class _$_LoadFailure implements _LoadFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result loadSuccess(Map<String, Category> categories),
+    Result loadSuccess(Map<String, TaskCategory> categories),
     Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {

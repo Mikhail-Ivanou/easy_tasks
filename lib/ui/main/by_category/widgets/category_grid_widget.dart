@@ -29,7 +29,7 @@ class CategoryCards extends StatelessWidget {
               if (index == state.categories.length + 1) {
                 return _otherTasksCell(context);
               }
-              final Category item = state.categories[index - 1];
+              final TaskCategory item = state.categories[index - 1];
               return GestureDetector(
                 onTap: () {},
                 child: CategoryCell(item: item),
@@ -50,7 +50,7 @@ class CategoryCards extends StatelessWidget {
         final count =
             state.map(initial: (_) => 0, count: (count) => count.totalCount);
         return CategoryCell(
-          item: Category(
+          item: TaskCategory(
               title: 'All',
               icon: Icons.apps,
               color: Colors.lightBlueAccent,
@@ -67,7 +67,7 @@ class CategoryCards extends StatelessWidget {
         final count =
             state.map(initial: (_) => 0, count: (count) => count.otherCount);
         return CategoryCell(
-          item: Category(
+          item: TaskCategory(
               title: 'Other',
               icon: Icons.menu,
               color: Colors.lightGreen,

@@ -17,6 +17,12 @@ abstract class Task with _$Task {
     String notes,
     bool isFavorite,
   }) = _Task;
+
+  factory Task.empty() => const Task(
+        title: '',
+        isCompleted: false,
+      );
 }
 
+//TODO map enum values to localized strings
 enum TaskPriority { High, Normal, Low, None }

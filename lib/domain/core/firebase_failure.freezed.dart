@@ -14,11 +14,6 @@ class _$FirebaseFailureTearOff {
   const _$FirebaseFailureTearOff();
 
 // ignore: unused_element
-  _None none() {
-    return const _None();
-  }
-
-// ignore: unused_element
   _Unexpected unexpected() {
     return const _Unexpected();
   }
@@ -42,14 +37,12 @@ const $FirebaseFailure = _$FirebaseFailureTearOff();
 mixin _$FirebaseFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result none(),
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result none(),
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
@@ -57,14 +50,12 @@ mixin _$FirebaseFailure {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result none(_None value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermissions(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result none(_None value),
     Result unexpected(_Unexpected value),
     Result insufficientPermissions(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
@@ -87,106 +78,6 @@ class _$FirebaseFailureCopyWithImpl<$Res>
   final FirebaseFailure _value;
   // ignore: unused_field
   final $Res Function(FirebaseFailure) _then;
-}
-
-/// @nodoc
-abstract class _$NoneCopyWith<$Res> {
-  factory _$NoneCopyWith(_None value, $Res Function(_None) then) =
-      __$NoneCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$NoneCopyWithImpl<$Res> extends _$FirebaseFailureCopyWithImpl<$Res>
-    implements _$NoneCopyWith<$Res> {
-  __$NoneCopyWithImpl(_None _value, $Res Function(_None) _then)
-      : super(_value, (v) => _then(v as _None));
-
-  @override
-  _None get _value => super._value as _None;
-}
-
-/// @nodoc
-class _$_None implements _None {
-  const _$_None();
-
-  @override
-  String toString() {
-    return 'FirebaseFailure.none()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _None);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result none(),
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-  }) {
-    assert(none != null);
-    assert(unexpected != null);
-    assert(insufficientPermissions != null);
-    assert(unableToUpdate != null);
-    return none();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result none(),
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (none != null) {
-      return none();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result none(_None value),
-    @required Result unexpected(_Unexpected value),
-    @required Result insufficientPermissions(_InsufficientPermission value),
-    @required Result unableToUpdate(_UnableToUpdate value),
-  }) {
-    assert(none != null);
-    assert(unexpected != null);
-    assert(insufficientPermissions != null);
-    assert(unableToUpdate != null);
-    return none(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result none(_None value),
-    Result unexpected(_Unexpected value),
-    Result insufficientPermissions(_InsufficientPermission value),
-    Result unableToUpdate(_UnableToUpdate value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (none != null) {
-      return none(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _None implements FirebaseFailure {
-  const factory _None() = _$_None;
 }
 
 /// @nodoc
@@ -228,12 +119,10 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result none(),
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -243,7 +132,6 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result none(),
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
@@ -259,12 +147,10 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result none(_None value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermissions(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -274,7 +160,6 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result none(_None value),
     Result unexpected(_Unexpected value),
     Result insufficientPermissions(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
@@ -331,12 +216,10 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result none(),
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -346,7 +229,6 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result none(),
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
@@ -362,12 +244,10 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result none(_None value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermissions(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -377,7 +257,6 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result none(_None value),
     Result unexpected(_Unexpected value),
     Result insufficientPermissions(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
@@ -434,12 +313,10 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result none(),
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -449,7 +326,6 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result none(),
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
@@ -465,12 +341,10 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result none(_None value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermissions(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(none != null);
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
@@ -480,7 +354,6 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result none(_None value),
     Result unexpected(_Unexpected value),
     Result insufficientPermissions(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),

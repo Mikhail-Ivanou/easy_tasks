@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           router: TasksRouter(),
         ),
         theme: ThemeData.light().copyWith(
-          primaryColor: Colors.green.shade800,
+          primaryColor: Colors.lightBlueAccent,
           accentColor: Colors.blueAccent,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.blue.shade900,

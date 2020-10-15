@@ -13,7 +13,7 @@ class CategoryRepository implements ICategoryRepository {
   CategoryRepository(this._firestore);
 
   @override
-  Stream<List<Category>> watchCategories() async* {
+  Stream<List<TaskCategory>> watchCategories() async* {
     final userDoc = await _firestore.userDocument();
     final snapshots =
         userDoc.collection('category').orderBy('position').snapshots();
@@ -23,7 +23,7 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   @override
-  Stream<Map<String, Category>> watchCategoriesAsMap() async* {
+  Stream<Map<String, TaskCategory>> watchCategoriesAsMap() async* {
     final userDoc = await _firestore.userDocument();
     final snapshots =
         userDoc.collection('category').orderBy('position').snapshots();
@@ -34,13 +34,13 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   @override
-  Future<FirebaseFailure> update(Category category) {
+  Future<FirebaseFailure> update(TaskCategory category) {
     // TODO: implement update
     throw UnimplementedError();
   }
 
   @override
-  Future<FirebaseFailure> create(Category category) {
+  Future<FirebaseFailure> create(TaskCategory category) {
     // TODO: implement create
     throw UnimplementedError();
   }

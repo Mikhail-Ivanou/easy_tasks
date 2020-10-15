@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_tasks/domain/auth/i_auth_facade.dart';
-import 'package:easy_tasks/domain/core/firebase_failure.dart';
+import 'package:easy_tasks/domain/core/firebase_response.dart';
 import 'package:easy_tasks/domain/core/i_initial_content_generator.dart';
 import 'package:easy_tasks/domain/core/initial_content.dart';
 import 'package:easy_tasks/injection.dart';
@@ -17,21 +17,21 @@ class InitialContentGenerator implements IInitialContentGenerator {
   InitialContentGenerator(this._firestore);
 
   @override
-  Future<FirebaseFailure> generateInitialContent() async {
+  Future<FirebaseResponse> generateInitialContent() async {
     final userDoc = await _firestore.userDocument();
     try {
       final user = await userDoc.get();
       if (user.data() == null) {
         return await setup(userDoc);
       } else {
-        return const FirebaseFailure.none();
+        return const FirebaseResponse.empty();
       }
     } catch (e) {
-      return await setup(userDoc);
+      return setup(userDoc);
     }
   }
 
-  Future<FirebaseFailure> setup(DocumentReference userDoc) async {
+  Future<FirebaseResponse> setup(DocumentReference userDoc) async {
     final user = getIt<IAuthFacade>().getSignedInUser();
     final Map<String, dynamic> result = <String, dynamic>{};
     result['id'] = user.userId;
@@ -53,6 +53,6 @@ class InitialContentGenerator implements IInitialContentGenerator {
     });
 
     await writeBatch.commit();
-    return const FirebaseFailure.none();
+    return const FirebaseResponse.success();
   }
 }

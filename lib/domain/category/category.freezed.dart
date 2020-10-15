@@ -10,18 +10,18 @@ part of 'category.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$CategoryTearOff {
-  const _$CategoryTearOff();
+class _$TaskCategoryTearOff {
+  const _$TaskCategoryTearOff();
 
 // ignore: unused_element
-  _Category call(
+  _TaskCategory call(
       {String id,
       @required String title,
       @required IconData icon,
       @required Color color,
       @required int count,
       @required int position}) {
-    return _Category(
+    return _TaskCategory(
       id: id,
       title: title,
       icon: icon,
@@ -34,10 +34,10 @@ class _$CategoryTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $Category = _$CategoryTearOff();
+const $TaskCategory = _$TaskCategoryTearOff();
 
 /// @nodoc
-mixin _$Category {
+mixin _$TaskCategory {
   String get id;
   String get title;
   IconData get icon;
@@ -45,13 +45,14 @@ mixin _$Category {
   int get count;
   int get position;
 
-  $CategoryCopyWith<Category> get copyWith;
+  $TaskCategoryCopyWith<TaskCategory> get copyWith;
 }
 
 /// @nodoc
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res>;
+abstract class $TaskCategoryCopyWith<$Res> {
+  factory $TaskCategoryCopyWith(
+          TaskCategory value, $Res Function(TaskCategory) then) =
+      _$TaskCategoryCopyWithImpl<$Res>;
   $Res call(
       {String id,
       String title,
@@ -62,12 +63,12 @@ abstract class $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$TaskCategoryCopyWithImpl<$Res> implements $TaskCategoryCopyWith<$Res> {
+  _$TaskCategoryCopyWithImpl(this._value, this._then);
 
-  final Category _value;
+  final TaskCategory _value;
   // ignore: unused_field
-  final $Res Function(Category) _then;
+  final $Res Function(TaskCategory) _then;
 
   @override
   $Res call({
@@ -90,9 +91,11 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$CategoryCopyWith(_Category value, $Res Function(_Category) then) =
-      __$CategoryCopyWithImpl<$Res>;
+abstract class _$TaskCategoryCopyWith<$Res>
+    implements $TaskCategoryCopyWith<$Res> {
+  factory _$TaskCategoryCopyWith(
+          _TaskCategory value, $Res Function(_TaskCategory) then) =
+      __$TaskCategoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -104,13 +107,14 @@ abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
-    implements _$CategoryCopyWith<$Res> {
-  __$CategoryCopyWithImpl(_Category _value, $Res Function(_Category) _then)
-      : super(_value, (v) => _then(v as _Category));
+class __$TaskCategoryCopyWithImpl<$Res> extends _$TaskCategoryCopyWithImpl<$Res>
+    implements _$TaskCategoryCopyWith<$Res> {
+  __$TaskCategoryCopyWithImpl(
+      _TaskCategory _value, $Res Function(_TaskCategory) _then)
+      : super(_value, (v) => _then(v as _TaskCategory));
 
   @override
-  _Category get _value => super._value as _Category;
+  _TaskCategory get _value => super._value as _TaskCategory;
 
   @override
   $Res call({
@@ -121,7 +125,7 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
     Object count = freezed,
     Object position = freezed,
   }) {
-    return _then(_Category(
+    return _then(_TaskCategory(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       icon: icon == freezed ? _value.icon : icon as IconData,
@@ -133,8 +137,8 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Category extends _Category {
-  const _$_Category(
+class _$_TaskCategory extends _TaskCategory {
+  const _$_TaskCategory(
       {this.id,
       @required this.title,
       @required this.icon,
@@ -163,13 +167,13 @@ class _$_Category extends _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, title: $title, icon: $icon, color: $color, count: $count, position: $position)';
+    return 'TaskCategory(id: $id, title: $title, icon: $icon, color: $color, count: $count, position: $position)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Category &&
+        (other is _TaskCategory &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
@@ -196,19 +200,19 @@ class _$_Category extends _Category {
       const DeepCollectionEquality().hash(position);
 
   @override
-  _$CategoryCopyWith<_Category> get copyWith =>
-      __$CategoryCopyWithImpl<_Category>(this, _$identity);
+  _$TaskCategoryCopyWith<_TaskCategory> get copyWith =>
+      __$TaskCategoryCopyWithImpl<_TaskCategory>(this, _$identity);
 }
 
-abstract class _Category extends Category {
-  const _Category._() : super._();
-  const factory _Category(
+abstract class _TaskCategory extends TaskCategory {
+  const _TaskCategory._() : super._();
+  const factory _TaskCategory(
       {String id,
       @required String title,
       @required IconData icon,
       @required Color color,
       @required int count,
-      @required int position}) = _$_Category;
+      @required int position}) = _$_TaskCategory;
 
   @override
   String get id;
@@ -223,5 +227,5 @@ abstract class _Category extends Category {
   @override
   int get position;
   @override
-  _$CategoryCopyWith<_Category> get copyWith;
+  _$TaskCategoryCopyWith<_TaskCategory> get copyWith;
 }
