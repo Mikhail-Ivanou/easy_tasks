@@ -43,7 +43,7 @@ class FavoriteTasks extends StatelessWidget {
 class _FavList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //TODO combine streams / states
+    //TODO combine streams / states   - use async package https://pub.dev/documentation/async/latest/async/StreamGroup-class.html
     return BlocBuilder<TaskListBloc, TaskListState>(builder: (context, state) {
       return state.map(
         initial: (_) => Container(),
