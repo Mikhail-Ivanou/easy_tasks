@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_tasks/domain/category/category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'task.freezed.dart';
@@ -9,7 +10,7 @@ abstract class Task with _$Task {
     String id,
     @required String title,
     bool isCompleted,
-    String category,
+    TaskCategory category,
     List<String> tags,
     DateTime dueDate,
     Timestamp dateCreated,

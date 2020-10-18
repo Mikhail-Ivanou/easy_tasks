@@ -6,23 +6,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-//TODO fix actions
 class TaskItem extends StatelessWidget {
   const TaskItem({
     @required this.item,
-    @required this.category,
   });
 
   final Task item;
-  final vm.TaskCategory category;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         ExtendedNavigator.of(context).push(Routes.taskDetailPage,
-            arguments:
-                TaskDetailPageArguments(initialTask: item, category: category));
+            arguments: TaskDetailPageArguments(initialTask: item));
       },
       child: Card(
         elevation: 8.0,
@@ -46,7 +42,7 @@ class TaskItem extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  '${item.title} / ${describeEnum(item.priority)} / ${category == null ? 'Other' : category.title} / ${item.dueDate == null ? '' : DateFormat.yMMMd().format(item.dueDate)}',
+                  '${item.title} / ${describeEnum(item.priority)} / ${item.category == null ? 'Other' : item.category.title} / ${item.dueDate == null ? '' : DateFormat.yMMMd().format(item.dueDate)}',
                   style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.black,

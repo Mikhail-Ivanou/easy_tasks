@@ -18,7 +18,7 @@ class CategoryRepository implements ICategoryRepository {
     final snapshots =
         userDoc.collection('category').orderBy('position').snapshots();
     yield* snapshots.map((snapshot) => snapshot.docs.map((doc) {
-          return fromFirestore(doc);
+          return categoryFromFirestore(doc);
         }).toList());
   }
 
@@ -28,7 +28,8 @@ class CategoryRepository implements ICategoryRepository {
     final snapshots =
         userDoc.collection('category').orderBy('position').snapshots();
     yield* snapshots.map((snapshot) => {
-          for (var category in snapshot.docs.map((doc) => fromFirestore(doc)))
+          for (var category
+              in snapshot.docs.map((doc) => categoryFromFirestore(doc)))
             category.id: category
         });
   }

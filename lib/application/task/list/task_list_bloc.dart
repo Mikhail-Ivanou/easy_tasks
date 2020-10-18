@@ -27,9 +27,8 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
     yield* event.map(
       getFavorite: (_GetFavorite value) async* {
         yield const TaskListState.isLoading();
-        yield* _taskRepository
-            .watchFavTasks()
-            .map((event) => TaskListState.loadSuccess(event));
+        final watchTasks = _taskRepository.watchFavTasks();
+        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
       },
     );
   }

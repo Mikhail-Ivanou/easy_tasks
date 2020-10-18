@@ -12,18 +12,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_tasks/domain/category/category.dart' as vm;
 
 class TaskDetailPage extends StatelessWidget {
-  const TaskDetailPage({Key key, @required this.initialTask, this.category})
-      : super(key: key);
+  const TaskDetailPage({Key key, @required this.initialTask}) : super(key: key);
 
   final Task initialTask;
-  final vm.TaskCategory category;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => getIt<TaskDetailBloc>()
-        ..add(TaskDetailEvent.initialized(
-            initialTask: initialTask, category: category)),
+        ..add(TaskDetailEvent.initialized(initialTask: initialTask)),
       child: BlocConsumer<TaskDetailBloc, TaskDetailState>(
         listenWhen: (p, c) => p.response != c.response,
         listener: (context, state) {

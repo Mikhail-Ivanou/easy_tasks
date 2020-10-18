@@ -11,7 +11,6 @@ import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'application/auth/auth_bloc.dart';
-import 'application/category/asMap/category_as_map_bloc.dart';
 import 'application/category/category_cards_bloc.dart';
 import 'repository/category/category_repository.dart';
 import 'repository/auth/firebase_auth_facade.dart';
@@ -47,8 +46,8 @@ GetIt $initGetIt(
       () => CategoryRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IInitialContentGenerator>(
       () => InitialContentGenerator(get<FirebaseFirestore>()));
-  gh.lazySingleton<ITaskRepository>(
-      () => TaskRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<ITaskRepository>(() =>
+      TaskRepository(get<FirebaseFirestore>(), get<ICategoryRepository>()));
   gh.factory<ResetPasswordBloc>(() => ResetPasswordBloc(get<IAuthFacade>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthFacade>()));
   gh.factory<TaskDetailBloc>(() => TaskDetailBloc());
@@ -56,8 +55,6 @@ GetIt $initGetIt(
   gh.factory<TotalTasksBloc>(() => TotalTasksBloc(get<ITaskRepository>()));
   gh.factory<AuthBloc>(
       () => AuthBloc(get<IAuthFacade>(), get<IInitialContentGenerator>()));
-  gh.factory<CategoryAsMapBloc>(
-      () => CategoryAsMapBloc(get<ICategoryRepository>()));
   gh.factory<CategoryCardsBloc>(
       () => CategoryCardsBloc(get<ICategoryRepository>()));
   return get;

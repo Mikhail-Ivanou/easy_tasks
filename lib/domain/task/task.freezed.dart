@@ -18,7 +18,7 @@ class _$TaskTearOff {
       {String id,
       @required String title,
       bool isCompleted,
-      String category,
+      TaskCategory category,
       List<String> tags,
       DateTime dueDate,
       Timestamp dateCreated,
@@ -49,7 +49,7 @@ mixin _$Task {
   String get id;
   String get title;
   bool get isCompleted;
-  String get category;
+  TaskCategory get category;
   List<String> get tags;
   DateTime get dueDate;
   Timestamp get dateCreated;
@@ -68,13 +68,15 @@ abstract class $TaskCopyWith<$Res> {
       {String id,
       String title,
       bool isCompleted,
-      String category,
+      TaskCategory category,
       List<String> tags,
       DateTime dueDate,
       Timestamp dateCreated,
       TaskPriority priority,
       String notes,
       bool isFavorite});
+
+  $TaskCategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -103,7 +105,8 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
       title: title == freezed ? _value.title : title as String,
       isCompleted:
           isCompleted == freezed ? _value.isCompleted : isCompleted as bool,
-      category: category == freezed ? _value.category : category as String,
+      category:
+          category == freezed ? _value.category : category as TaskCategory,
       tags: tags == freezed ? _value.tags : tags as List<String>,
       dueDate: dueDate == freezed ? _value.dueDate : dueDate as DateTime,
       dateCreated: dateCreated == freezed
@@ -116,6 +119,16 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
           isFavorite == freezed ? _value.isFavorite : isFavorite as bool,
     ));
   }
+
+  @override
+  $TaskCategoryCopyWith<$Res> get category {
+    if (_value.category == null) {
+      return null;
+    }
+    return $TaskCategoryCopyWith<$Res>(_value.category, (value) {
+      return _then(_value.copyWith(category: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -127,13 +140,16 @@ abstract class _$TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       {String id,
       String title,
       bool isCompleted,
-      String category,
+      TaskCategory category,
       List<String> tags,
       DateTime dueDate,
       Timestamp dateCreated,
       TaskPriority priority,
       String notes,
       bool isFavorite});
+
+  @override
+  $TaskCategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -163,7 +179,8 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
       title: title == freezed ? _value.title : title as String,
       isCompleted:
           isCompleted == freezed ? _value.isCompleted : isCompleted as bool,
-      category: category == freezed ? _value.category : category as String,
+      category:
+          category == freezed ? _value.category : category as TaskCategory,
       tags: tags == freezed ? _value.tags : tags as List<String>,
       dueDate: dueDate == freezed ? _value.dueDate : dueDate as DateTime,
       dateCreated: dateCreated == freezed
@@ -200,7 +217,7 @@ class _$_Task implements _Task {
   @override
   final bool isCompleted;
   @override
-  final String category;
+  final TaskCategory category;
   @override
   final List<String> tags;
   @override
@@ -275,7 +292,7 @@ abstract class _Task implements Task {
       {String id,
       @required String title,
       bool isCompleted,
-      String category,
+      TaskCategory category,
       List<String> tags,
       DateTime dueDate,
       Timestamp dateCreated,
@@ -290,7 +307,7 @@ abstract class _Task implements Task {
   @override
   bool get isCompleted;
   @override
-  String get category;
+  TaskCategory get category;
   @override
   List<String> get tags;
   @override

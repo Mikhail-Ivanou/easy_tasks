@@ -53,7 +53,7 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
       categoryChanged: (event) async* {
         //TODO check copy with null magic
         if (event.category == null) {
-          final task = state.task.copyWith(category: '');
+          final task = state.task.copyWith(category: null);
           final TaskDetailState newState = TaskDetailState(
             task: task,
             isTitleValid: task.title.isNotEmpty,
@@ -65,7 +65,7 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
           yield newState;
         } else {
           yield state.copyWith(
-            task: state.task.copyWith(category: event.category?.id),
+            task: state.task.copyWith(category: event.category),
             category: event.category,
             response: const FirebaseResponse.empty(),
           );

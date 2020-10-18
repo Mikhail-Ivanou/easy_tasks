@@ -1,22 +1,36 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_tasks/domain/category/category.dart';
+import 'package:easy_tasks/domain/category/i_category_repository.dart';
 import 'package:easy_tasks/domain/core/firebase_failure.dart';
 import 'package:easy_tasks/domain/task/counts.dart';
 import 'package:easy_tasks/domain/task/i_task_repository.dart';
 import 'package:easy_tasks/domain/task/task.dart';
+import 'package:easy_tasks/repository/core/firestore_helpers.dart';
 import 'package:easy_tasks/repository/task/task_converter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:easy_tasks/repository/core/firestore_helpers.dart';
+import 'package:rxdart/rxdart.dart';
 
 @LazySingleton(as: ITaskRepository)
 class TaskRepository implements ITaskRepository {
   final FirebaseFirestore _firestore;
+  final ICategoryRepository _categoryRepository;
 
-  TaskRepository(this._firestore);
+  TaskRepository(this._firestore, this._categoryRepository);
 
   @override
-  Stream<List<Task>> watchTasks() {
-    // TODO: implement watchTasks
-    throw UnimplementedError();
+  Stream<List<Task>> watchTasks() async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots =
+        userDoc.collection('tasks').orderBy('dateCreated').snapshots();
+
+    final categories = _categoryRepository.watchCategoriesAsMap();
+
+    yield* Rx.combineLatest2(snapshots, categories,
+        (QuerySnapshot tasks, Map<String, TaskCategory> categories) {
+      return tasks.docs.map((doc) {
+        return fromFirestore(doc, categories);
+      }).toList();
+    });
   }
 
   @override
@@ -27,9 +41,14 @@ class TaskRepository implements ITaskRepository {
         .orderBy('dateCreated')
         .where('isFavorite', isEqualTo: true)
         .snapshots();
-    yield* snapshots.map((snapshot) => snapshot.docs.map((doc) {
-          return fromFirestore(doc);
-        }).toList());
+
+    final categories = _categoryRepository.watchCategoriesAsMap();
+    yield* Rx.combineLatest2(snapshots, categories,
+        (QuerySnapshot tasks, Map<String, TaskCategory> categories) {
+      return tasks.docs.map((doc) {
+        return fromFirestore(doc, categories);
+      }).toList();
+    });
   }
 
   @override

@@ -3,7 +3,7 @@ import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/domain/category/category_icons.dart';
 import 'package:flutter/material.dart';
 
-TaskCategory fromFirestore(DocumentSnapshot doc) {
+TaskCategory categoryFromFirestore(DocumentSnapshot doc) {
   final Map<String, dynamic> data = doc.data();
   final String title = data['title'] as String ?? '';
   return TaskCategory(

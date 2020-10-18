@@ -9,7 +9,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../domain/category/category.dart';
 import '../../domain/task/task.dart';
 import '../auth/auth_screen.dart';
 import '../auth/reset_password_screen.dart';
@@ -80,7 +79,6 @@ class TasksRouter extends RouterBase {
         builder: (context) => TaskDetailPage(
           key: args.key,
           initialTask: args.initialTask,
-          category: args.category,
         ),
         settings: data,
         fullscreenDialog: true,
@@ -104,7 +102,5 @@ class ResetPasswordScreenArguments {
 class TaskDetailPageArguments {
   final Key key;
   final Task initialTask;
-  final TaskCategory category;
-  TaskDetailPageArguments(
-      {this.key, @required this.initialTask, this.category});
+  TaskDetailPageArguments({this.key, @required this.initialTask});
 }

@@ -1,4 +1,3 @@
-import 'package:easy_tasks/application/category/asMap/category_as_map_bloc.dart';
 import 'package:easy_tasks/injection.dart';
 import 'package:easy_tasks/ui/core/widgets/critical_failure_display_widget.dart';
 import 'package:easy_tasks/ui/core/widgets/task_item.dart';
@@ -11,11 +10,9 @@ import 'package:easy_tasks/application/task/list/task_list_bloc.dart';
 class FavoriteTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //TODO use single BlocProvider
     return MultiBlocProvider(
       providers: [
-        BlocProvider<CategoryAsMapBloc>(
-            create: (context) => getIt<CategoryAsMapBloc>()
-              ..add(const CategoryAsMapEvent.getCategories())),
         BlocProvider<TaskListBloc>(
             create: (context) =>
                 getIt<TaskListBloc>()..add(const TaskListEvent.getFavorite())),
@@ -43,7 +40,6 @@ class FavoriteTasks extends StatelessWidget {
 class _FavList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //TODO combine streams / states   - use async package https://pub.dev/documentation/async/latest/async/StreamGroup-class.html
     return BlocBuilder<TaskListBloc, TaskListState>(builder: (context, state) {
       return state.map(
         initial: (_) => Container(),
@@ -59,30 +55,13 @@ class _FavList extends StatelessWidget {
               ),
             );
           } else {
-            return BlocBuilder<CategoryAsMapBloc, CategoryAsMapState>(
-                builder: (context, category) {
-              return category.map(
-                initial: (_) => Container(),
-                isLoading: (_) => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                loadSuccess: (category) {
-                  return ListView.builder(
-                    itemCount: state.tasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final item = state.tasks[index];
-                      return TaskItem(
-                        item: item,
-                        category: category.categories[item.category],
-                      );
-                    },
-                  );
-                },
-                loadFailure: (state) => CriticalFailureDisplay(
-                  failure: state.failure,
-                ),
-              );
-            });
+            return ListView.builder(
+              itemCount: state.tasks.length,
+              itemBuilder: (BuildContext context, int index) {
+                final item = state.tasks[index];
+                return TaskItem(item: item);
+              },
+            );
           }
         },
         loadFailure: (state) => CriticalFailureDisplay(
