@@ -4,7 +4,6 @@ part of 'task_detail_bloc.dart';
 abstract class TaskDetailState with _$TaskDetailState {
   const factory TaskDetailState({
     @required Task task,
-    //TODO category model should be part of task model - need join streams. TBD next iteration
     TaskCategory category,
     @required bool isTitleValid,
     @required bool isSaving,

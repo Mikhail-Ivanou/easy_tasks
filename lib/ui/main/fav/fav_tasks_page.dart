@@ -10,13 +10,9 @@ import 'package:easy_tasks/application/task/list/task_list_bloc.dart';
 class FavoriteTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //TODO use single BlocProvider
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<TaskListBloc>(
-            create: (context) =>
-                getIt<TaskListBloc>()..add(const TaskListEvent.getFavorite())),
-      ],
+    return BlocProvider<TaskListBloc>(
+      create: (context) =>
+          getIt<TaskListBloc>()..add(const TaskListEvent.getFavorite()),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,

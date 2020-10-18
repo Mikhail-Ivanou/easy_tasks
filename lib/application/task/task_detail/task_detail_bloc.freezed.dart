@@ -1799,8 +1799,7 @@ const $TaskDetailState = _$TaskDetailStateTearOff();
 
 /// @nodoc
 mixin _$TaskDetailState {
-  Task
-      get task; //TODO category model should be part of task model - need join streams. TBD next iteration
+  Task get task;
   TaskCategory get category;
   bool get isTitleValid;
   bool get isSaving;
@@ -1977,7 +1976,7 @@ class _$_TaskDetailState implements _TaskDetailState {
 
   @override
   final Task task;
-  @override //TODO category model should be part of task model - need join streams. TBD next iteration
+  @override
   final TaskCategory category;
   @override
   final bool isTitleValid;
@@ -2048,7 +2047,7 @@ abstract class _TaskDetailState implements TaskDetailState {
 
   @override
   Task get task;
-  @override //TODO category model should be part of task model - need join streams. TBD next iteration
+  @override
   TaskCategory get category;
   @override
   bool get isTitleValid;
