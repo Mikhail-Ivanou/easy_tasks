@@ -3,18 +3,20 @@ import 'package:easy_tasks/ui/core/ui.dart';
 
 Future<DateTime> pickDateTime(
     BuildContext context, DateTime initialDateTime) async {
+  final now = DateTime.now();
+  final initialDate = initialDateTime ?? now;
   final DateTime date = await showDatePicker(
     context: context,
-    firstDate: DateTime.now(),
-    lastDate: DateTime(DateTime.now().year + 20),
-    initialDate: initialDateTime ?? DateTime.now(),
+    firstDate: now,
+    lastDate: DateTime(now.year + 20),
+    initialDate: initialDate.isBefore(now) ? now : initialDate,
   );
   if (date == null) {
     return null;
   }
   final TimeOfDay time = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.fromDateTime(initialDateTime ?? DateTime.now()));
+      initialTime: TimeOfDay.fromDateTime(initialDateTime ?? now));
   if (time == null) {
     return null;
   }

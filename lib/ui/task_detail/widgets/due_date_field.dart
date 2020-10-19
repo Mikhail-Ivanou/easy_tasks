@@ -57,7 +57,7 @@ class DueDateField extends HookWidget {
                       skipClick = true;
                       context
                           .bloc<TaskDetailBloc>()
-                          .add(TaskDetailEvent.dueDateChanged());
+                          .add(const TaskDetailEvent.dueDateChanged());
                     }),
           ),
         );
