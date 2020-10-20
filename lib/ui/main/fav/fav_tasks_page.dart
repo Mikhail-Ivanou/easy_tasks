@@ -1,11 +1,10 @@
+import 'package:easy_tasks/application/task/list/task_list_bloc.dart';
 import 'package:easy_tasks/injection.dart';
-import 'package:easy_tasks/ui/core/widgets/critical_failure_display_widget.dart';
-import 'package:easy_tasks/ui/main/widgets/task_item.dart';
+import 'package:easy_tasks/ui/core/res/res.dart';
+import 'package:easy_tasks/ui/main/widgets/items_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_tasks/ui/core/res/res.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_tasks/application/task/list/task_list_bloc.dart';
 
 class FavoriteTasks extends StatelessWidget {
   @override
@@ -24,46 +23,11 @@ class FavoriteTasks extends StatelessWidget {
               style: context.h4(),
             ),
           ),
-          Expanded(
-            child: _FavList(),
+          const Expanded(
+            child: ItemsList(emptyValue: 'Избранное пусто'),
           )
         ],
       ),
     );
-  }
-}
-
-class _FavList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TaskListBloc, TaskListState>(builder: (context, state) {
-      return state.map(
-        initial: (_) => Container(),
-        isLoading: (_) => const Center(
-          child: CircularProgressIndicator(),
-        ),
-        loadSuccess: (state) {
-          if (state.tasks.isEmpty) {
-            return Center(
-              child: Text(
-                'Избранное пусто',
-                style: context.h3(),
-              ),
-            );
-          } else {
-            return ListView.builder(
-              itemCount: state.tasks.length,
-              itemBuilder: (BuildContext context, int index) {
-                final item = state.tasks[index];
-                return TaskItem(item: item);
-              },
-            );
-          }
-        },
-        loadFailure: (state) => CriticalFailureDisplay(
-          failure: state.failure,
-        ),
-      );
-    });
   }
 }
