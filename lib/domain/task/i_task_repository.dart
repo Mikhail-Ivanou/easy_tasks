@@ -2,11 +2,13 @@ import 'package:easy_tasks/domain/core/firebase_failure.dart';
 import 'package:easy_tasks/domain/task/counts.dart';
 import 'package:easy_tasks/domain/task/task.dart';
 
+//TODO need check one stream with filters
 abstract class ITaskRepository {
   Stream<List<Task>> watchTasks();
   Stream<List<Task>> watchFavTasks();
   Stream<List<Task>> watchOtherTasks();
   Stream<List<Task>> watchTasksWithCategory({String categoryId});
+  Stream<List<Task>> watchOpenTasks();
   Stream<Counts> watchTasksCount();
   Future<FirebaseFailure> update(Task task);
   Future<FirebaseFailure> create(Task task);

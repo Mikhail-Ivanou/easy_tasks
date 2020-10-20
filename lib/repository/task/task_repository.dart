@@ -62,6 +62,17 @@ class TaskRepository implements ITaskRepository {
     yield* _processTasks(snapshots);
   }
 
+  @override
+  Stream<List<Task>> watchOpenTasks() async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots = userDoc
+        .collection('tasks')
+        .where('isCompleted', isEqualTo: false)
+        .orderBy('dateCreated')
+        .snapshots();
+    yield* _processTasks(snapshots);
+  }
+
   Stream<List<Task>> _processTasks(Stream<QuerySnapshot> snapshots) async* {
     final categories = _categoryRepository.watchCategoriesAsMap();
     yield* Rx.combineLatest2(snapshots, categories,

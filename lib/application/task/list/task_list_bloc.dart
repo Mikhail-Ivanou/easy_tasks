@@ -47,6 +47,11 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
             _taskRepository.watchTasksWithCategory(categoryId: value.id);
         yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
       },
+      getOpenTasks: (_GetOpenTasks value) async* {
+        yield const TaskListState.isLoading();
+        final watchTasks = _taskRepository.watchOpenTasks();
+        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+      },
     );
   }
 }

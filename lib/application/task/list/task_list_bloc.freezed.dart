@@ -34,6 +34,11 @@ class _$TaskListEventTearOff {
   _GetTasksWithOtherCategory getTasksOtherCategory() {
     return const _GetTasksWithOtherCategory();
   }
+
+// ignore: unused_element
+  _GetOpenTasks getOpenTasks() {
+    return const _GetOpenTasks();
+  }
 }
 
 /// @nodoc
@@ -48,6 +53,7 @@ mixin _$TaskListEvent {
     @required Result getAllTasks(),
     @required Result getTasksWithCategory(String id),
     @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -55,6 +61,7 @@ mixin _$TaskListEvent {
     Result getAllTasks(),
     Result getTasksWithCategory(String id),
     Result getTasksOtherCategory(),
+    Result getOpenTasks(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -63,6 +70,7 @@ mixin _$TaskListEvent {
     @required Result getAllTasks(_GetAllTasks value),
     @required Result getTasksWithCategory(_GetTasksWithCategory value),
     @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -70,6 +78,7 @@ mixin _$TaskListEvent {
     Result getAllTasks(_GetAllTasks value),
     Result getTasksWithCategory(_GetTasksWithCategory value),
     Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
     @required Result orElse(),
   });
 }
@@ -133,11 +142,13 @@ class _$_GetFavorite implements _GetFavorite {
     @required Result getAllTasks(),
     @required Result getTasksWithCategory(String id),
     @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getFavorite();
   }
 
@@ -148,6 +159,7 @@ class _$_GetFavorite implements _GetFavorite {
     Result getAllTasks(),
     Result getTasksWithCategory(String id),
     Result getTasksOtherCategory(),
+    Result getOpenTasks(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -164,11 +176,13 @@ class _$_GetFavorite implements _GetFavorite {
     @required Result getAllTasks(_GetAllTasks value),
     @required Result getTasksWithCategory(_GetTasksWithCategory value),
     @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getFavorite(this);
   }
 
@@ -179,6 +193,7 @@ class _$_GetFavorite implements _GetFavorite {
     Result getAllTasks(_GetAllTasks value),
     Result getTasksWithCategory(_GetTasksWithCategory value),
     Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -235,11 +250,13 @@ class _$_GetAllTasks implements _GetAllTasks {
     @required Result getAllTasks(),
     @required Result getTasksWithCategory(String id),
     @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getAllTasks();
   }
 
@@ -250,6 +267,7 @@ class _$_GetAllTasks implements _GetAllTasks {
     Result getAllTasks(),
     Result getTasksWithCategory(String id),
     Result getTasksOtherCategory(),
+    Result getOpenTasks(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -266,11 +284,13 @@ class _$_GetAllTasks implements _GetAllTasks {
     @required Result getAllTasks(_GetAllTasks value),
     @required Result getTasksWithCategory(_GetTasksWithCategory value),
     @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getAllTasks(this);
   }
 
@@ -281,6 +301,7 @@ class _$_GetAllTasks implements _GetAllTasks {
     Result getAllTasks(_GetAllTasks value),
     Result getTasksWithCategory(_GetTasksWithCategory value),
     Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -360,11 +381,13 @@ class _$_GetTasksWithCategory implements _GetTasksWithCategory {
     @required Result getAllTasks(),
     @required Result getTasksWithCategory(String id),
     @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getTasksWithCategory(id);
   }
 
@@ -375,6 +398,7 @@ class _$_GetTasksWithCategory implements _GetTasksWithCategory {
     Result getAllTasks(),
     Result getTasksWithCategory(String id),
     Result getTasksOtherCategory(),
+    Result getOpenTasks(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -391,11 +415,13 @@ class _$_GetTasksWithCategory implements _GetTasksWithCategory {
     @required Result getAllTasks(_GetAllTasks value),
     @required Result getTasksWithCategory(_GetTasksWithCategory value),
     @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getTasksWithCategory(this);
   }
 
@@ -406,6 +432,7 @@ class _$_GetTasksWithCategory implements _GetTasksWithCategory {
     Result getAllTasks(_GetAllTasks value),
     Result getTasksWithCategory(_GetTasksWithCategory value),
     Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -467,11 +494,13 @@ class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
     @required Result getAllTasks(),
     @required Result getTasksWithCategory(String id),
     @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getTasksOtherCategory();
   }
 
@@ -482,6 +511,7 @@ class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
     Result getAllTasks(),
     Result getTasksWithCategory(String id),
     Result getTasksOtherCategory(),
+    Result getOpenTasks(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -498,11 +528,13 @@ class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
     @required Result getAllTasks(_GetAllTasks value),
     @required Result getTasksWithCategory(_GetTasksWithCategory value),
     @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
   }) {
     assert(getFavorite != null);
     assert(getAllTasks != null);
     assert(getTasksWithCategory != null);
     assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
     return getTasksOtherCategory(this);
   }
 
@@ -513,6 +545,7 @@ class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
     Result getAllTasks(_GetAllTasks value),
     Result getTasksWithCategory(_GetTasksWithCategory value),
     Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -525,6 +558,115 @@ class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
 
 abstract class _GetTasksWithOtherCategory implements TaskListEvent {
   const factory _GetTasksWithOtherCategory() = _$_GetTasksWithOtherCategory;
+}
+
+/// @nodoc
+abstract class _$GetOpenTasksCopyWith<$Res> {
+  factory _$GetOpenTasksCopyWith(
+          _GetOpenTasks value, $Res Function(_GetOpenTasks) then) =
+      __$GetOpenTasksCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetOpenTasksCopyWithImpl<$Res>
+    extends _$TaskListEventCopyWithImpl<$Res>
+    implements _$GetOpenTasksCopyWith<$Res> {
+  __$GetOpenTasksCopyWithImpl(
+      _GetOpenTasks _value, $Res Function(_GetOpenTasks) _then)
+      : super(_value, (v) => _then(v as _GetOpenTasks));
+
+  @override
+  _GetOpenTasks get _value => super._value as _GetOpenTasks;
+}
+
+/// @nodoc
+class _$_GetOpenTasks implements _GetOpenTasks {
+  const _$_GetOpenTasks();
+
+  @override
+  String toString() {
+    return 'TaskListEvent.getOpenTasks()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _GetOpenTasks);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
+    @required Result getOpenTasks(),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
+    return getOpenTasks();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
+    Result getOpenTasks(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getOpenTasks != null) {
+      return getOpenTasks();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result getOpenTasks(_GetOpenTasks value),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    assert(getOpenTasks != null);
+    return getOpenTasks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    Result getOpenTasks(_GetOpenTasks value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getOpenTasks != null) {
+      return getOpenTasks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetOpenTasks implements TaskListEvent {
+  const factory _GetOpenTasks() = _$_GetOpenTasks;
 }
 
 /// @nodoc

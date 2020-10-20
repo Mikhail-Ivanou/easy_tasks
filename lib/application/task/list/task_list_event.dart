@@ -8,4 +8,5 @@ abstract class TaskListEvent with _$TaskListEvent {
       _GetTasksWithCategory;
   const factory TaskListEvent.getTasksOtherCategory() =
       _GetTasksWithOtherCategory;
+  const factory TaskListEvent.getOpenTasks() = _GetOpenTasks;
 }
