@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_tasks/domain/category/category.dart' as vm;
 
 class TaskDetailPage extends StatelessWidget {
   const TaskDetailPage({Key key, @required this.initialTask}) : super(key: key);

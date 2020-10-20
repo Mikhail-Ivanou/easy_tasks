@@ -23,14 +23,7 @@ class TaskRepository implements ITaskRepository {
     final snapshots =
         userDoc.collection('tasks').orderBy('dateCreated').snapshots();
 
-    final categories = _categoryRepository.watchCategoriesAsMap();
-
-    yield* Rx.combineLatest2(snapshots, categories,
-        (QuerySnapshot tasks, Map<String, TaskCategory> categories) {
-      return tasks.docs.map((doc) {
-        return fromFirestore(doc, categories);
-      }).toList();
-    });
+    yield* _processTasks(snapshots);
   }
 
   @override
@@ -42,6 +35,34 @@ class TaskRepository implements ITaskRepository {
         .where('isFavorite', isEqualTo: true)
         .snapshots();
 
+    yield* _processTasks(snapshots);
+  }
+
+  @override
+  Stream<List<Task>> watchOtherTasks() async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots = userDoc
+        .collection('tasks')
+        .where('category', isNull: true)
+        .orderBy('dateCreated')
+        .snapshots();
+
+    yield* _processTasks(snapshots);
+  }
+
+  @override
+  Stream<List<Task>> watchTasksWithCategory({String categoryId}) async* {
+    final userDoc = await _firestore.userDocument();
+    final snapshots = userDoc
+        .collection('tasks')
+        .where('category', isEqualTo: categoryId)
+        .orderBy('dateCreated')
+        .snapshots();
+
+    yield* _processTasks(snapshots);
+  }
+
+  Stream<List<Task>> _processTasks(Stream<QuerySnapshot> snapshots) async* {
     final categories = _categoryRepository.watchCategoriesAsMap();
     yield* Rx.combineLatest2(snapshots, categories,
         (QuerySnapshot tasks, Map<String, TaskCategory> categories) {

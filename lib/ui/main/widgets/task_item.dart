@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_tasks/domain/category/category.dart' as vm;
 import 'package:easy_tasks/domain/task/task.dart';
 import 'package:easy_tasks/ui/routes/routes.gr.dart';
 import 'package:flutter/foundation.dart';

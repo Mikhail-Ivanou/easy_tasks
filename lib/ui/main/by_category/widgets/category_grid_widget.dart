@@ -1,9 +1,9 @@
 import 'package:easy_tasks/application/category/category_cards_bloc.dart';
+import 'package:easy_tasks/application/task/total/total_tasks_bloc.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/ui/core/widgets/critical_failure_display_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_tasks/application/task/total/total_tasks_bloc.dart';
 
 import 'category_cell_widget.dart';
 
@@ -30,10 +30,7 @@ class CategoryCards extends StatelessWidget {
                   return _otherTasksCell(context);
                 }
                 final TaskCategory item = state.categories[index - 1];
-                return GestureDetector(
-                  onTap: () {},
-                  child: CategoryCell(item: item),
-                );
+                return CategoryCell(item: item);
               },
             );
           },
@@ -56,7 +53,7 @@ class CategoryCards extends StatelessWidget {
               icon: Icons.apps,
               color: Colors.lightBlueAccent,
               count: count,
-              position: 0),
+              position: TaskCategory.CATEGORY_POSITION_ALL),
         );
       },
     );
@@ -73,7 +70,7 @@ class CategoryCards extends StatelessWidget {
               icon: Icons.menu,
               color: Colors.lightGreen,
               count: count,
-              position: 11111),
+              position: TaskCategory.CATEGORY_POSITION_OTHER),
         );
       },
     );

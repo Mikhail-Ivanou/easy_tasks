@@ -1775,7 +1775,6 @@ class _$TaskDetailStateTearOff {
 // ignore: unused_element
   _TaskDetailState call(
       {@required Task task,
-      TaskCategory category,
       @required bool isTitleValid,
       @required bool isSaving,
       @required bool isNew,
@@ -1783,7 +1782,6 @@ class _$TaskDetailStateTearOff {
       @required bool showErrorMessages}) {
     return _TaskDetailState(
       task: task,
-      category: category,
       isTitleValid: isTitleValid,
       isSaving: isSaving,
       isNew: isNew,
@@ -1800,7 +1798,6 @@ const $TaskDetailState = _$TaskDetailStateTearOff();
 /// @nodoc
 mixin _$TaskDetailState {
   Task get task;
-  TaskCategory get category;
   bool get isTitleValid;
   bool get isSaving;
   bool get isNew;
@@ -1817,7 +1814,6 @@ abstract class $TaskDetailStateCopyWith<$Res> {
       _$TaskDetailStateCopyWithImpl<$Res>;
   $Res call(
       {Task task,
-      TaskCategory category,
       bool isTitleValid,
       bool isSaving,
       bool isNew,
@@ -1825,7 +1821,6 @@ abstract class $TaskDetailStateCopyWith<$Res> {
       bool showErrorMessages});
 
   $TaskCopyWith<$Res> get task;
-  $TaskCategoryCopyWith<$Res> get category;
   $FirebaseResponseCopyWith<$Res> get response;
 }
 
@@ -1841,7 +1836,6 @@ class _$TaskDetailStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object task = freezed,
-    Object category = freezed,
     Object isTitleValid = freezed,
     Object isSaving = freezed,
     Object isNew = freezed,
@@ -1850,8 +1844,6 @@ class _$TaskDetailStateCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       task: task == freezed ? _value.task : task as Task,
-      category:
-          category == freezed ? _value.category : category as TaskCategory,
       isTitleValid:
           isTitleValid == freezed ? _value.isTitleValid : isTitleValid as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
@@ -1875,16 +1867,6 @@ class _$TaskDetailStateCopyWithImpl<$Res>
   }
 
   @override
-  $TaskCategoryCopyWith<$Res> get category {
-    if (_value.category == null) {
-      return null;
-    }
-    return $TaskCategoryCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
-  }
-
-  @override
   $FirebaseResponseCopyWith<$Res> get response {
     if (_value.response == null) {
       return null;
@@ -1904,7 +1886,6 @@ abstract class _$TaskDetailStateCopyWith<$Res>
   @override
   $Res call(
       {Task task,
-      TaskCategory category,
       bool isTitleValid,
       bool isSaving,
       bool isNew,
@@ -1913,8 +1894,6 @@ abstract class _$TaskDetailStateCopyWith<$Res>
 
   @override
   $TaskCopyWith<$Res> get task;
-  @override
-  $TaskCategoryCopyWith<$Res> get category;
   @override
   $FirebaseResponseCopyWith<$Res> get response;
 }
@@ -1933,7 +1912,6 @@ class __$TaskDetailStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object task = freezed,
-    Object category = freezed,
     Object isTitleValid = freezed,
     Object isSaving = freezed,
     Object isNew = freezed,
@@ -1942,8 +1920,6 @@ class __$TaskDetailStateCopyWithImpl<$Res>
   }) {
     return _then(_TaskDetailState(
       task: task == freezed ? _value.task : task as Task,
-      category:
-          category == freezed ? _value.category : category as TaskCategory,
       isTitleValid:
           isTitleValid == freezed ? _value.isTitleValid : isTitleValid as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
@@ -1961,7 +1937,6 @@ class __$TaskDetailStateCopyWithImpl<$Res>
 class _$_TaskDetailState implements _TaskDetailState {
   const _$_TaskDetailState(
       {@required this.task,
-      this.category,
       @required this.isTitleValid,
       @required this.isSaving,
       @required this.isNew,
@@ -1977,8 +1952,6 @@ class _$_TaskDetailState implements _TaskDetailState {
   @override
   final Task task;
   @override
-  final TaskCategory category;
-  @override
   final bool isTitleValid;
   @override
   final bool isSaving;
@@ -1991,7 +1964,7 @@ class _$_TaskDetailState implements _TaskDetailState {
 
   @override
   String toString() {
-    return 'TaskDetailState(task: $task, category: $category, isTitleValid: $isTitleValid, isSaving: $isSaving, isNew: $isNew, response: $response, showErrorMessages: $showErrorMessages)';
+    return 'TaskDetailState(task: $task, isTitleValid: $isTitleValid, isSaving: $isSaving, isNew: $isNew, response: $response, showErrorMessages: $showErrorMessages)';
   }
 
   @override
@@ -2000,9 +1973,6 @@ class _$_TaskDetailState implements _TaskDetailState {
         (other is _TaskDetailState &&
             (identical(other.task, task) ||
                 const DeepCollectionEquality().equals(other.task, task)) &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
             (identical(other.isTitleValid, isTitleValid) ||
                 const DeepCollectionEquality()
                     .equals(other.isTitleValid, isTitleValid)) &&
@@ -2023,7 +1993,6 @@ class _$_TaskDetailState implements _TaskDetailState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(task) ^
-      const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(isTitleValid) ^
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(isNew) ^
@@ -2038,7 +2007,6 @@ class _$_TaskDetailState implements _TaskDetailState {
 abstract class _TaskDetailState implements TaskDetailState {
   const factory _TaskDetailState(
       {@required Task task,
-      TaskCategory category,
       @required bool isTitleValid,
       @required bool isSaving,
       @required bool isNew,
@@ -2047,8 +2015,6 @@ abstract class _TaskDetailState implements TaskDetailState {
 
   @override
   Task get task;
-  @override
-  TaskCategory get category;
   @override
   bool get isTitleValid;
   @override

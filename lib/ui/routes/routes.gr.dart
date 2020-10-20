@@ -9,10 +9,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../domain/category/category.dart';
 import '../../domain/task/task.dart';
 import '../auth/auth_screen.dart';
 import '../auth/reset_password_screen.dart';
 import '../core/splash_screen.dart';
+import '../main/by_category/tasks_list_page.dart';
 import '../main/main_screen.dart';
 import '../task_detail/task_detail_page.dart';
 
@@ -22,12 +24,14 @@ class Routes {
   static const String resetPasswordScreen = '/reset-password-screen';
   static const String mainScreen = '/main-screen';
   static const String taskDetailPage = '/task-detail-page';
+  static const String tasksListPage = '/tasks-list-page';
   static const all = <String>{
     splashScreen,
     authScreen,
     resetPasswordScreen,
     mainScreen,
     taskDetailPage,
+    tasksListPage,
   };
 }
 
@@ -40,6 +44,7 @@ class TasksRouter extends RouterBase {
     RouteDef(Routes.resetPasswordScreen, page: ResetPasswordScreen),
     RouteDef(Routes.mainScreen, page: MainScreen),
     RouteDef(Routes.taskDetailPage, page: TaskDetailPage),
+    RouteDef(Routes.tasksListPage, page: TasksListPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -84,6 +89,16 @@ class TasksRouter extends RouterBase {
         fullscreenDialog: true,
       );
     },
+    TasksListPage: (data) {
+      final args = data.getArgs<TasksListPageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<TasksListPage>(
+        builder: (context) => TasksListPage(
+          key: args.key,
+          category: args.category,
+        ),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -103,4 +118,11 @@ class TaskDetailPageArguments {
   final Key key;
   final Task initialTask;
   TaskDetailPageArguments({this.key, @required this.initialTask});
+}
+
+/// TasksListPage arguments holder class
+class TasksListPageArguments {
+  final Key key;
+  final TaskCategory category;
+  TasksListPageArguments({this.key, @required this.category});
 }

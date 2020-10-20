@@ -20,6 +20,7 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
 
   TaskListBloc(this._taskRepository) : super(const TaskListState.initial());
 
+  //TODO refactor
   @override
   Stream<TaskListState> mapEventToState(
     TaskListEvent event,
@@ -28,6 +29,22 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
       getFavorite: (_GetFavorite value) async* {
         yield const TaskListState.isLoading();
         final watchTasks = _taskRepository.watchFavTasks();
+        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+      },
+      getAllTasks: (_GetAllTasks value) async* {
+        yield const TaskListState.isLoading();
+        final watchTasks = _taskRepository.watchTasks();
+        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+      },
+      getTasksOtherCategory: (_GetTasksWithOtherCategory value) async* {
+        yield const TaskListState.isLoading();
+        final watchTasks = _taskRepository.watchOtherTasks();
+        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+      },
+      getTasksWithCategory: (_GetTasksWithCategory value) async* {
+        yield const TaskListState.isLoading();
+        final watchTasks =
+            _taskRepository.watchTasksWithCategory(categoryId: value.id);
         yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
       },
     );

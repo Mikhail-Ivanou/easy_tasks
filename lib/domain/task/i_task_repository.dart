@@ -5,6 +5,8 @@ import 'package:easy_tasks/domain/task/task.dart';
 abstract class ITaskRepository {
   Stream<List<Task>> watchTasks();
   Stream<List<Task>> watchFavTasks();
+  Stream<List<Task>> watchOtherTasks();
+  Stream<List<Task>> watchTasksWithCategory({String categoryId});
   Stream<Counts> watchTasksCount();
   Future<FirebaseFailure> update(Task task);
   Future<FirebaseFailure> create(Task task);

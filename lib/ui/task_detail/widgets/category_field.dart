@@ -15,12 +15,13 @@ class CategoryField extends HookWidget {
     var skipClick = false;
     final textEditingController = useTextEditingController();
     return BlocConsumer<TaskDetailBloc, TaskDetailState>(
-      listenWhen: (p, c) => p.category != c.category,
+      listenWhen: (p, c) => p.task.category != c.task.category,
       listener: (context, state) {
-        textEditingController.text = state.category?.title ?? '';
+        textEditingController.text = state.task.category?.title ?? '';
       },
       buildWhen: (p, c) =>
-          p.task.isCompleted != c.task.isCompleted || p.category != c.category,
+          p.task.isCompleted != c.task.isCompleted ||
+          p.task.category != c.task.category,
       builder: (context, state) {
         return TextFormField(
           readOnly: true,
@@ -41,7 +42,7 @@ class CategoryField extends HookWidget {
           decoration: InputDecoration(
             labelText: 'Category',
             hintText: 'Select category',
-            suffixIcon: state.task.isCompleted || state.category == null
+            suffixIcon: state.task.isCompleted || state.task.category == null
                 ? null
                 : IconButton(
                     icon: const Icon(Icons.close),

@@ -17,6 +17,23 @@ class _$TaskListEventTearOff {
   _GetFavorite getFavorite() {
     return const _GetFavorite();
   }
+
+// ignore: unused_element
+  _GetAllTasks getAllTasks() {
+    return const _GetAllTasks();
+  }
+
+// ignore: unused_element
+  _GetTasksWithCategory getTasksWithCategory(String id) {
+    return _GetTasksWithCategory(
+      id,
+    );
+  }
+
+// ignore: unused_element
+  _GetTasksWithOtherCategory getTasksOtherCategory() {
+    return const _GetTasksWithOtherCategory();
+  }
 }
 
 /// @nodoc
@@ -28,19 +45,31 @@ mixin _$TaskListEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
     @required Result orElse(),
   });
 }
@@ -101,8 +130,14 @@ class _$_GetFavorite implements _GetFavorite {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
   }) {
     assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
     return getFavorite();
   }
 
@@ -110,6 +145,9 @@ class _$_GetFavorite implements _GetFavorite {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -123,8 +161,14 @@ class _$_GetFavorite implements _GetFavorite {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
   }) {
     assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
     return getFavorite(this);
   }
 
@@ -132,6 +176,9 @@ class _$_GetFavorite implements _GetFavorite {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -144,6 +191,340 @@ class _$_GetFavorite implements _GetFavorite {
 
 abstract class _GetFavorite implements TaskListEvent {
   const factory _GetFavorite() = _$_GetFavorite;
+}
+
+/// @nodoc
+abstract class _$GetAllTasksCopyWith<$Res> {
+  factory _$GetAllTasksCopyWith(
+          _GetAllTasks value, $Res Function(_GetAllTasks) then) =
+      __$GetAllTasksCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetAllTasksCopyWithImpl<$Res> extends _$TaskListEventCopyWithImpl<$Res>
+    implements _$GetAllTasksCopyWith<$Res> {
+  __$GetAllTasksCopyWithImpl(
+      _GetAllTasks _value, $Res Function(_GetAllTasks) _then)
+      : super(_value, (v) => _then(v as _GetAllTasks));
+
+  @override
+  _GetAllTasks get _value => super._value as _GetAllTasks;
+}
+
+/// @nodoc
+class _$_GetAllTasks implements _GetAllTasks {
+  const _$_GetAllTasks();
+
+  @override
+  String toString() {
+    return 'TaskListEvent.getAllTasks()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _GetAllTasks);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getAllTasks();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAllTasks != null) {
+      return getAllTasks();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getAllTasks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAllTasks != null) {
+      return getAllTasks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllTasks implements TaskListEvent {
+  const factory _GetAllTasks() = _$_GetAllTasks;
+}
+
+/// @nodoc
+abstract class _$GetTasksWithCategoryCopyWith<$Res> {
+  factory _$GetTasksWithCategoryCopyWith(_GetTasksWithCategory value,
+          $Res Function(_GetTasksWithCategory) then) =
+      __$GetTasksWithCategoryCopyWithImpl<$Res>;
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$GetTasksWithCategoryCopyWithImpl<$Res>
+    extends _$TaskListEventCopyWithImpl<$Res>
+    implements _$GetTasksWithCategoryCopyWith<$Res> {
+  __$GetTasksWithCategoryCopyWithImpl(
+      _GetTasksWithCategory _value, $Res Function(_GetTasksWithCategory) _then)
+      : super(_value, (v) => _then(v as _GetTasksWithCategory));
+
+  @override
+  _GetTasksWithCategory get _value => super._value as _GetTasksWithCategory;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(_GetTasksWithCategory(
+      id == freezed ? _value.id : id as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_GetTasksWithCategory implements _GetTasksWithCategory {
+  const _$_GetTasksWithCategory(this.id) : assert(id != null);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'TaskListEvent.getTasksWithCategory(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GetTasksWithCategory &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  _$GetTasksWithCategoryCopyWith<_GetTasksWithCategory> get copyWith =>
+      __$GetTasksWithCategoryCopyWithImpl<_GetTasksWithCategory>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getTasksWithCategory(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getTasksWithCategory != null) {
+      return getTasksWithCategory(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getTasksWithCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getTasksWithCategory != null) {
+      return getTasksWithCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetTasksWithCategory implements TaskListEvent {
+  const factory _GetTasksWithCategory(String id) = _$_GetTasksWithCategory;
+
+  String get id;
+  _$GetTasksWithCategoryCopyWith<_GetTasksWithCategory> get copyWith;
+}
+
+/// @nodoc
+abstract class _$GetTasksWithOtherCategoryCopyWith<$Res> {
+  factory _$GetTasksWithOtherCategoryCopyWith(_GetTasksWithOtherCategory value,
+          $Res Function(_GetTasksWithOtherCategory) then) =
+      __$GetTasksWithOtherCategoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetTasksWithOtherCategoryCopyWithImpl<$Res>
+    extends _$TaskListEventCopyWithImpl<$Res>
+    implements _$GetTasksWithOtherCategoryCopyWith<$Res> {
+  __$GetTasksWithOtherCategoryCopyWithImpl(_GetTasksWithOtherCategory _value,
+      $Res Function(_GetTasksWithOtherCategory) _then)
+      : super(_value, (v) => _then(v as _GetTasksWithOtherCategory));
+
+  @override
+  _GetTasksWithOtherCategory get _value =>
+      super._value as _GetTasksWithOtherCategory;
+}
+
+/// @nodoc
+class _$_GetTasksWithOtherCategory implements _GetTasksWithOtherCategory {
+  const _$_GetTasksWithOtherCategory();
+
+  @override
+  String toString() {
+    return 'TaskListEvent.getTasksOtherCategory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _GetTasksWithOtherCategory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getFavorite(),
+    @required Result getAllTasks(),
+    @required Result getTasksWithCategory(String id),
+    @required Result getTasksOtherCategory(),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getTasksOtherCategory();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getFavorite(),
+    Result getAllTasks(),
+    Result getTasksWithCategory(String id),
+    Result getTasksOtherCategory(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getTasksOtherCategory != null) {
+      return getTasksOtherCategory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getFavorite(_GetFavorite value),
+    @required Result getAllTasks(_GetAllTasks value),
+    @required Result getTasksWithCategory(_GetTasksWithCategory value),
+    @required Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+  }) {
+    assert(getFavorite != null);
+    assert(getAllTasks != null);
+    assert(getTasksWithCategory != null);
+    assert(getTasksOtherCategory != null);
+    return getTasksOtherCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getFavorite(_GetFavorite value),
+    Result getAllTasks(_GetAllTasks value),
+    Result getTasksWithCategory(_GetTasksWithCategory value),
+    Result getTasksOtherCategory(_GetTasksWithOtherCategory value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getTasksOtherCategory != null) {
+      return getTasksOtherCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetTasksWithOtherCategory implements TaskListEvent {
+  const factory _GetTasksWithOtherCategory() = _$_GetTasksWithOtherCategory;
 }
 
 /// @nodoc

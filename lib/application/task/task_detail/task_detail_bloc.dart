@@ -26,7 +26,6 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
       initialized: (event) async* {
         yield state.copyWith(
           task: event.initialTask ?? Task.empty(),
-          category: event.category,
           isTitleValid: event.initialTask.title.isNotEmpty,
           isNew: false,
         );
@@ -66,7 +65,6 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
         } else {
           yield state.copyWith(
             task: state.task.copyWith(category: event.category),
-            category: event.category,
             response: const FirebaseResponse.empty(),
           );
         }
