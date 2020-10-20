@@ -11,37 +11,38 @@ class CategoryCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCardsBloc, CategoryCardsState>(
-        builder: (context, state) {
-      return state.map(
-        initial: (_) => Container(),
-        isLoading: (_) => const Center(
-          child: CircularProgressIndicator(),
-        ),
-        loadSuccess: (state) {
-          return GridView.builder(
-            itemCount: state.categories.length + 2,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
-            itemBuilder: (BuildContext context, int index) {
-              if (index == 0) {
-                return _allTasksCell(context);
-              }
-              if (index == state.categories.length + 1) {
-                return _otherTasksCell(context);
-              }
-              final TaskCategory item = state.categories[index - 1];
-              return GestureDetector(
-                onTap: () {},
-                child: CategoryCell(item: item),
-              );
-            },
-          );
-        },
-        loadFailure: (state) => CriticalFailureDisplay(
-          failure: state.failure,
-        ),
-      );
-    });
+      builder: (context, state) {
+        return state.map(
+          initial: (_) => Container(),
+          isLoading: (_) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loadSuccess: (state) {
+            return GridView.builder(
+              itemCount: state.categories.length + 2,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: (BuildContext context, int index) {
+                if (index == 0) {
+                  return _allTasksCell(context);
+                }
+                if (index == state.categories.length + 1) {
+                  return _otherTasksCell(context);
+                }
+                final TaskCategory item = state.categories[index - 1];
+                return GestureDetector(
+                  onTap: () {},
+                  child: CategoryCell(item: item),
+                );
+              },
+            );
+          },
+          loadFailure: (state) => CriticalFailureDisplay(
+            failure: state.failure,
+          ),
+        );
+      },
+    );
   }
 
   Widget _allTasksCell(BuildContext context) {

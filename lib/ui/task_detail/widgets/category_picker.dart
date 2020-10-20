@@ -1,11 +1,14 @@
+import 'package:easy_tasks/application/category/category_cards_bloc.dart';
 import 'package:easy_tasks/domain/category/category.dart';
+import 'package:easy_tasks/injection.dart';
+import 'package:easy_tasks/ui/core/widgets/critical_failure_display_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-Future<TaskCategory> pickCategory(BuildContext context) async {
-  return await showModalBottomSheet(
+Future<TaskCategory> pickCategory(BuildContext context) {
+  return showModalBottomSheet(
     isScrollControlled: true,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20.0),
         topRight: Radius.circular(20.0),
@@ -24,54 +27,61 @@ Future<TaskCategory> pickCategory(BuildContext context) async {
 class CategoryPickerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
-    // final UserId id = Provider.of<UserId>(context);
-    // return StreamBuilder<List<TaskCategory>>(
-    //     stream: CategoryService.instance.streamCategory(id.id),
-    //     builder: (context, categories) {
-    //       if (!categories.hasData) {
-    //         return Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       }
-    //       return Container(
-    //         padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-    //         decoration: BoxDecoration(
-    //             color: Colors.white,
-    //             borderRadius: BorderRadius.only(
-    //                 topRight: Radius.circular(20.0),
-    //                 topLeft: Radius.circular(20.0))),
-    //         child: Column(
-    //             children: [
-    //               SizedBox(
-    //                 height: 16.0,
-    //               ),
-    //               Text(
-    //                 'Select category',
-    //                 textAlign: TextAlign.center,
-    //                 style: TextStyle(
-    //                   fontSize: 24.0,
-    //                   color: Colors.black,
-    //                 ),
-    //               ),
-    //               SizedBox(
-    //                 height: 16.0,
-    //               ),
-    //               Container(
-    //                 height: 340,
-    //                 child: ListView.builder(
-    //                   padding:
-    //                       EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-    //                   itemCount: categories.data.length,
-    //                   itemBuilder: (context, index) {
-    //                     final item = categories.data[index];
-    //                     return CategoryItem(item);
-    //                   },
-    //                 ),
-    //               ),
-    //             ]),
-    //       );
-    //     });
+    return BlocProvider<CategoryCardsBloc>(
+      create: (context) => getIt<CategoryCardsBloc>()
+        ..add(const CategoryCardsEvent.getCategories()),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+        child: Column(children: [
+          const SizedBox(
+            height: 16.0,
+          ),
+          const Text(
+            'Select category',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24.0,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
+          CategoryList(),
+        ]),
+      ),
+    );
+  }
+}
+
+class CategoryList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CategoryCardsBloc, CategoryCardsState>(
+      builder: (context, state) {
+        return state.map(
+          initial: (_) => Container(),
+          isLoading: (_) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loadSuccess: (state) {
+            return Container(
+              height: 340,
+              child: ListView.builder(
+                itemCount: state.categories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final TaskCategory item = state.categories[index];
+                  return CategoryItem(item);
+                },
+              ),
+            );
+          },
+          loadFailure: (state) => CriticalFailureDisplay(
+            failure: state.failure,
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -91,7 +101,7 @@ class CategoryItem extends StatelessWidget {
       ),
       title: Text(
         item.title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 22.0,
         ),
