@@ -23,4 +23,14 @@ class TaskActionsCubit extends Cubit<TaskActionState> {
       const TaskActionState.error();
     }
   }
+
+  Future<void> update(Task task) async {
+    try {
+      emit(const TaskActionState.processing());
+      await _taskRepository.update(task);
+      emit(const TaskActionState.success());
+    } on Exception {
+      const TaskActionState.error();
+    }
+  }
 }

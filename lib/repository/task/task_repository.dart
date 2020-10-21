@@ -100,7 +100,6 @@ class TaskRepository implements ITaskRepository {
   Future<FirebaseResponse> delete(Task task) {
     return _firestore.runTransaction((transaction) async {
       final userRef = await _firestore.userDocument();
-      final taskRef = userRef.collection('tasks').doc(task.id);
       final userSnapshot = await transaction.get(userRef);
       final userCounts = Counts.fromMap(userSnapshot.data());
       final newCounts = Counts(
@@ -116,6 +115,7 @@ class TaskRepository implements ITaskRepository {
         final newCategory = category.copyWith(count: category.count - 1);
         transaction.update(categoryRef, newCategory.toMap());
       }
+      final taskRef = userRef.collection('tasks').doc(task.id);
       transaction.delete(taskRef);
       return const FirebaseResponse.success();
     });
@@ -123,28 +123,45 @@ class TaskRepository implements ITaskRepository {
 
   @override
   Future<FirebaseResponse> update(Task task) {
-    // TODO: implement update
-    throw UnimplementedError();
+    return _firestore.runTransaction((transaction) async {
+      final userRef = await _firestore.userDocument();
+      final taskRef = userRef.collection('tasks').doc(task.id);
+      final oldTaskCategory = (await taskRef.get()).get('category');
+
+      //read counters as read operations should be done before write
+      final userSnapshot = await transaction.get(userRef);
+      final userCounts = Counts.fromMap(userSnapshot.data());
+
+      int otherDiff = 0;
+      if (oldTaskCategory != task.category?.id) {
+        if (oldTaskCategory != null) {
+          final categoryRef =
+              userRef.collection('category').doc(oldTaskCategory);
+          final category = categoryFromFirestore(await categoryRef.get());
+          final newCategory = category.copyWith(count: category.count - 1);
+          transaction.update(categoryRef, newCategory.toMap());
+        } else {
+          otherDiff--;
+        }
+        if (task.category != null) {
+          final categoryRef =
+              userRef.collection('category').doc(task.category.id);
+          final category = categoryFromFirestore(await categoryRef.get());
+          final newCategory = category.copyWith(count: category.count + 1);
+          transaction.update(categoryRef, newCategory.toMap());
+        } else {
+          otherDiff++;
+        }
+        if (otherDiff != 0) {
+          final newCounts = Counts(
+              totalCount: userCounts.totalCount,
+              otherCount: userCounts.otherCount + otherDiff);
+          transaction.update(userRef, newCounts.toMap());
+        }
+      }
+
+      transaction.update(taskRef, task.toMap());
+      return const FirebaseResponse.success();
+    });
   }
 }
-
-// final User user = await UserService.instance.getUser(userId);
-// if (task.category != null && task.category.isNotEmpty) {
-// user.totalCount--;
-// final category = TaskCategory.fromFirestore(await CategoryService.instance
-//     .getCategory(user.id, task.category)
-//     .snapshots()
-//     .first);
-// category.count--;
-// CategoryService.instance.updateCategory(user, category);
-// } else {
-// user.totalCount--;
-// user.otherCount--;
-// }
-// UserService.instance.updateUser(user);
-// return _db
-//     .collection('users')
-// .document(userId)
-// .collection('tasks')
-// .document(task.id)
-// .delete();

@@ -44,7 +44,8 @@ class TaskDetailPage extends StatelessWidget {
         builder: (context, state) {
           return WillPopScope(
             onWillPop: () async {
-              context.bloc<TaskDetailBloc>().add(const TaskDetailEvent.saved());
+              final currentTask = context.bloc<TaskDetailBloc>().state.task;
+              context.bloc<TaskActionsCubit>().update(currentTask);
               return Future.value(true);
             },
             child: Stack(children: <Widget>[

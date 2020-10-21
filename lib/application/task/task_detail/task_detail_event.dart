@@ -16,5 +16,4 @@ abstract class TaskDetailEvent with _$TaskDetailEvent {
   const factory TaskDetailEvent.priorityChanged(TaskPriority priority) =
       _PriorityChanged;
   const factory TaskDetailEvent.notesChanged(String note) = _NotesChanged;
-  const factory TaskDetailEvent.saved() = _Saved;
 }
