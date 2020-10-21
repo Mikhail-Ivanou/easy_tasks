@@ -1,3 +1,4 @@
+import 'package:easy_tasks/application/task/actions/task_actions_cubit.dart';
 import 'package:easy_tasks/application/task/task_detail/task_detail_bloc.dart';
 import 'package:easy_tasks/ui/core/alert_helper.dart';
 import 'package:easy_tasks/ui/task_detail/widgets/category_field.dart';
@@ -143,12 +144,13 @@ class DeleteAction extends StatelessWidget {
               ];
               final actions = <Widget>[
                 FlatButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () => Navigator.pop(context, false),
                   child: const Text('Cancel'),
                 ),
                 FlatButton(
                   onPressed: () {
-                    //TODO process delete action
+                    context.bloc<TaskActionsCubit>().deleteTask(state.task);
+                    Navigator.pop(context, true);
                   },
                   child: const Text('Delete'),
                 ),

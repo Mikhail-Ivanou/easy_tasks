@@ -46,13 +46,29 @@ class InitialContentGenerator implements IInitialContentGenerator {
     initialCategories.forEach((element) {
       writeBatch.set(categories.doc(element.id), element.toMap());
     });
-//TODO fix generator with proper category id
-    final tasks = userDoc.collection('tasks');
-    initialTasks.forEach((element) {
-      writeBatch.set(tasks.doc(), element.toMap());
-    });
-
     await writeBatch.commit();
+    final categoriesSnapshot = await categories.orderBy('position').get();
+    //need to have 4
+    final homeCategory = categoryFromFirestore(categoriesSnapshot.docs[1]);
+    //need to have 1
+    final homeTravel = categoryFromFirestore(categoriesSnapshot.docs[3]);
+    //need to have 3
+    final homeStudy = categoryFromFirestore(categoriesSnapshot.docs[4]);
+    //need to have 1
+    final homeSport = categoryFromFirestore(categoriesSnapshot.docs[6]);
+
+    final WriteBatch writeTasksBatch = _firestore.batch();
+    final tasks = userDoc.collection('tasks');
+
+    initialTasks(
+            use4: homeCategory,
+            use1: homeTravel,
+            use3: homeStudy,
+            useOnce: homeSport)
+        .forEach((element) {
+      writeTasksBatch.set(tasks.doc(), element.toMap());
+    });
+    await writeTasksBatch.commit();
     return const FirebaseResponse.success();
   }
 }

@@ -45,7 +45,7 @@ extension TaskConverter on Task {
     final Map<String, dynamic> result = <String, dynamic>{};
     result['title'] = title;
     result['isCompleted'] = isCompleted;
-    result['category'] = category.id;
+    result['category'] = category?.id;
     result['tags'] = tags;
     result['dueDate'] = dueDate;
     result['priority'] = priority.index;

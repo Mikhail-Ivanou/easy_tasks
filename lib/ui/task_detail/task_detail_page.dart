@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_tasks/application/task/actions/task_actions_cubit.dart';
 import 'package:easy_tasks/application/task/task_detail/task_detail_bloc.dart';
 import 'package:easy_tasks/domain/task/task.dart';
 import 'package:easy_tasks/injection.dart';
@@ -17,41 +18,40 @@ class TaskDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => getIt<TaskDetailBloc>()
-        ..add(TaskDetailEvent.initialized(initialTask: initialTask)),
-      child: BlocConsumer<TaskDetailBloc, TaskDetailState>(
-        listenWhen: (p, c) => p.response != c.response,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<TaskDetailBloc>(
+            create: (context) => getIt<TaskDetailBloc>()
+              ..add(TaskDetailEvent.initialized(initialTask: initialTask))),
+        BlocProvider<TaskActionsCubit>(
+            create: (context) => getIt<TaskActionsCubit>()),
+      ],
+      child: BlocConsumer<TaskActionsCubit, TaskActionState>(
         listener: (context, state) {
-          state.response.map(
+          state.maybeMap(
             success: (_) {
               ExtendedNavigator.of(context).pop();
             },
-            failure: (failure) {
+            error: (failure) {
               FlushbarHelper.createError(
-                message: failure.failure.map(
-                  unexpected: (_) =>
-                      'Unexpected error occured, please contact support.',
-                  insufficientPermissions: (_) => 'Insufficient permissions ❌',
-                  unableToUpdate: (_) =>
-                      "Couldn't update the note. Was it deleted from another app?",
-                ),
-              ).show(context);
+                      message:
+                          'Unexpected error occured, please contact support.')
+                  .show(context);
             },
-            empty: (_) {},
+            orElse: () {},
           );
         },
-        buildWhen: (p, c) => p.isSaving != c.isSaving,
         builder: (context, state) {
           return WillPopScope(
             onWillPop: () async {
               context.bloc<TaskDetailBloc>().add(const TaskDetailEvent.saved());
-              return Future.value();
+              return Future.value(true);
             },
             child: Stack(children: <Widget>[
               const TaskDetailForm(),
               SavingInProgressOverlay(
-                isSaving: state.isSaving,
+                isSaving: state.maybeWhen(
+                    processing: () => true, orElse: () => false),
               )
             ]),
           );
