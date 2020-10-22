@@ -3,6 +3,7 @@ import 'package:easy_tasks/application/task/actions/task_actions_cubit.dart';
 import 'package:easy_tasks/application/task/task_detail/task_detail_bloc.dart';
 import 'package:easy_tasks/domain/task/task.dart';
 import 'package:easy_tasks/injection.dart';
+import 'package:easy_tasks/ui/core/alert_helper.dart';
 import 'package:easy_tasks/ui/task_detail/widgets/overlay.dart';
 import 'package:easy_tasks/ui/task_detail/task_detail_form.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -49,7 +50,10 @@ class TaskDetailPage extends StatelessWidget {
               return Future.value(true);
             },
             child: Stack(children: <Widget>[
-              const TaskDetailForm(),
+              Scaffold(
+                appBar: _buildAppBar(),
+                body: const TaskDetailForm(),
+              ),
               SavingInProgressOverlay(
                 isSaving: state.maybeWhen(
                     processing: () => true, orElse: () => false),
@@ -59,5 +63,100 @@ class TaskDetailPage extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+AppBar _buildAppBar() {
+  return AppBar(
+    title: BlocBuilder<TaskDetailBloc, TaskDetailState>(
+        buildWhen: (p, c) =>
+            p.isNew != c.isNew || p.task.isCompleted != c.task.isCompleted,
+        builder: (context, state) {
+          return Text(
+              state.task.isCompleted ? 'Completed task' : 'Edit a task');
+        }),
+    actions: const [
+      DeleteAction(),
+      CompleteAction(),
+    ],
+  );
+}
+
+class CompleteAction extends StatelessWidget {
+  const CompleteAction({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TaskDetailBloc, TaskDetailState>(
+        buildWhen: (p, c) =>
+            p.task.title != c.task.title ||
+            p.task.isCompleted != c.task.isCompleted,
+        builder: (context, state) {
+          return IconButton(
+            icon: Icon(
+              state.task.isCompleted
+                  ? Icons.check_circle_rounded
+                  : Icons.check_circle_outline,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              context
+                  .bloc<TaskDetailBloc>()
+                  .add(const TaskDetailEvent.completedChanged());
+            },
+          );
+        });
+  }
+}
+
+class DeleteAction extends StatelessWidget {
+  const DeleteAction({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TaskDetailBloc, TaskDetailState>(
+        buildWhen: (p, c) =>
+            p.task.title != c.task.title ||
+            p.task.isCompleted != c.task.isCompleted,
+        builder: (context, state) {
+          return IconButton(
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            onPressed: () async {
+              final children = <Widget>[
+                const Text('Are you sure you want to delete:'),
+                Text(state.task.title),
+              ];
+              final actions = <Widget>[
+                FlatButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child: const Text('Cancel'),
+                ),
+                FlatButton(
+                  onPressed: () {
+                    context.bloc<TaskActionsCubit>().deleteTask(state.task);
+                    Navigator.pop(context, true);
+                  },
+                  child: const Text('Delete'),
+                ),
+              ];
+              final bool result = await showConfirmDialog(
+                context,
+                const Text('Delete task'),
+                children,
+                actions,
+              );
+              if (result) {
+                Navigator.of(context).pop();
+              }
+            },
+          );
+        });
   }
 }

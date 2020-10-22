@@ -23,6 +23,14 @@ abstract class Task with _$Task {
         title: '',
         isCompleted: false,
       );
+
+  factory Task.create(TaskCategory category) => Task(
+        title: '',
+        category: category,
+        isCompleted: false,
+        isFavorite: false,
+        priority: TaskPriority.None,
+      );
 }
 
 //TODO map enum values to localized strings

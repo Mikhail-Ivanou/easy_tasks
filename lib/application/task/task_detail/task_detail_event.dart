@@ -3,7 +3,7 @@ part of 'task_detail_bloc.dart';
 @freezed
 abstract class TaskDetailEvent with _$TaskDetailEvent {
   const factory TaskDetailEvent.initialized(
-      {@required Task initialTask, TaskCategory category}) = _Initialized;
+      {Task initialTask, TaskCategory category}) = _Initialized;
 
   const factory TaskDetailEvent.titleChanged(String titleStr) = _TitleChanged;
   const factory TaskDetailEvent.completedChanged() = _CompletedChanged;

@@ -16,6 +16,7 @@ import '../auth/reset_password_screen.dart';
 import '../core/splash_screen.dart';
 import '../main/by_category/tasks_list_page.dart';
 import '../main/main_screen.dart';
+import '../task_detail/task_create_page.dart';
 import '../task_detail/task_detail_page.dart';
 
 class Routes {
@@ -24,6 +25,7 @@ class Routes {
   static const String resetPasswordScreen = '/reset-password-screen';
   static const String mainScreen = '/main-screen';
   static const String taskDetailPage = '/task-detail-page';
+  static const String taskCreatePage = '/task-create-page';
   static const String tasksListPage = '/tasks-list-page';
   static const all = <String>{
     splashScreen,
@@ -31,6 +33,7 @@ class Routes {
     resetPasswordScreen,
     mainScreen,
     taskDetailPage,
+    taskCreatePage,
     tasksListPage,
   };
 }
@@ -44,6 +47,7 @@ class TasksRouter extends RouterBase {
     RouteDef(Routes.resetPasswordScreen, page: ResetPasswordScreen),
     RouteDef(Routes.mainScreen, page: MainScreen),
     RouteDef(Routes.taskDetailPage, page: TaskDetailPage),
+    RouteDef(Routes.taskCreatePage, page: TaskCreatePage),
     RouteDef(Routes.tasksListPage, page: TasksListPage),
   ];
   @override
@@ -89,6 +93,19 @@ class TasksRouter extends RouterBase {
         fullscreenDialog: true,
       );
     },
+    TaskCreatePage: (data) {
+      final args = data.getArgs<TaskCreatePageArguments>(
+        orElse: () => TaskCreatePageArguments(),
+      );
+      return buildAdaptivePageRoute<TaskCreatePage>(
+        builder: (context) => TaskCreatePage(
+          key: args.key,
+          initialCategory: args.initialCategory,
+        ),
+        settings: data,
+        fullscreenDialog: true,
+      );
+    },
     TasksListPage: (data) {
       final args = data.getArgs<TasksListPageArguments>(nullOk: false);
       return buildAdaptivePageRoute<TasksListPage>(
@@ -118,6 +135,13 @@ class TaskDetailPageArguments {
   final Key key;
   final Task initialTask;
   TaskDetailPageArguments({this.key, @required this.initialTask});
+}
+
+/// TaskCreatePage arguments holder class
+class TaskCreatePageArguments {
+  final Key key;
+  final TaskCategory initialCategory;
+  TaskCreatePageArguments({this.key, this.initialCategory});
 }
 
 /// TasksListPage arguments holder class

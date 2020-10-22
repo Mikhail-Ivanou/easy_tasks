@@ -92,33 +92,49 @@ class TaskRepository implements ITaskRepository {
 
   @override
   Future<FirebaseResponse> create(Task task) {
-    // TODO: implement create
-    throw UnimplementedError();
+    return _firestore.runTransaction((transaction) async {
+      final userRef = await _firestore.userDocument();
+      const int delta = 1; //increment
+      await updateCounts(transaction, userRef, delta, task);
+      final taskRef = userRef.collection('tasks').doc();
+      transaction.set(taskRef, task.toMap());
+      return const FirebaseResponse.success();
+    });
   }
 
   @override
   Future<FirebaseResponse> delete(Task task) {
     return _firestore.runTransaction((transaction) async {
       final userRef = await _firestore.userDocument();
-      final userSnapshot = await transaction.get(userRef);
-      final userCounts = Counts.fromMap(userSnapshot.data());
-      final newCounts = Counts(
-          totalCount: userCounts.totalCount - 1,
-          otherCount: task.category == null
-              ? userCounts.otherCount - 1
-              : userCounts.otherCount);
-      transaction.update(userRef, newCounts.toMap());
-      if (task.category != null) {
-        final categoryRef =
-            userRef.collection('category').doc(task.category.id);
-        final category = categoryFromFirestore(await categoryRef.get());
-        final newCategory = category.copyWith(count: category.count - 1);
-        transaction.update(categoryRef, newCategory.toMap());
-      }
+      const int delta = -1; //decrement
+      await updateCounts(transaction, userRef, -1, task);
       final taskRef = userRef.collection('tasks').doc(task.id);
       transaction.delete(taskRef);
       return const FirebaseResponse.success();
     });
+  }
+
+  Future updateCounts(Transaction transaction, DocumentReference userRef,
+      int delta, Task task) async {
+    final userSnapshot = await transaction.get(userRef);
+    final userCounts = Counts.fromMap(userSnapshot.data());
+    final newCounts = Counts(
+        totalCount: userCounts.totalCount + delta,
+        otherCount: task.category == null
+            ? userCounts.otherCount + delta
+            : userCounts.otherCount);
+    transaction.update(userRef, newCounts.toMap());
+    if (task.category != null) {
+      await updateCategoryCount(userRef, task.category.id, delta, transaction);
+    }
+  }
+
+  Future updateCategoryCount(DocumentReference userRef, String categoryId,
+      int delta, Transaction transaction) async {
+    final categoryRef = userRef.collection('category').doc(categoryId);
+    final category = categoryFromFirestore(await categoryRef.get());
+    final newCategory = category.copyWith(count: category.count + delta);
+    transaction.update(categoryRef, newCategory.toMap());
   }
 
   @override
@@ -135,20 +151,12 @@ class TaskRepository implements ITaskRepository {
       int otherDiff = 0;
       if (oldTaskCategory != task.category?.id) {
         if (oldTaskCategory != null) {
-          final categoryRef =
-              userRef.collection('category').doc(oldTaskCategory);
-          final category = categoryFromFirestore(await categoryRef.get());
-          final newCategory = category.copyWith(count: category.count - 1);
-          transaction.update(categoryRef, newCategory.toMap());
+          await updateCategoryCount(userRef, oldTaskCategory, -1, transaction);
         } else {
           otherDiff--;
         }
         if (task.category != null) {
-          final categoryRef =
-              userRef.collection('category').doc(task.category.id);
-          final category = categoryFromFirestore(await categoryRef.get());
-          final newCategory = category.copyWith(count: category.count + 1);
-          transaction.update(categoryRef, newCategory.toMap());
+          await updateCategoryCount(userRef, task.category.id, 1, transaction);
         } else {
           otherDiff++;
         }

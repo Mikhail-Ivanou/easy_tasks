@@ -25,10 +25,11 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
     yield* event.map(
       initialized: (event) async* {
         yield state.copyWith(
-          task: event.initialTask ?? Task.empty(),
-          isTitleValid: event.initialTask.title.isNotEmpty,
-          isNew: false,
+          task: event.initialTask ?? Task.create(event.category),
+          isTitleValid: event.initialTask?.title?.isNotEmpty == true,
+          isNew: event.initialTask == null,
         );
+        ;
       },
       titleChanged: (event) async* {
         yield state.copyWith(
@@ -91,15 +92,6 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
         yield state.copyWith(
           task: state.task.copyWith(notes: event.note),
           response: const FirebaseResponse.empty(),
-        );
-      },
-      saved: (event) async* {
-        yield state.copyWith(
-          isSaving: true,
-          response: const FirebaseResponse.empty(),
-        );
-        yield state.copyWith(
-          response: const FirebaseResponse.success(),
         );
       },
     );

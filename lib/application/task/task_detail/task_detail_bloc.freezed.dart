@@ -14,8 +14,7 @@ class _$TaskDetailEventTearOff {
   const _$TaskDetailEventTearOff();
 
 // ignore: unused_element
-  _Initialized initialized(
-      {@required Task initialTask, TaskCategory category}) {
+  _Initialized initialized({Task initialTask, TaskCategory category}) {
     return _Initialized(
       initialTask: initialTask,
       category: category,
@@ -73,11 +72,6 @@ class _$TaskDetailEventTearOff {
       note,
     );
   }
-
-// ignore: unused_element
-  _Saved saved() {
-    return const _Saved();
-  }
 }
 
 /// @nodoc
@@ -97,7 +91,6 @@ mixin _$TaskDetailEvent {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -110,7 +103,6 @@ mixin _$TaskDetailEvent {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -124,7 +116,6 @@ mixin _$TaskDetailEvent {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -137,7 +128,6 @@ mixin _$TaskDetailEvent {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   });
 }
@@ -217,8 +207,7 @@ class __$InitializedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Initialized implements _Initialized {
-  const _$_Initialized({@required this.initialTask, this.category})
-      : assert(initialTask != null);
+  const _$_Initialized({this.initialTask, this.category});
 
   @override
   final Task initialTask;
@@ -264,7 +253,6 @@ class _$_Initialized implements _Initialized {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -275,7 +263,6 @@ class _$_Initialized implements _Initialized {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return initialized(initialTask, category);
   }
 
@@ -291,7 +278,6 @@ class _$_Initialized implements _Initialized {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -313,7 +299,6 @@ class _$_Initialized implements _Initialized {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -324,7 +309,6 @@ class _$_Initialized implements _Initialized {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return initialized(this);
   }
 
@@ -340,7 +324,6 @@ class _$_Initialized implements _Initialized {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -352,8 +335,8 @@ class _$_Initialized implements _Initialized {
 }
 
 abstract class _Initialized implements TaskDetailEvent {
-  const factory _Initialized(
-      {@required Task initialTask, TaskCategory category}) = _$_Initialized;
+  const factory _Initialized({Task initialTask, TaskCategory category}) =
+      _$_Initialized;
 
   Task get initialTask;
   TaskCategory get category;
@@ -430,7 +413,6 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -441,7 +423,6 @@ class _$_TitleChanged implements _TitleChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return titleChanged(titleStr);
   }
 
@@ -457,7 +438,6 @@ class _$_TitleChanged implements _TitleChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -479,7 +459,6 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -490,7 +469,6 @@ class _$_TitleChanged implements _TitleChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return titleChanged(this);
   }
 
@@ -506,7 +484,6 @@ class _$_TitleChanged implements _TitleChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -572,7 +549,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -583,7 +559,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return completedChanged();
   }
 
@@ -599,7 +574,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -621,7 +595,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -632,7 +605,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return completedChanged(this);
   }
 
@@ -648,7 +620,6 @@ class _$_CompletedChanged implements _CompletedChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -711,7 +682,6 @@ class _$_FavChanged implements _FavChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -722,7 +692,6 @@ class _$_FavChanged implements _FavChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return favChanged();
   }
 
@@ -738,7 +707,6 @@ class _$_FavChanged implements _FavChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -760,7 +728,6 @@ class _$_FavChanged implements _FavChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -771,7 +738,6 @@ class _$_FavChanged implements _FavChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return favChanged(this);
   }
 
@@ -787,7 +753,6 @@ class _$_FavChanged implements _FavChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -885,7 +850,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -896,7 +860,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return categoryChanged(category);
   }
 
@@ -912,7 +875,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -934,7 +896,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -945,7 +906,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return categoryChanged(this);
   }
 
@@ -961,7 +921,6 @@ class _$_CategoryChanged implements _CategoryChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1048,7 +1007,6 @@ class _$_TagsChanged implements _TagsChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1059,7 +1017,6 @@ class _$_TagsChanged implements _TagsChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return tagsChanged(tags);
   }
 
@@ -1075,7 +1032,6 @@ class _$_TagsChanged implements _TagsChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1097,7 +1053,6 @@ class _$_TagsChanged implements _TagsChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1108,7 +1063,6 @@ class _$_TagsChanged implements _TagsChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return tagsChanged(this);
   }
 
@@ -1124,7 +1078,6 @@ class _$_TagsChanged implements _TagsChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1211,7 +1164,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1222,7 +1174,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return dueDateChanged(dueDate);
   }
 
@@ -1238,7 +1189,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1260,7 +1210,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1271,7 +1220,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return dueDateChanged(this);
   }
 
@@ -1287,7 +1235,6 @@ class _$_DueDateChanged implements _DueDateChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1375,7 +1322,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1386,7 +1332,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return priorityChanged(priority);
   }
 
@@ -1402,7 +1347,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1424,7 +1368,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1435,7 +1378,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return priorityChanged(this);
   }
 
@@ -1451,7 +1393,6 @@ class _$_PriorityChanged implements _PriorityChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1538,7 +1479,6 @@ class _$_NotesChanged implements _NotesChanged {
     @required Result dueDateChanged(DateTime dueDate),
     @required Result priorityChanged(TaskPriority priority),
     @required Result notesChanged(String note),
-    @required Result saved(),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1549,7 +1489,6 @@ class _$_NotesChanged implements _NotesChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return notesChanged(note);
   }
 
@@ -1565,7 +1504,6 @@ class _$_NotesChanged implements _NotesChanged {
     Result dueDateChanged(DateTime dueDate),
     Result priorityChanged(TaskPriority priority),
     Result notesChanged(String note),
-    Result saved(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1587,7 +1525,6 @@ class _$_NotesChanged implements _NotesChanged {
     @required Result dueDateChanged(_DueDateChanged value),
     @required Result priorityChanged(_PriorityChanged value),
     @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1598,7 +1535,6 @@ class _$_NotesChanged implements _NotesChanged {
     assert(dueDateChanged != null);
     assert(priorityChanged != null);
     assert(notesChanged != null);
-    assert(saved != null);
     return notesChanged(this);
   }
 
@@ -1614,7 +1550,6 @@ class _$_NotesChanged implements _NotesChanged {
     Result dueDateChanged(_DueDateChanged value),
     Result priorityChanged(_PriorityChanged value),
     Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1630,142 +1565,6 @@ abstract class _NotesChanged implements TaskDetailEvent {
 
   String get note;
   _$NotesChangedCopyWith<_NotesChanged> get copyWith;
-}
-
-/// @nodoc
-abstract class _$SavedCopyWith<$Res> {
-  factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
-      __$SavedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$SavedCopyWithImpl<$Res> extends _$TaskDetailEventCopyWithImpl<$Res>
-    implements _$SavedCopyWith<$Res> {
-  __$SavedCopyWithImpl(_Saved _value, $Res Function(_Saved) _then)
-      : super(_value, (v) => _then(v as _Saved));
-
-  @override
-  _Saved get _value => super._value as _Saved;
-}
-
-/// @nodoc
-class _$_Saved implements _Saved {
-  const _$_Saved();
-
-  @override
-  String toString() {
-    return 'TaskDetailEvent.saved()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Saved);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Task initialTask, TaskCategory category),
-    @required Result titleChanged(String titleStr),
-    @required Result completedChanged(),
-    @required Result favChanged(),
-    @required Result categoryChanged(TaskCategory category),
-    @required Result tagsChanged(List<String> tags),
-    @required Result dueDateChanged(DateTime dueDate),
-    @required Result priorityChanged(TaskPriority priority),
-    @required Result notesChanged(String note),
-    @required Result saved(),
-  }) {
-    assert(initialized != null);
-    assert(titleChanged != null);
-    assert(completedChanged != null);
-    assert(favChanged != null);
-    assert(categoryChanged != null);
-    assert(tagsChanged != null);
-    assert(dueDateChanged != null);
-    assert(priorityChanged != null);
-    assert(notesChanged != null);
-    assert(saved != null);
-    return saved();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Task initialTask, TaskCategory category),
-    Result titleChanged(String titleStr),
-    Result completedChanged(),
-    Result favChanged(),
-    Result categoryChanged(TaskCategory category),
-    Result tagsChanged(List<String> tags),
-    Result dueDateChanged(DateTime dueDate),
-    Result priorityChanged(TaskPriority priority),
-    Result notesChanged(String note),
-    Result saved(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (saved != null) {
-      return saved();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result titleChanged(_TitleChanged value),
-    @required Result completedChanged(_CompletedChanged value),
-    @required Result favChanged(_FavChanged value),
-    @required Result categoryChanged(_CategoryChanged value),
-    @required Result tagsChanged(_TagsChanged value),
-    @required Result dueDateChanged(_DueDateChanged value),
-    @required Result priorityChanged(_PriorityChanged value),
-    @required Result notesChanged(_NotesChanged value),
-    @required Result saved(_Saved value),
-  }) {
-    assert(initialized != null);
-    assert(titleChanged != null);
-    assert(completedChanged != null);
-    assert(favChanged != null);
-    assert(categoryChanged != null);
-    assert(tagsChanged != null);
-    assert(dueDateChanged != null);
-    assert(priorityChanged != null);
-    assert(notesChanged != null);
-    assert(saved != null);
-    return saved(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result titleChanged(_TitleChanged value),
-    Result completedChanged(_CompletedChanged value),
-    Result favChanged(_FavChanged value),
-    Result categoryChanged(_CategoryChanged value),
-    Result tagsChanged(_TagsChanged value),
-    Result dueDateChanged(_DueDateChanged value),
-    Result priorityChanged(_PriorityChanged value),
-    Result notesChanged(_NotesChanged value),
-    Result saved(_Saved value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (saved != null) {
-      return saved(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Saved implements TaskDetailEvent {
-  const factory _Saved() = _$_Saved;
 }
 
 /// @nodoc
