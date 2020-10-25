@@ -57,7 +57,7 @@ class _ItemsList extends StatelessWidget {
                     .toList()));
           });
           return ListView.builder(
-            itemCount: state.tasks.length,
+            itemCount: groupedTasks.length,
             itemBuilder: (BuildContext context, int index) {
               final entry = groupedTasks[index];
               if (entry.children.isEmpty) {
