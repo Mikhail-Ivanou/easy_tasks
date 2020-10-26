@@ -11,11 +11,14 @@ import 'package:flutter/foundation.dart';
 
 import '../../domain/category/category.dart';
 import '../../domain/task/task.dart';
+import '../about/about.dart';
 import '../auth/auth_screen.dart';
 import '../auth/reset_password_screen.dart';
+import '../category/manage_category_page.dart';
 import '../core/splash_screen.dart';
 import '../main/by_category/tasks_list_page.dart';
 import '../main/main_screen.dart';
+import '../settings/settngs_page.dart';
 import '../task_detail/task_create_page.dart';
 import '../task_detail/task_detail_page.dart';
 
@@ -27,6 +30,9 @@ class Routes {
   static const String taskDetailPage = '/task-detail-page';
   static const String taskCreatePage = '/task-create-page';
   static const String tasksListPage = '/tasks-list-page';
+  static const String settingsPage = '/settings-page';
+  static const String manageCategoriesPage = '/manage-categories-page';
+  static const String aboutPage = '/about-page';
   static const all = <String>{
     splashScreen,
     authScreen,
@@ -35,6 +41,9 @@ class Routes {
     taskDetailPage,
     taskCreatePage,
     tasksListPage,
+    settingsPage,
+    manageCategoriesPage,
+    aboutPage,
   };
 }
 
@@ -49,6 +58,9 @@ class TasksRouter extends RouterBase {
     RouteDef(Routes.taskDetailPage, page: TaskDetailPage),
     RouteDef(Routes.taskCreatePage, page: TaskCreatePage),
     RouteDef(Routes.tasksListPage, page: TasksListPage),
+    RouteDef(Routes.settingsPage, page: SettingsPage),
+    RouteDef(Routes.manageCategoriesPage, page: ManageCategoriesPage),
+    RouteDef(Routes.aboutPage, page: AboutPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -113,6 +125,24 @@ class TasksRouter extends RouterBase {
           key: args.key,
           category: args.category,
         ),
+        settings: data,
+      );
+    },
+    SettingsPage: (data) {
+      return buildAdaptivePageRoute<SettingsPage>(
+        builder: (context) => SettingsPage(),
+        settings: data,
+      );
+    },
+    ManageCategoriesPage: (data) {
+      return buildAdaptivePageRoute<ManageCategoriesPage>(
+        builder: (context) => ManageCategoriesPage(),
+        settings: data,
+      );
+    },
+    AboutPage: (data) {
+      return buildAdaptivePageRoute<AboutPage>(
+        builder: (context) => AboutPage(),
         settings: data,
       );
     },

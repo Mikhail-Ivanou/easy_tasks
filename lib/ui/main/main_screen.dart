@@ -43,6 +43,7 @@ class _MainScreenState extends State<MainScreen> {
         ],
         title: const Text('Easy tasks'),
       ),
+      drawer: _getDrawer(),
       body: SafeArea(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -73,6 +74,96 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: Fab(),
     );
   }
+
+  Widget _getDrawer() {
+    final menuItems = getMenuItems(context);
+    return SafeArea(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Colors.blue, Colors.red]),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 2.0,
+                      spreadRadius: 0.0,
+                      offset: Offset(2.0, 2.0)),
+                ],
+              ), //
+
+              height: 104,
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: menuItems.length,
+                  itemBuilder: (context, position) {
+                    final item = menuItems[position];
+                    return ListTile(
+                      onTap: () {
+                        item.action.call();
+                        Navigator.pop(context);
+                      },
+                      leading: Icon(
+                        item.icon,
+                        color: Colors.black,
+                      ),
+                      title: Text(
+                        item.menuTitle,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    );
+                  }),
+            ),
+            const SizedBox(
+              height: 12,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+List<MenuItem> getMenuItems(BuildContext context) => [
+      MenuItem(
+          icon: Icons.settings,
+          menuTitle: 'Settings',
+          action: () {
+            ExtendedNavigator.of(context).push(Routes.settingsPage);
+          }),
+      MenuItem(
+          icon: Icons.category,
+          menuTitle: 'Manage categories',
+          action: () {
+            ExtendedNavigator.of(context).push(Routes.manageCategoriesPage);
+          }),
+      MenuItem(
+          icon: Icons.info_outline,
+          menuTitle: 'About',
+          action: () {
+            ExtendedNavigator.of(context).push(Routes.aboutPage);
+          }),
+    ];
+
+class MenuItem {
+  final IconData icon;
+  final String menuTitle;
+  final Function action;
+
+  MenuItem({this.icon, this.menuTitle, this.action});
 }
 
 class Menu extends StatelessWidget {

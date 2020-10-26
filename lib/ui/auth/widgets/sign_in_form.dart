@@ -148,7 +148,19 @@ class SignInForm extends StatelessWidget {
               if (state.isSubmitting) ...[
                 const SizedBox(height: 8),
                 const LinearProgressIndicator()
-              ]
+              ],
+              const SizedBox(
+                height: 16,
+              ),
+              FlatButton(
+                onPressed: () async {
+                  ExtendedNavigator.of(context).push(Routes.aboutPage);
+                },
+                child: const Text(
+                  'About / Privacy Policy / \n Terms of Conditions',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
             ],
           ),
         );
