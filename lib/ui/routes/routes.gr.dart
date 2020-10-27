@@ -14,6 +14,7 @@ import '../../domain/task/task.dart';
 import '../about/about.dart';
 import '../auth/auth_screen.dart';
 import '../auth/reset_password_screen.dart';
+import '../category/category_detail_page.dart';
 import '../category/manage_category_page.dart';
 import '../core/splash_screen.dart';
 import '../main/by_category/tasks_list_page.dart';
@@ -32,6 +33,7 @@ class Routes {
   static const String tasksListPage = '/tasks-list-page';
   static const String settingsPage = '/settings-page';
   static const String manageCategoriesPage = '/manage-categories-page';
+  static const String categoryDetailPage = '/category-detail-page';
   static const String aboutPage = '/about-page';
   static const all = <String>{
     splashScreen,
@@ -43,6 +45,7 @@ class Routes {
     tasksListPage,
     settingsPage,
     manageCategoriesPage,
+    categoryDetailPage,
     aboutPage,
   };
 }
@@ -60,6 +63,7 @@ class TasksRouter extends RouterBase {
     RouteDef(Routes.tasksListPage, page: TasksListPage),
     RouteDef(Routes.settingsPage, page: SettingsPage),
     RouteDef(Routes.manageCategoriesPage, page: ManageCategoriesPage),
+    RouteDef(Routes.categoryDetailPage, page: CategoryDetailPage),
     RouteDef(Routes.aboutPage, page: AboutPage),
   ];
   @override
@@ -140,6 +144,19 @@ class TasksRouter extends RouterBase {
         settings: data,
       );
     },
+    CategoryDetailPage: (data) {
+      final args = data.getArgs<CategoryDetailPageArguments>(
+        orElse: () => CategoryDetailPageArguments(),
+      );
+      return buildAdaptivePageRoute<CategoryDetailPage>(
+        builder: (context) => CategoryDetailPage(
+          key: args.key,
+          category: args.category,
+        ),
+        settings: data,
+        fullscreenDialog: true,
+      );
+    },
     AboutPage: (data) {
       return buildAdaptivePageRoute<AboutPage>(
         builder: (context) => AboutPage(),
@@ -179,4 +196,11 @@ class TasksListPageArguments {
   final Key key;
   final TaskCategory category;
   TasksListPageArguments({this.key, @required this.category});
+}
+
+/// CategoryDetailPage arguments holder class
+class CategoryDetailPageArguments {
+  final Key key;
+  final TaskCategory category;
+  CategoryDetailPageArguments({this.key, this.category});
 }

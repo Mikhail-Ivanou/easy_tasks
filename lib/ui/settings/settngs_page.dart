@@ -7,7 +7,12 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: Container(),
+      body: const Center(
+        child: Text(
+          'Coming Soon!',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
     );
   }
 }

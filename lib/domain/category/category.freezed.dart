@@ -16,11 +16,11 @@ class _$TaskCategoryTearOff {
 // ignore: unused_element
   _TaskCategory call(
       {String id,
-      @required String title,
-      @required IconData icon,
-      @required Color color,
-      @required int count,
-      @required int position}) {
+      String title,
+      IconData icon,
+      Color color,
+      int count,
+      int position}) {
     return _TaskCategory(
       id: id,
       title: title,
@@ -139,18 +139,8 @@ class __$TaskCategoryCopyWithImpl<$Res> extends _$TaskCategoryCopyWithImpl<$Res>
 /// @nodoc
 class _$_TaskCategory extends _TaskCategory {
   const _$_TaskCategory(
-      {this.id,
-      @required this.title,
-      @required this.icon,
-      @required this.color,
-      @required this.count,
-      @required this.position})
-      : assert(title != null),
-        assert(icon != null),
-        assert(color != null),
-        assert(count != null),
-        assert(position != null),
-        super._();
+      {this.id, this.title, this.icon, this.color, this.count, this.position})
+      : super._();
 
   @override
   final String id;
@@ -208,11 +198,11 @@ abstract class _TaskCategory extends TaskCategory {
   const _TaskCategory._() : super._();
   const factory _TaskCategory(
       {String id,
-      @required String title,
-      @required IconData icon,
-      @required Color color,
-      @required int count,
-      @required int position}) = _$_TaskCategory;
+      String title,
+      IconData icon,
+      Color color,
+      int count,
+      int position}) = _$_TaskCategory;
 
   @override
   String get id;

@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'application/auth/auth_bloc.dart';
+import 'application/category/actions/category_actions_cubit.dart';
 import 'application/category/category_cards_bloc.dart';
 import 'repository/category/category_repository.dart';
 import 'repository/auth/firebase_auth_facade.dart';
@@ -57,6 +58,8 @@ GetIt $initGetIt(
   gh.factory<TotalTasksBloc>(() => TotalTasksBloc(get<ITaskRepository>()));
   gh.factory<AuthBloc>(
       () => AuthBloc(get<IAuthFacade>(), get<IInitialContentGenerator>()));
+  gh.factory<CategoryActionsCubit>(
+      () => CategoryActionsCubit(get<ICategoryRepository>()));
   gh.factory<CategoryCardsBloc>(
       () => CategoryCardsBloc(get<ICategoryRepository>()));
   return get;

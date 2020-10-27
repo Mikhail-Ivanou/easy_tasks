@@ -64,12 +64,14 @@ List<Task> initialTasks({
     Task(
         title: 'Mark task as favorite',
         category: use4,
+        isCompleted: false,
         dateCreated: Timestamp.now(),
         dueDate: DateTime.now().subtract(const Duration(days: 2)),
         priority: TaskPriority.High),
     Task(
         title: 'This task is already favorite',
         category: use4,
+        isCompleted: false,
         dateCreated: Timestamp.now(),
         isFavorite: true,
         dueDate: DateTime.now().subtract(const Duration(days: 1)),
@@ -77,29 +79,34 @@ List<Task> initialTasks({
     Task(
         title: 'This is normal overdue task',
         category: use4,
+        isCompleted: false,
         dateCreated: Timestamp.now(),
         dueDate: DateTime.now().subtract(const Duration(days: 1)),
         priority: TaskPriority.Normal),
     Task(
         title: 'Task with high priority for today',
         category: use3,
+        isCompleted: false,
         dateCreated: Timestamp.now(),
         dueDate: DateTime.now(),
         priority: TaskPriority.High),
     Task(
         title: 'Task with no due date',
         category: use4,
+        isCompleted: false,
         dueDate: DateTime.now(),
         priority: TaskPriority.Low),
     Task(
         title: 'Future task',
         category: use3,
+        isCompleted: false,
         dateCreated: Timestamp.now(),
         dueDate: DateTime.now().add(const Duration(days: 2)),
         priority: TaskPriority.High),
     Task(
         title: 'Low task for today',
         category: use1,
+        isCompleted: false,
         dueDate: DateTime.now(),
         dateCreated: Timestamp.now(),
         priority: TaskPriority.Low,
@@ -107,6 +114,7 @@ List<Task> initialTasks({
     Task(
         title: 'High task for future',
         category: use3,
+        isCompleted: false,
         dueDate: DateTime.now().add(const Duration(days: 3)),
         dateCreated: Timestamp.now(),
         priority: TaskPriority.High,
@@ -114,11 +122,13 @@ List<Task> initialTasks({
     Task(
         title: 'One more low',
         category: useOnce,
+        isCompleted: false,
         dueDate: DateTime.now().add(const Duration(days: 3)),
         dateCreated: Timestamp.now(),
         priority: TaskPriority.Low),
     Task(
         title: 'To other category',
+        isCompleted: false,
         dueDate: DateTime.now().add(const Duration(days: 3)),
         dateCreated: Timestamp.now(),
         priority: TaskPriority.None),

@@ -12,7 +12,7 @@ abstract class TaskDetailState with _$TaskDetailState {
   }) = _TaskDetailState;
 
   factory TaskDetailState.initial() => TaskDetailState(
-        task: Task.empty(),
+        task: Task.create(),
         isTitleValid: false,
         isSaving: false,
         isNew: true,

@@ -19,16 +19,13 @@ abstract class Task with _$Task {
     bool isFavorite,
   }) = _Task;
 
-  factory Task.empty() => const Task(
-        title: '',
-        isCompleted: false,
-      );
 
-  factory Task.create(TaskCategory category) => Task(
+  factory Task.create({TaskCategory category}) => Task(
         title: '',
         category: category,
         isCompleted: false,
         isFavorite: false,
+        dateCreated: Timestamp.now(),
         priority: TaskPriority.None,
       );
 }

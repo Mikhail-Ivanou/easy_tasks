@@ -12,10 +12,15 @@ abstract class TaskCategory implements _$TaskCategory {
 
   const factory TaskCategory({
     String id,
-    @required String title,
-    @required IconData icon,
-    @required Color color,
-    @required int count,
-    @required int position,
+    String title,
+    IconData icon,
+    Color color,
+    int count,
+    int position,
   }) = _TaskCategory;
+
+  factory TaskCategory.create() => const TaskCategory(
+        title: '',
+        count: 0,
+      );
 }

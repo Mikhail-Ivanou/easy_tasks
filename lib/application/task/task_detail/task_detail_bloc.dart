@@ -25,7 +25,7 @@ class TaskDetailBloc extends Bloc<TaskDetailEvent, TaskDetailState> {
     yield* event.map(
       initialized: (event) async* {
         yield state.copyWith(
-          task: event.initialTask ?? Task.create(event.category),
+          task: event.initialTask ?? Task.create(category: event.category),
           isTitleValid: event.initialTask?.title?.isNotEmpty == true,
           isNew: event.initialTask == null,
         );
