@@ -17,6 +17,23 @@ class _$CategoryCardsEventTearOff {
   _GetCategories getCategories() {
     return const _GetCategories();
   }
+
+// ignore: unused_element
+  _ReorderCategories reorderCategories(
+      List<TaskCategory> categories, int oldIndex, int newIndex) {
+    return _ReorderCategories(
+      categories,
+      oldIndex,
+      newIndex,
+    );
+  }
+
+// ignore: unused_element
+  _CategoryReceived categoryReceived(List<TaskCategory> categories) {
+    return _CategoryReceived(
+      categories,
+    );
+  }
 }
 
 /// @nodoc
@@ -28,19 +45,30 @@ mixin _$CategoryCardsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getCategories(),
+    @required
+        Result reorderCategories(
+            List<TaskCategory> categories, int oldIndex, int newIndex),
+    @required Result categoryReceived(List<TaskCategory> categories),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getCategories(),
+    Result reorderCategories(
+        List<TaskCategory> categories, int oldIndex, int newIndex),
+    Result categoryReceived(List<TaskCategory> categories),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result getCategories(_GetCategories value),
+    @required Result reorderCategories(_ReorderCategories value),
+    @required Result categoryReceived(_CategoryReceived value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getCategories(_GetCategories value),
+    Result reorderCategories(_ReorderCategories value),
+    Result categoryReceived(_CategoryReceived value),
     @required Result orElse(),
   });
 }
@@ -102,8 +130,14 @@ class _$_GetCategories implements _GetCategories {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result getCategories(),
+    @required
+        Result reorderCategories(
+            List<TaskCategory> categories, int oldIndex, int newIndex),
+    @required Result categoryReceived(List<TaskCategory> categories),
   }) {
     assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
     return getCategories();
   }
 
@@ -111,6 +145,9 @@ class _$_GetCategories implements _GetCategories {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getCategories(),
+    Result reorderCategories(
+        List<TaskCategory> categories, int oldIndex, int newIndex),
+    Result categoryReceived(List<TaskCategory> categories),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -124,8 +161,12 @@ class _$_GetCategories implements _GetCategories {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result getCategories(_GetCategories value),
+    @required Result reorderCategories(_ReorderCategories value),
+    @required Result categoryReceived(_CategoryReceived value),
   }) {
     assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
     return getCategories(this);
   }
 
@@ -133,6 +174,8 @@ class _$_GetCategories implements _GetCategories {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result getCategories(_GetCategories value),
+    Result reorderCategories(_ReorderCategories value),
+    Result categoryReceived(_CategoryReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -145,6 +188,285 @@ class _$_GetCategories implements _GetCategories {
 
 abstract class _GetCategories implements CategoryCardsEvent {
   const factory _GetCategories() = _$_GetCategories;
+}
+
+/// @nodoc
+abstract class _$ReorderCategoriesCopyWith<$Res> {
+  factory _$ReorderCategoriesCopyWith(
+          _ReorderCategories value, $Res Function(_ReorderCategories) then) =
+      __$ReorderCategoriesCopyWithImpl<$Res>;
+  $Res call({List<TaskCategory> categories, int oldIndex, int newIndex});
+}
+
+/// @nodoc
+class __$ReorderCategoriesCopyWithImpl<$Res>
+    extends _$CategoryCardsEventCopyWithImpl<$Res>
+    implements _$ReorderCategoriesCopyWith<$Res> {
+  __$ReorderCategoriesCopyWithImpl(
+      _ReorderCategories _value, $Res Function(_ReorderCategories) _then)
+      : super(_value, (v) => _then(v as _ReorderCategories));
+
+  @override
+  _ReorderCategories get _value => super._value as _ReorderCategories;
+
+  @override
+  $Res call({
+    Object categories = freezed,
+    Object oldIndex = freezed,
+    Object newIndex = freezed,
+  }) {
+    return _then(_ReorderCategories(
+      categories == freezed
+          ? _value.categories
+          : categories as List<TaskCategory>,
+      oldIndex == freezed ? _value.oldIndex : oldIndex as int,
+      newIndex == freezed ? _value.newIndex : newIndex as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ReorderCategories implements _ReorderCategories {
+  const _$_ReorderCategories(this.categories, this.oldIndex, this.newIndex)
+      : assert(categories != null),
+        assert(oldIndex != null),
+        assert(newIndex != null);
+
+  @override
+  final List<TaskCategory> categories;
+  @override
+  final int oldIndex;
+  @override
+  final int newIndex;
+
+  @override
+  String toString() {
+    return 'CategoryCardsEvent.reorderCategories(categories: $categories, oldIndex: $oldIndex, newIndex: $newIndex)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ReorderCategories &&
+            (identical(other.categories, categories) ||
+                const DeepCollectionEquality()
+                    .equals(other.categories, categories)) &&
+            (identical(other.oldIndex, oldIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.oldIndex, oldIndex)) &&
+            (identical(other.newIndex, newIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.newIndex, newIndex)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(categories) ^
+      const DeepCollectionEquality().hash(oldIndex) ^
+      const DeepCollectionEquality().hash(newIndex);
+
+  @override
+  _$ReorderCategoriesCopyWith<_ReorderCategories> get copyWith =>
+      __$ReorderCategoriesCopyWithImpl<_ReorderCategories>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getCategories(),
+    @required
+        Result reorderCategories(
+            List<TaskCategory> categories, int oldIndex, int newIndex),
+    @required Result categoryReceived(List<TaskCategory> categories),
+  }) {
+    assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
+    return reorderCategories(categories, oldIndex, newIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getCategories(),
+    Result reorderCategories(
+        List<TaskCategory> categories, int oldIndex, int newIndex),
+    Result categoryReceived(List<TaskCategory> categories),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reorderCategories != null) {
+      return reorderCategories(categories, oldIndex, newIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getCategories(_GetCategories value),
+    @required Result reorderCategories(_ReorderCategories value),
+    @required Result categoryReceived(_CategoryReceived value),
+  }) {
+    assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
+    return reorderCategories(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getCategories(_GetCategories value),
+    Result reorderCategories(_ReorderCategories value),
+    Result categoryReceived(_CategoryReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reorderCategories != null) {
+      return reorderCategories(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReorderCategories implements CategoryCardsEvent {
+  const factory _ReorderCategories(
+          List<TaskCategory> categories, int oldIndex, int newIndex) =
+      _$_ReorderCategories;
+
+  List<TaskCategory> get categories;
+  int get oldIndex;
+  int get newIndex;
+  _$ReorderCategoriesCopyWith<_ReorderCategories> get copyWith;
+}
+
+/// @nodoc
+abstract class _$CategoryReceivedCopyWith<$Res> {
+  factory _$CategoryReceivedCopyWith(
+          _CategoryReceived value, $Res Function(_CategoryReceived) then) =
+      __$CategoryReceivedCopyWithImpl<$Res>;
+  $Res call({List<TaskCategory> categories});
+}
+
+/// @nodoc
+class __$CategoryReceivedCopyWithImpl<$Res>
+    extends _$CategoryCardsEventCopyWithImpl<$Res>
+    implements _$CategoryReceivedCopyWith<$Res> {
+  __$CategoryReceivedCopyWithImpl(
+      _CategoryReceived _value, $Res Function(_CategoryReceived) _then)
+      : super(_value, (v) => _then(v as _CategoryReceived));
+
+  @override
+  _CategoryReceived get _value => super._value as _CategoryReceived;
+
+  @override
+  $Res call({
+    Object categories = freezed,
+  }) {
+    return _then(_CategoryReceived(
+      categories == freezed
+          ? _value.categories
+          : categories as List<TaskCategory>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_CategoryReceived implements _CategoryReceived {
+  const _$_CategoryReceived(this.categories) : assert(categories != null);
+
+  @override
+  final List<TaskCategory> categories;
+
+  @override
+  String toString() {
+    return 'CategoryCardsEvent.categoryReceived(categories: $categories)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CategoryReceived &&
+            (identical(other.categories, categories) ||
+                const DeepCollectionEquality()
+                    .equals(other.categories, categories)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(categories);
+
+  @override
+  _$CategoryReceivedCopyWith<_CategoryReceived> get copyWith =>
+      __$CategoryReceivedCopyWithImpl<_CategoryReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result getCategories(),
+    @required
+        Result reorderCategories(
+            List<TaskCategory> categories, int oldIndex, int newIndex),
+    @required Result categoryReceived(List<TaskCategory> categories),
+  }) {
+    assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
+    return categoryReceived(categories);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result getCategories(),
+    Result reorderCategories(
+        List<TaskCategory> categories, int oldIndex, int newIndex),
+    Result categoryReceived(List<TaskCategory> categories),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (categoryReceived != null) {
+      return categoryReceived(categories);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result getCategories(_GetCategories value),
+    @required Result reorderCategories(_ReorderCategories value),
+    @required Result categoryReceived(_CategoryReceived value),
+  }) {
+    assert(getCategories != null);
+    assert(reorderCategories != null);
+    assert(categoryReceived != null);
+    return categoryReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result getCategories(_GetCategories value),
+    Result reorderCategories(_ReorderCategories value),
+    Result categoryReceived(_CategoryReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (categoryReceived != null) {
+      return categoryReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CategoryReceived implements CategoryCardsEvent {
+  const factory _CategoryReceived(List<TaskCategory> categories) =
+      _$_CategoryReceived;
+
+  List<TaskCategory> get categories;
+  _$CategoryReceivedCopyWith<_CategoryReceived> get copyWith;
 }
 
 /// @nodoc

@@ -19,6 +19,8 @@ part 'category_cards_bloc.freezed.dart';
 class CategoryCardsBloc extends Bloc<CategoryCardsEvent, CategoryCardsState> {
   final ICategoryRepository repository;
 
+  StreamSubscription<List<TaskCategory>> _noteStreamSubscription;
+
   CategoryCardsBloc(this.repository)
       : super(const CategoryCardsState.initial());
 
@@ -29,10 +31,26 @@ class CategoryCardsBloc extends Bloc<CategoryCardsEvent, CategoryCardsState> {
     yield* event.map(
       getCategories: (event) async* {
         yield const CategoryCardsState.isLoading();
-        yield* repository
-            .watchCategories()
-            .map((event) => CategoryCardsState.loadSuccess(event));
+        _noteStreamSubscription = repository.watchCategories().listen((event) {
+          add(CategoryCardsEvent.categoryReceived(event));
+        });
+      },
+      reorderCategories: (_ReorderCategories value) async* {
+        yield const CategoryCardsState.isLoading();
+        final categories = value.categories;
+        categories.insert(value.newIndex, categories.removeAt(value.oldIndex));
+        yield CategoryCardsState.loadSuccess(categories);
+        repository.updateList(categories);
+      },
+      categoryReceived: (_CategoryReceived value) async* {
+        yield CategoryCardsState.loadSuccess(value.categories);
       },
     );
+  }
+
+  @override
+  Future<void> close() async {
+    await _noteStreamSubscription?.cancel();
+    return super.close();
   }
 }

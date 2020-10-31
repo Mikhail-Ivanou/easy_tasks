@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/domain/category/i_category_repository.dart';
 import 'package:easy_tasks/domain/core/firebase_failure.dart';
+import 'package:easy_tasks/domain/core/firebase_response.dart';
+import 'package:easy_tasks/domain/task/counts.dart';
+import 'package:easy_tasks/domain/task/task.dart';
 import 'package:easy_tasks/repository/category/category_converter.dart';
 import 'package:easy_tasks/repository/core/firestore_helpers.dart';
 import 'package:injectable/injectable.dart';
@@ -50,5 +53,18 @@ class CategoryRepository implements ICategoryRepository {
   Future<FirebaseFailure> delete(String categoryId) {
     // TODO: implement delete
     throw UnimplementedError();
+  }
+
+  @override
+  Future<FirebaseResponse> updateList(List<TaskCategory> categories) {
+    return _firestore.runTransaction((transaction) async {
+      final userRef = await _firestore.userDocument();
+      for (int i = 0; i < categories.length; i++) {
+        final category = categories[i];
+        final categoryRef = userRef.collection('category').doc(category.id);
+        transaction.update(categoryRef, {'position': i});
+      }
+      return const FirebaseResponse.success();
+    });
   }
 }

@@ -11,7 +11,7 @@ class ManageCategoriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Categories'),
+        title: const Text('Manage Categories'),
       ),
       body: BlocProvider<CategoryCardsBloc>(
         create: (context) => getIt<CategoryCardsBloc>()

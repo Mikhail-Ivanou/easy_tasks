@@ -9,4 +9,14 @@ part 'category_detail_cubit.freezed.dart';
 
 class CategoryDetailCubit extends Cubit<CategoryDetailState> {
   CategoryDetailCubit() : super(CategoryDetailState.initial());
+
+  Future<void> init(TaskCategory category) async {
+    emit(state.copyWith(
+      category: category,
+      isTitleValid: category?.title?.isNotEmpty == true,
+      isIconValid: category?.icon != null,
+      isColorValid: category?.color != null,
+      isNew: category == null,
+    ));
+  }
 }

@@ -20,12 +20,17 @@ class CategoryListWidget extends StatelessWidget {
             child: CircularProgressIndicator(),
           ),
           loadSuccess: (state) {
-            return ListView.builder(
-              itemCount: state.categories.length,
-              itemBuilder: (BuildContext context, int index) {
-                final TaskCategory item = state.categories[index];
-                return CategoryItem(item);
+            print('loadSuccess called');
+            return ReorderableListView(
+              onReorder: (int oldIndex, int newIndex) {
+                final categoryCardsEvent = CategoryCardsEvent.reorderCategories(
+                    state.categories, oldIndex, newIndex);
+                context.bloc<CategoryCardsBloc>().add(categoryCardsEvent);
               },
+              children: [
+                for (TaskCategory category in state.categories)
+                  CategoryItem(category: category, key: ValueKey(category.id))
+              ],
             );
           },
           loadFailure: (state) => CriticalFailureDisplay(
@@ -38,9 +43,9 @@ class CategoryListWidget extends StatelessWidget {
 }
 
 class CategoryItem extends StatelessWidget {
-  CategoryItem(this.item);
+  final TaskCategory category;
 
-  final TaskCategory item;
+  const CategoryItem({Key key, this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +67,18 @@ class CategoryItem extends StatelessWidget {
       child: ListTile(
         onTap: () {
           ExtendedNavigator.of(context).push(Routes.categoryDetailPage,
-              arguments: CategoryDetailPageArguments(category: item));
+              arguments: CategoryDetailPageArguments(category: category));
         },
         leading: Icon(
-          item.icon,
+          category.icon,
           size: 24.0,
-          color: item.color,
+          color: category.color,
+        ),
+        trailing: const Icon(
+          Icons.list,
         ),
         title: Text(
-          item.title,
+          category.title,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 22.0,
