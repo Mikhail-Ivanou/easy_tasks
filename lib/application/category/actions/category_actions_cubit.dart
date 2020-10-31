@@ -18,7 +18,7 @@ class CategoryActionsCubit extends Cubit<CategoryActionState> {
   Future<void> deleteCategory(TaskCategory category) async {
     try {
       emit(const CategoryActionState.processing());
-      await _categoryRepository.delete(category.id);
+      await _categoryRepository.delete(category);
       emit(const CategoryActionState.success());
     } on Exception {
       const CategoryActionState.error();
@@ -28,7 +28,7 @@ class CategoryActionsCubit extends Cubit<CategoryActionState> {
   Future<void> updateCategory(TaskCategory category) async {
     try {
       emit(const CategoryActionState.processing());
-      await _categoryRepository.delete(category.id);
+      await _categoryRepository.delete(category);
       emit(const CategoryActionState.success());
     } on Exception {
       const CategoryActionState.error();

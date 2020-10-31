@@ -5,8 +5,8 @@ import 'package:easy_tasks/domain/core/firebase_response.dart';
 abstract class ICategoryRepository {
   Stream<List<TaskCategory>> watchCategories();
   Stream<Map<String, TaskCategory>> watchCategoriesAsMap();
-  Future<FirebaseFailure> update(TaskCategory category);
-  Future<FirebaseFailure> create(TaskCategory category);
-  Future<FirebaseFailure> delete(String categoryId);
+  Future<FirebaseResponse> update(TaskCategory category);
+  Future<FirebaseResponse> create(TaskCategory category);
+  Future<FirebaseResponse> delete(TaskCategory category);
   Future<FirebaseResponse> updateList(List<TaskCategory> categories);
 }

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_tasks/application/category/actions/category_actions_cubit.dart';
 import 'package:easy_tasks/application/category/category_cards_bloc.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/ui/core/widgets/critical_failure_display_widget.dart';
 import 'package:easy_tasks/ui/routes/routes.gr.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -58,9 +58,7 @@ class CategoryItem extends StatelessWidget {
           color: Colors.red,
           icon: Icons.delete,
           onTap: () {
-            //TODO process deletion - requires repository refactor or firestore function implemented
-            FlushbarHelper.createInformation(message: 'Not implemented')
-                .show(context);
+            context.bloc<CategoryActionsCubit>().deleteCategory(category);
           },
         )
       ],

@@ -38,21 +38,45 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   @override
-  Future<FirebaseFailure> update(TaskCategory category) {
+  Future<FirebaseResponse> update(TaskCategory category) {
     // TODO: implement update
     throw UnimplementedError();
   }
 
   @override
-  Future<FirebaseFailure> create(TaskCategory category) {
+  Future<FirebaseResponse> create(TaskCategory category) {
     // TODO: implement create
     throw UnimplementedError();
   }
 
   @override
-  Future<FirebaseFailure> delete(String categoryId) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<FirebaseResponse> delete(TaskCategory category) {
+    return _firestore.runTransaction((transaction) async {
+      final userRef = await _firestore.userDocument();
+      final categoryRef = userRef.collection('category').doc(category.id);
+
+      //read counters as read operations should be done before write
+      final userSnapshot = await transaction.get(userRef);
+      final userCounts = Counts.fromMap(userSnapshot.data());
+
+      final newCounts = Counts(
+          totalCount: userCounts.totalCount,
+          otherCount: userCounts.otherCount + category.count);
+      transaction.update(userRef, newCounts.toMap());
+
+      final tasksToUpdate = await userRef
+          .collection('tasks')
+          .where('category', isEqualTo: category.id)
+          .get();
+
+      for (int i = 0; i < tasksToUpdate.size; i++) {
+        final task = tasksToUpdate.docs[i];
+        final taskRef = userRef.collection('tasks').doc(task.id);
+        transaction.update(taskRef, {'category': null});
+      }
+      transaction.delete(categoryRef);
+      return const FirebaseResponse.success();
+    });
   }
 
   @override

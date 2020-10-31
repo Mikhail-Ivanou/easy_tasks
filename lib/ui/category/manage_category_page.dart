@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_tasks/application/category/actions/category_actions_cubit.dart';
 import 'package:easy_tasks/application/category/category_cards_bloc.dart';
 import 'package:easy_tasks/injection.dart';
 import 'package:easy_tasks/ui/category/widgets/category_list_widget.dart';
@@ -13,9 +14,14 @@ class ManageCategoriesPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Manage Categories'),
       ),
-      body: BlocProvider<CategoryCardsBloc>(
-        create: (context) => getIt<CategoryCardsBloc>()
-          ..add(const CategoryCardsEvent.getCategories()),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<CategoryCardsBloc>(
+              create: (context) => getIt<CategoryCardsBloc>()
+                ..add(const CategoryCardsEvent.getCategories())),
+          BlocProvider<CategoryActionsCubit>(
+              create: (context) => getIt<CategoryActionsCubit>()),
+        ],
         child: CategoryListWidget(),
       ),
       floatingActionButton: FloatingActionButton(
