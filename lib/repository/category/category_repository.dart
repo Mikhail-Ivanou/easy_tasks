@@ -38,15 +38,19 @@ class CategoryRepository implements ICategoryRepository {
   }
 
   @override
-  Future<FirebaseResponse> update(TaskCategory category) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<FirebaseResponse> update(TaskCategory category) async {
+    final userRef = await _firestore.userDocument();
+    final categoryRef = userRef.collection('category').doc(category.id);
+    await categoryRef.update(category.toMap());
+    return const FirebaseResponse.success();
   }
 
   @override
-  Future<FirebaseResponse> create(TaskCategory category) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<FirebaseResponse> create(TaskCategory category) async {
+    final userRef = await _firestore.userDocument();
+    final categoryRef = userRef.collection('category').doc();
+    await categoryRef.set(category.toMap());
+    return const FirebaseResponse.success();
   }
 
   @override

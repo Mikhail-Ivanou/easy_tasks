@@ -13,6 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'application/auth/auth_bloc.dart';
 import 'application/category/actions/category_actions_cubit.dart';
 import 'application/category/category_cards_bloc.dart';
+import 'application/category/detail/category_detail_cubit.dart';
 import 'repository/category/category_repository.dart';
 import 'repository/auth/firebase_auth_facade.dart';
 import 'repository/core/firebase_injectable_module.dart';
@@ -39,6 +40,7 @@ GetIt $initGetIt(
 }) {
   final gh = GetItHelper(get, environment, environmentFilter);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  gh.factory<CategoryDetailCubit>(() => CategoryDetailCubit());
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);

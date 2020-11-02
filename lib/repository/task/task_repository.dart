@@ -107,7 +107,7 @@ class TaskRepository implements ITaskRepository {
     return _firestore.runTransaction((transaction) async {
       final userRef = await _firestore.userDocument();
       const int delta = -1; //decrement
-      await updateCounts(transaction, userRef, -1, task);
+      await updateCounts(transaction, userRef, delta, task);
       final taskRef = userRef.collection('tasks').doc(task.id);
       transaction.delete(taskRef);
       return const FirebaseResponse.success();

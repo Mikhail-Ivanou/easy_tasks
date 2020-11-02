@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/domain/category/i_category_repository.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'category_actions_state.dart';
@@ -28,7 +27,11 @@ class CategoryActionsCubit extends Cubit<CategoryActionState> {
   Future<void> updateCategory(TaskCategory category) async {
     try {
       emit(const CategoryActionState.processing());
-      await _categoryRepository.delete(category);
+      if (category.id == null) {
+        await _categoryRepository.create(category);
+      } else {
+        await _categoryRepository.update(category);
+      }
       emit(const CategoryActionState.success());
     } on Exception {
       const CategoryActionState.error();
