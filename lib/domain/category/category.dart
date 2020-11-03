@@ -21,6 +21,8 @@ abstract class TaskCategory implements _$TaskCategory {
 
   factory TaskCategory.create() => const TaskCategory(
         title: '',
+        color: Colors.red,
+        icon: Icons.create,
         count: 0,
       );
 }
