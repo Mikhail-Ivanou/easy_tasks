@@ -26,9 +26,15 @@ class CategoryCell extends StatelessWidget {
             size: 32.0,
             color: item.color,
           )),
-          Text(
-            item.title,
-            style: context.h5(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              item.title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: context.h5(),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),

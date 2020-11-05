@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/domain/category/i_category_repository.dart';
-import 'package:easy_tasks/domain/core/firebase_failure.dart';
 import 'package:easy_tasks/domain/core/firebase_response.dart';
 import 'package:easy_tasks/domain/task/counts.dart';
-import 'package:easy_tasks/domain/task/task.dart';
 import 'package:easy_tasks/repository/category/category_converter.dart';
 import 'package:easy_tasks/repository/core/firestore_helpers.dart';
 import 'package:injectable/injectable.dart';
@@ -48,8 +46,11 @@ class CategoryRepository implements ICategoryRepository {
   @override
   Future<FirebaseResponse> create(TaskCategory category) async {
     final userRef = await _firestore.userDocument();
+    final categories = await userRef.collection('category').get();
+    final count = categories.docs.length;
     final categoryRef = userRef.collection('category').doc();
-    await categoryRef.set(category.toMap());
+    final data = category.copyWith(position: count + 1).toMap();
+    await categoryRef.set(data);
     return const FirebaseResponse.success();
   }
 
@@ -90,7 +91,7 @@ class CategoryRepository implements ICategoryRepository {
       for (int i = 0; i < categories.length; i++) {
         final category = categories[i];
         final categoryRef = userRef.collection('category').doc(category.id);
-        transaction.update(categoryRef, {'position': i});
+        transaction.update(categoryRef, {'position': i + 1});
       }
       return const FirebaseResponse.success();
     });

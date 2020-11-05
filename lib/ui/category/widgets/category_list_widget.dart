@@ -77,6 +77,8 @@ class CategoryItem extends StatelessWidget {
         ),
         title: Text(
           category.title,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 22.0,
