@@ -20,38 +20,32 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
 
   TaskListBloc(this._taskRepository) : super(const TaskListState.initial());
 
-  //TODO refactor
   @override
   Stream<TaskListState> mapEventToState(
     TaskListEvent event,
   ) async* {
     yield* event.map(
       getFavorite: (_GetFavorite value) async* {
-        yield const TaskListState.isLoading();
-        final watchTasks = _taskRepository.watchFavTasks();
-        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+        yield* processStream(_taskRepository.watchFavTasks());
       },
       getAllTasks: (_GetAllTasks value) async* {
-        yield const TaskListState.isLoading();
-        final watchTasks = _taskRepository.watchTasks();
-        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+        yield* processStream(_taskRepository.watchTasks());
       },
       getTasksOtherCategory: (_GetTasksWithOtherCategory value) async* {
-        yield const TaskListState.isLoading();
-        final watchTasks = _taskRepository.watchOtherTasks();
-        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+        yield* processStream(_taskRepository.watchOtherTasks());
       },
       getTasksWithCategory: (_GetTasksWithCategory value) async* {
-        yield const TaskListState.isLoading();
-        final watchTasks =
-            _taskRepository.watchTasksWithCategory(categoryId: value.id);
-        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+        yield* processStream(
+            _taskRepository.watchTasksWithCategory(categoryId: value.id));
       },
       getOpenTasks: (_GetOpenTasks value) async* {
-        yield const TaskListState.isLoading();
-        final watchTasks = _taskRepository.watchOpenTasks();
-        yield* watchTasks.map((event) => TaskListState.loadSuccess(event));
+        yield* processStream(_taskRepository.watchOpenTasks());
       },
     );
+  }
+
+  Stream<TaskListState> processStream(Stream<List<Task>> stream) async* {
+    yield const TaskListState.isLoading();
+    yield* stream.map((event) => TaskListState.loadSuccess(event));
   }
 }

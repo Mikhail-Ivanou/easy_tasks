@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'task_actions_cubit.dart';
+part of 'process_action_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,8 +10,8 @@ part of 'task_actions_cubit.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$TaskActionStateTearOff {
-  const _$TaskActionStateTearOff();
+class _$ProcessActionStateTearOff {
+  const _$ProcessActionStateTearOff();
 
 // ignore: unused_element
   _Idle idle() {
@@ -36,10 +36,10 @@ class _$TaskActionStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $TaskActionState = _$TaskActionStateTearOff();
+const $ProcessActionState = _$ProcessActionStateTearOff();
 
 /// @nodoc
-mixin _$TaskActionState {
+mixin _$ProcessActionState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result idle(),
@@ -73,20 +73,20 @@ mixin _$TaskActionState {
 }
 
 /// @nodoc
-abstract class $TaskActionStateCopyWith<$Res> {
-  factory $TaskActionStateCopyWith(
-          TaskActionState value, $Res Function(TaskActionState) then) =
-      _$TaskActionStateCopyWithImpl<$Res>;
+abstract class $ProcessActionStateCopyWith<$Res> {
+  factory $ProcessActionStateCopyWith(
+          ProcessActionState value, $Res Function(ProcessActionState) then) =
+      _$ProcessActionStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TaskActionStateCopyWithImpl<$Res>
-    implements $TaskActionStateCopyWith<$Res> {
-  _$TaskActionStateCopyWithImpl(this._value, this._then);
+class _$ProcessActionStateCopyWithImpl<$Res>
+    implements $ProcessActionStateCopyWith<$Res> {
+  _$ProcessActionStateCopyWithImpl(this._value, this._then);
 
-  final TaskActionState _value;
+  final ProcessActionState _value;
   // ignore: unused_field
-  final $Res Function(TaskActionState) _then;
+  final $Res Function(ProcessActionState) _then;
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ abstract class _$IdleCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$IdleCopyWithImpl<$Res> extends _$TaskActionStateCopyWithImpl<$Res>
+class __$IdleCopyWithImpl<$Res> extends _$ProcessActionStateCopyWithImpl<$Res>
     implements _$IdleCopyWith<$Res> {
   __$IdleCopyWithImpl(_Idle _value, $Res Function(_Idle) _then)
       : super(_value, (v) => _then(v as _Idle));
@@ -111,7 +111,7 @@ class _$_Idle implements _Idle {
 
   @override
   String toString() {
-    return 'TaskActionState.idle()';
+    return 'ProcessActionState.idle()';
   }
 
   @override
@@ -185,7 +185,7 @@ class _$_Idle implements _Idle {
   }
 }
 
-abstract class _Idle implements TaskActionState {
+abstract class _Idle implements ProcessActionState {
   const factory _Idle() = _$_Idle;
 }
 
@@ -198,7 +198,7 @@ abstract class _$ProcessingCopyWith<$Res> {
 
 /// @nodoc
 class __$ProcessingCopyWithImpl<$Res>
-    extends _$TaskActionStateCopyWithImpl<$Res>
+    extends _$ProcessActionStateCopyWithImpl<$Res>
     implements _$ProcessingCopyWith<$Res> {
   __$ProcessingCopyWithImpl(
       _Processing _value, $Res Function(_Processing) _then)
@@ -214,7 +214,7 @@ class _$_Processing implements _Processing {
 
   @override
   String toString() {
-    return 'TaskActionState.processing()';
+    return 'ProcessActionState.processing()';
   }
 
   @override
@@ -288,7 +288,7 @@ class _$_Processing implements _Processing {
   }
 }
 
-abstract class _Processing implements TaskActionState {
+abstract class _Processing implements ProcessActionState {
   const factory _Processing() = _$_Processing;
 }
 
@@ -299,7 +299,8 @@ abstract class _$SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$TaskActionStateCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res>
+    extends _$ProcessActionStateCopyWithImpl<$Res>
     implements _$SuccessCopyWith<$Res> {
   __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
       : super(_value, (v) => _then(v as _Success));
@@ -314,7 +315,7 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'TaskActionState.success()';
+    return 'ProcessActionState.success()';
   }
 
   @override
@@ -388,7 +389,7 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements TaskActionState {
+abstract class _Success implements ProcessActionState {
   const factory _Success() = _$_Success;
 }
 
@@ -399,7 +400,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$TaskActionStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$ProcessActionStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -414,7 +415,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'TaskActionState.error()';
+    return 'ProcessActionState.error()';
   }
 
   @override
@@ -488,6 +489,6 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements TaskActionState {
+abstract class _Error implements ProcessActionState {
   const factory _Error() = _$_Error;
 }

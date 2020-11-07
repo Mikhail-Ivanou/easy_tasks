@@ -17,18 +17,12 @@ class _$CategoryDetailStateTearOff {
   _CategoryDetailState call(
       {@required TaskCategory category,
       @required bool isTitleValid,
-      @required bool isIconValid,
-      @required bool isColorValid,
-      @required bool isSaving,
       @required bool isNew,
       @required FirebaseResponse response,
       @required bool showErrorMessages}) {
     return _CategoryDetailState(
       category: category,
       isTitleValid: isTitleValid,
-      isIconValid: isIconValid,
-      isColorValid: isColorValid,
-      isSaving: isSaving,
       isNew: isNew,
       response: response,
       showErrorMessages: showErrorMessages,
@@ -44,9 +38,6 @@ const $CategoryDetailState = _$CategoryDetailStateTearOff();
 mixin _$CategoryDetailState {
   TaskCategory get category;
   bool get isTitleValid;
-  bool get isIconValid;
-  bool get isColorValid;
-  bool get isSaving;
   bool get isNew;
   FirebaseResponse get response;
   bool get showErrorMessages;
@@ -62,9 +53,6 @@ abstract class $CategoryDetailStateCopyWith<$Res> {
   $Res call(
       {TaskCategory category,
       bool isTitleValid,
-      bool isIconValid,
-      bool isColorValid,
-      bool isSaving,
       bool isNew,
       FirebaseResponse response,
       bool showErrorMessages});
@@ -86,9 +74,6 @@ class _$CategoryDetailStateCopyWithImpl<$Res>
   $Res call({
     Object category = freezed,
     Object isTitleValid = freezed,
-    Object isIconValid = freezed,
-    Object isColorValid = freezed,
-    Object isSaving = freezed,
     Object isNew = freezed,
     Object response = freezed,
     Object showErrorMessages = freezed,
@@ -98,11 +83,6 @@ class _$CategoryDetailStateCopyWithImpl<$Res>
           category == freezed ? _value.category : category as TaskCategory,
       isTitleValid:
           isTitleValid == freezed ? _value.isTitleValid : isTitleValid as bool,
-      isIconValid:
-          isIconValid == freezed ? _value.isIconValid : isIconValid as bool,
-      isColorValid:
-          isColorValid == freezed ? _value.isColorValid : isColorValid as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isNew: isNew == freezed ? _value.isNew : isNew as bool,
       response:
           response == freezed ? _value.response : response as FirebaseResponse,
@@ -143,9 +123,6 @@ abstract class _$CategoryDetailStateCopyWith<$Res>
   $Res call(
       {TaskCategory category,
       bool isTitleValid,
-      bool isIconValid,
-      bool isColorValid,
-      bool isSaving,
       bool isNew,
       FirebaseResponse response,
       bool showErrorMessages});
@@ -171,9 +148,6 @@ class __$CategoryDetailStateCopyWithImpl<$Res>
   $Res call({
     Object category = freezed,
     Object isTitleValid = freezed,
-    Object isIconValid = freezed,
-    Object isColorValid = freezed,
-    Object isSaving = freezed,
     Object isNew = freezed,
     Object response = freezed,
     Object showErrorMessages = freezed,
@@ -183,11 +157,6 @@ class __$CategoryDetailStateCopyWithImpl<$Res>
           category == freezed ? _value.category : category as TaskCategory,
       isTitleValid:
           isTitleValid == freezed ? _value.isTitleValid : isTitleValid as bool,
-      isIconValid:
-          isIconValid == freezed ? _value.isIconValid : isIconValid as bool,
-      isColorValid:
-          isColorValid == freezed ? _value.isColorValid : isColorValid as bool,
-      isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isNew: isNew == freezed ? _value.isNew : isNew as bool,
       response:
           response == freezed ? _value.response : response as FirebaseResponse,
@@ -203,17 +172,11 @@ class _$_CategoryDetailState implements _CategoryDetailState {
   const _$_CategoryDetailState(
       {@required this.category,
       @required this.isTitleValid,
-      @required this.isIconValid,
-      @required this.isColorValid,
-      @required this.isSaving,
       @required this.isNew,
       @required this.response,
       @required this.showErrorMessages})
       : assert(category != null),
         assert(isTitleValid != null),
-        assert(isIconValid != null),
-        assert(isColorValid != null),
-        assert(isSaving != null),
         assert(isNew != null),
         assert(response != null),
         assert(showErrorMessages != null);
@@ -223,12 +186,6 @@ class _$_CategoryDetailState implements _CategoryDetailState {
   @override
   final bool isTitleValid;
   @override
-  final bool isIconValid;
-  @override
-  final bool isColorValid;
-  @override
-  final bool isSaving;
-  @override
   final bool isNew;
   @override
   final FirebaseResponse response;
@@ -237,7 +194,7 @@ class _$_CategoryDetailState implements _CategoryDetailState {
 
   @override
   String toString() {
-    return 'CategoryDetailState(category: $category, isTitleValid: $isTitleValid, isIconValid: $isIconValid, isColorValid: $isColorValid, isSaving: $isSaving, isNew: $isNew, response: $response, showErrorMessages: $showErrorMessages)';
+    return 'CategoryDetailState(category: $category, isTitleValid: $isTitleValid, isNew: $isNew, response: $response, showErrorMessages: $showErrorMessages)';
   }
 
   @override
@@ -250,15 +207,6 @@ class _$_CategoryDetailState implements _CategoryDetailState {
             (identical(other.isTitleValid, isTitleValid) ||
                 const DeepCollectionEquality()
                     .equals(other.isTitleValid, isTitleValid)) &&
-            (identical(other.isIconValid, isIconValid) ||
-                const DeepCollectionEquality()
-                    .equals(other.isIconValid, isIconValid)) &&
-            (identical(other.isColorValid, isColorValid) ||
-                const DeepCollectionEquality()
-                    .equals(other.isColorValid, isColorValid)) &&
-            (identical(other.isSaving, isSaving) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSaving, isSaving)) &&
             (identical(other.isNew, isNew) ||
                 const DeepCollectionEquality().equals(other.isNew, isNew)) &&
             (identical(other.response, response) ||
@@ -274,9 +222,6 @@ class _$_CategoryDetailState implements _CategoryDetailState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(isTitleValid) ^
-      const DeepCollectionEquality().hash(isIconValid) ^
-      const DeepCollectionEquality().hash(isColorValid) ^
-      const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(isNew) ^
       const DeepCollectionEquality().hash(response) ^
       const DeepCollectionEquality().hash(showErrorMessages);
@@ -291,9 +236,6 @@ abstract class _CategoryDetailState implements CategoryDetailState {
   const factory _CategoryDetailState(
       {@required TaskCategory category,
       @required bool isTitleValid,
-      @required bool isIconValid,
-      @required bool isColorValid,
-      @required bool isSaving,
       @required bool isNew,
       @required FirebaseResponse response,
       @required bool showErrorMessages}) = _$_CategoryDetailState;
@@ -302,12 +244,6 @@ abstract class _CategoryDetailState implements CategoryDetailState {
   TaskCategory get category;
   @override
   bool get isTitleValid;
-  @override
-  bool get isIconValid;
-  @override
-  bool get isColorValid;
-  @override
-  bool get isSaving;
   @override
   bool get isNew;
   @override

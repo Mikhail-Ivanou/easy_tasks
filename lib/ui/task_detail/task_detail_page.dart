@@ -7,10 +7,10 @@ import 'package:easy_tasks/ui/core/alert_helper.dart';
 import 'package:easy_tasks/ui/task_detail/widgets/overlay.dart';
 import 'package:easy_tasks/ui/task_detail/task_detail_form.dart';
 import 'package:flushbar/flushbar_helper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_tasks/core/action_cubit/process_action_state.dart';
 
 class TaskDetailPage extends StatelessWidget {
   const TaskDetailPage({Key key, @required this.initialTask}) : super(key: key);
@@ -27,7 +27,7 @@ class TaskDetailPage extends StatelessWidget {
         BlocProvider<TaskActionsCubit>(
             create: (context) => getIt<TaskActionsCubit>()),
       ],
-      child: BlocConsumer<TaskActionsCubit, TaskActionState>(
+      child: BlocConsumer<TaskActionsCubit, ProcessActionState>(
         listener: (context, state) {
           state.maybeMap(
             success: (_) {

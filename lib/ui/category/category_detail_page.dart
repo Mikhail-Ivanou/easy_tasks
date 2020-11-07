@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_tasks/application/category/actions/category_actions_cubit.dart';
 import 'package:easy_tasks/application/category/detail/category_detail_cubit.dart';
+import 'package:easy_tasks/core/action_cubit/process_action_state.dart';
 import 'package:easy_tasks/domain/category/category.dart';
 import 'package:easy_tasks/injection.dart';
 import 'package:easy_tasks/ui/category/widgets/category_form_widget.dart';
@@ -25,7 +26,7 @@ class CategoryDetailPage extends StatelessWidget {
           BlocProvider<CategoryActionsCubit>(
               create: (context) => getIt<CategoryActionsCubit>()),
         ],
-        child: BlocConsumer<CategoryActionsCubit, CategoryActionState>(
+        child: BlocConsumer<CategoryActionsCubit, ProcessActionState>(
           listener: (context, state) {
             state.maybeMap(
               success: (_) {

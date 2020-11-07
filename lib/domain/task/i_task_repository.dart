@@ -2,7 +2,6 @@ import 'package:easy_tasks/domain/core/firebase_response.dart';
 import 'package:easy_tasks/domain/task/counts.dart';
 import 'package:easy_tasks/domain/task/task.dart';
 
-//TODO need check one stream with filters
 abstract class ITaskRepository {
   Stream<List<Task>> watchTasks();
   Stream<List<Task>> watchFavTasks();

@@ -7,7 +7,6 @@ import 'package:easy_tasks/ui/task_detail/widgets/tags_field.dart';
 import 'package:easy_tasks/ui/task_detail/widgets/title_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'widgets/fav_field.dart';
 
 class TaskDetailForm extends StatelessWidget {
